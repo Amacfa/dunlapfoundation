@@ -2608,30 +2608,267 @@
                 </div>
                 
                 <div class="donation-methods">
+                    <!-- Credit Card with Stripe -->
                     <div class="donation-method">
-                        <div class="donation-icon">💳</div>
                         <h4 class="donation-method-title">Credit Card</h4>
-                        <p class="donation-method-description">Secure online payment via major credit cards</p>
+                        <p class="donation-method-description">Secure payment via Stripe</p>
+                        <div class="payment-button-container">
+                            <button id="stripe-checkout-button" class="payment-button stripe-button">
+                                <img src="https://cdn.cdnlogo.com/logos/s/39/stripe.svg" alt="Stripe" height="24"> Pay with Card
+                            </button>
+                        </div>
                     </div>
                     
+                    <!-- Apple Pay -->
                     <div class="donation-method">
-                        <div class="donation-icon">📱</div>
+                        <h4 class="donation-method-title">Apple Pay</h4>
+                        <p class="donation-method-description">Quick contactless payment</p>
+                        <div class="payment-button-container">
+                            <button id="apple-pay-button" class="payment-button apple-pay-button">
+                                <svg height="24" viewBox="0 0 43 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.103 2.273h-2.53V0h6.713v2.273h-2.53v7.909h-1.653V2.273zm4.167 2.616c0-1.863 1.529-3.071 3.536-3.071 2.036 0 3.549 1.208 3.549 3.07 0 1.852-1.513 3.073-3.55 3.073-2.021 0-3.535-1.222-3.535-3.072zm5.356 0c0-1.037-.751-1.742-1.82-1.742-1.055 0-1.807.705-1.807 1.742 0 1.038.752 1.737 1.807 1.737 1.069 0 1.82-.7 1.82-1.737zm9.227-2.94v8.233h-1.558V9.112h-.05l-2.03 1.07h-.585V8.855l2.287-1.143h.386V1.95h1.55zm4.09 2.94c0-1.863 1.53-3.071 3.536-3.071 2.036 0 3.55 1.208 3.55 3.07 0 1.852-1.514 3.073-3.55 3.073-2.022 0-3.536-1.222-3.536-3.072zm5.357 0c0-1.037-.752-1.742-1.82-1.742-1.056 0-1.808.705-1.808 1.742 0 1.038.752 1.737 1.807 1.737 1.069 0 1.82-.7 1.82-1.737z" fill="currentColor"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Pay -->
+                    <div class="donation-method">
+                        <h4 class="donation-method-title">Google Pay</h4>
+                        <p class="donation-method-description">Fast checkout for Google users</p>
+                        <div class="payment-button-container">
+                            <button id="google-pay-button" class="payment-button google-pay-button">
+                                <svg height="24" viewBox="0 0 41 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.526 2.635v4.083h2.518c.6 0 1.096-.202 1.488-.605.403-.402.605-.882.605-1.437 0-.544-.202-1.018-.605-1.422-.392-.413-.888-.62-1.488-.62h-2.518zm0 5.52v4.736h-1.504V1.198h3.99c1.013 0 1.873.337 2.582 1.012.72.675 1.08 1.497 1.08 2.466 0 .991-.36 1.819-1.08 2.482-.697.665-1.559.996-2.583.996h-2.485v.001zM27.194 10.442c0 .392.166.718.499.98.332.26.722.391 1.168.391.633 0 1.196-.234 1.692-.701.497-.469.744-1.019.744-1.65-.469-.37-1.123-.555-1.962-.555-.61 0-1.12.148-1.528.442-.409.294-.613.657-.613 1.093m1.946-5.815c1.112 0 1.989.297 2.633.89.642.594.964 1.408.964 2.442v4.932h-1.439v-1.11h-.065c-.622.914-1.45 1.372-2.486 1.372-.882 0-1.621-.262-2.215-.784-.594-.523-.891-1.176-.891-1.96 0-.828.313-1.486.94-1.976s1.463-.735 2.51-.735c.892 0 1.629.163 2.206.49v-.344c0-.522-.207-.966-.621-1.33a2.132 2.132 0 0 0-1.455-.547c-.84 0-1.504.353-1.995 1.062l-1.324-.828c.73-1.045 1.81-1.568 3.238-1.568M40.993 4.889l-5.02 11.53H34.42l1.864-4.034-3.302-7.496h1.635l2.387 5.749h.032l2.322-5.75z" fill="currentColor"></path>
+                                    <path d="M13.448 7.134c0-.473-.04-.93-.116-1.366H6.988v2.588h3.634a3.11 3.11 0 0 1-1.344 2.042v1.68h2.169c1.27-1.17 2.001-2.9 2.001-4.944" fill="#4285F4"></path>
+                                    <path d="M6.988 13.7c1.816 0 3.344-.595 4.459-1.621l-2.169-1.681c-.603.406-1.38.643-2.29.643-1.754 0-3.244-1.182-3.776-2.774H.978v1.731a6.728 6.728 0 0 0 6.01 3.703" fill="#34A853"></path>
+                                    <path d="M3.212 8.267a4.034 4.034 0 0 1 0-2.572V3.964H.978A6.678 6.678 0 0 0 .261 6.98c0 1.085.26 2.11.717 3.017l2.234-1.731z" fill="#FABB05"></path>
+                                    <path d="M6.988 4.49c.992 0 1.88.34 2.58 1.008v.001l1.92-1.918C10.324 2.526 8.852 1.96 6.989 1.96c-3.131 0-5.81 1.884-6.01 4.003l2.233 1.73c.532-1.592 2.022-2.774 3.776-2.774" fill="#E94235"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- PayPal -->
+                    <div class="donation-method">
+                        <h4 class="donation-method-title">PayPal</h4>
+                        <p class="donation-method-description">Secure online payments</p>
+                        <div class="payment-button-container">
+                            <button id="paypal-button" class="payment-button paypal-button">
+                                <svg height="24" viewBox="0 0 101 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M 12.237 2.8 L 4.438 2.8 C 3.938 2.8 3.538 3.2 3.438 3.6 L 0.238 23.4 C 0.138 23.7 0.138 23.9 0.238 24.1 C 0.338 24.3 0.538 24.4 0.838 24.4 L 4.537 24.4 C 5.037 24.4 5.437 24 5.537 23.6 L 6.437 17.7 C 6.537 17.3 6.837 16.9 7.337 16.9 L 9.837 16.9 C 14.137 16.9 16.637 14.7 17.237 10.5 C 17.537 8.6 17.237 7.1 16.437 6 C 15.637 4.9 14.137 2.8 12.237 2.8 Z M 13.137 10.7 C 12.737 13.1 10.937 13.1 9.037 13.1 L 7.837 13.1 L 8.737 7.2 C 8.837 6.9 9.037 6.7 9.337 6.7 L 9.937 6.7 C 11.237 6.7 12.437 6.7 13.137 7.5 C 13.537 8 13.237 9.2 13.137 10.7 Z" fill="#253B80"></path>
+                                    <path d="M 35.437 10.5 L 31.737 10.5 C 31.437 10.5 31.237 10.7 31.137 11 L 30.937 12.2 L 30.637 11.7 C 29.837 10.5 28.037 10.1 26.237 10.1 C 22.137 10.1 18.637 13.2 17.937 17.5 C 17.537 19.7 18.037 21.8 19.337 23.2 C 20.437 24.5 22.137 25.1 24.037 25.1 C 27.337 25.1 29.237 23.2 29.237 23.2 L 29.037 24.4 C 28.937 24.7 29.037 24.9 29.137 25.1 C 29.237 25.3 29.437 25.4 29.737 25.4 L 33.037 25.4 C 33.537 25.4 33.937 25 34.037 24.6 L 36.137 11.5 C 36.237 11.2 36.137 11 36.037 10.8 C 35.937 10.7 35.737 10.5 35.437 10.5 Z M 30.337 17.7 C 29.937 19.8 28.337 21.2 26.137 21.2 C 25.037 21.2 24.137 20.9 23.537 20.3 C 22.937 19.7 22.737 18.8 22.937 17.8 C 23.337 15.7 24.937 14.3 27.137 14.3 C 28.237 14.3 29.137 14.6 29.737 15.2 C 30.337 15.9 30.537 16.7 30.337 17.7 Z" fill="#253B80"></path>
+                                    <path d="M 55.337 10.5 L 51.637 10.5 C 51.237 10.5 50.937 10.7 50.737 10.9 L 45.537 18.5 L 43.337 11.3 C 43.237 10.9 42.837 10.6 42.437 10.6 L 38.837 10.6 C 38.537 10.6 38.237 10.7 38.137 11 C 38.037 11.2 38.037 11.5 38.137 11.8 L 42.137 24.2 L 38.437 29.3 C 38.237 29.6 38.237 30 38.437 30.3 C 38.637 30.6 38.937 30.7 39.237 30.7 L 42.937 30.7 C 43.337 30.7 43.637 30.5 43.837 30.3 L 55.937 11.3 C 56.137 11 56.137 10.6 55.937 10.3 C 55.737 10.6 55.537 10.5 55.337 10.5 Z" fill="#253B80"></path>
+                                    <path d="M 67.738 2.8 L 59.938 2.8 C 59.438 2.8 59.038 3.2 58.938 3.6 L 55.738 23.4 C 55.638 23.7 55.738 23.9 55.838 24.1 C 55.938 24.3 56.138 24.4 56.438 24.4 L 60.538 24.4 C 60.938 24.4 61.338 24.1 61.438 23.7 L 62.338 17.7 C 62.438 17.3 62.738 16.9 63.238 16.9 L 65.738 16.9 C 70.038 16.9 72.538 14.7 73.138 10.5 C 73.438 8.6 73.138 7.1 72.338 6 C 71.338 4.9 69.638 2.8 67.738 2.8 Z M 68.638 10.7 C 68.238 13.1 66.438 13.1 64.538 13.1 L 63.338 13.1 L 64.238 7.2 C 64.338 6.9 64.538 6.7 64.838 6.7 L 65.438 6.7 C 66.738 6.7 67.938 6.7 68.638 7.5 C 69.038 8 68.838 9.2 68.638 10.7 Z" fill="#179BD7"></path>
+                                    <path d="M 90.938 10.5 L 87.238 10.5 C 86.938 10.5 86.738 10.7 86.638 11 L 86.438 12.2 L 86.138 11.7 C 85.338 10.5 83.538 10.1 81.738 10.1 C 77.638 10.1 74.138 13.2 73.438 17.5 C 73.038 19.7 73.538 21.8 74.838 23.2 C 75.938 24.5 77.638 25.1 79.538 25.1 C 82.838 25.1 84.738 23.2 84.738 23.2 L 84.538 24.4 C 84.438 24.7 84.538 24.9 84.638 25.1 C 84.738 25.3 84.938 25.4 85.238 25.4 L 88.538 25.4 C 89.038 25.4 89.438 25 89.538 24.6 L 91.638 11.5 C 91.738 11.2 91.638 11 91.538 10.8 C 91.238 10.7 91.138 10.5 90.938 10.5 Z M 85.838 17.7 C 85.438 19.8 83.838 21.2 81.638 21.2 C 80.538 21.2 79.638 20.9 79.038 20.3 C 78.438 19.7 78.238 18.8 78.438 17.8 C 78.838 15.7 80.438 14.3 82.638 14.3 C 83.738 14.3 84.638 14.6 85.238 15.2 C 85.738 15.9 85.938 16.7 85.838 17.7 Z" fill="#179BD7"></path>
+                                    <path d="M 95.038 3.7 L 91.938 23.4 C 91.838 23.7 91.938 23.9 92.038 24.1 C 92.138 24.3 92.338 24.4 92.638 24.4 L 95.838 24.4 C 96.338 24.4 96.738 24 96.838 23.6 L 99.938 3.8 C 100.038 3.5 99.938 3.3 99.838 3.1 C 99.738 2.9 99.538 2.8 99.238 2.8 L 95.738 2.8 C 95.338 2.7 95.138 3 95.038 3.7 Z" fill="#179BD7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Venmo -->
+                    <div class="donation-method">
                         <h4 class="donation-method-title">Venmo</h4>
-                        <p class="donation-method-description">Quick and easy mobile donations</p>
+                        <p class="donation-method-description">Fast peer-to-peer payments</p>
+                        <div class="payment-button-container">
+                            <button id="venmo-button" class="payment-button venmo-button">
+                                <svg height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M32.75 8.2c1.5.4 2.2 1.4 2.2 2.9 0 4.4-3.8 10.2-6.9 14.2.5-4.5 1.9-9.2 3.4-13 .7-1.5 1.1-3.5 1.3-4.1h0zm9.5 5.3c-.3 7-5.2 17.7-12.2 25.2h-10.3l-6.1-37.5h7.9l3.4 28.3c3.7-3.8 8.3-12.6 8.3-17.8 0-2.8-1-4.2-1.9-5 .9-.7 3.1-1 4.1-1 3.2 0 6.9 1.9 6.9 7.8h-.1z" fill="#3396CD"/>
+                                </svg>
+                                Pay with Venmo
+                            </button>
+                        </div>
                     </div>
                     
+                    <!-- Cash App -->
                     <div class="donation-method">
-                        <div class="donation-icon">💸</div>
                         <h4 class="donation-method-title">Cash App</h4>
-                        <p class="donation-method-description">Fast mobile transfers with no fees</p>
+                        <p class="donation-method-description">Easy money transfers</p>
+                        <div class="payment-button-container">
+                            <button id="cashapp-button" class="payment-button cashapp-button">
+                                <svg height="24" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.9 2.9l-2.2 2.2 14.8 14.8-14.8 14.8 2.2 2.2 17-17-17-17z" fill="#00D54B" />
+                                </svg>
+                                Pay with Cash App
+                            </button>
+                        </div>
                     </div>
                     
+                    <!-- Zelle -->
                     <div class="donation-method">
-                        <div class="donation-icon">🏦</div>
+                        <h4 class="donation-method-title">Zelle</h4>
+                        <p class="donation-method-description">Direct bank transfers</p>
+                        <div class="payment-button-container">
+                            <button id="zelle-button" class="payment-button zelle-button">
+                                <svg height="24" viewBox="0 0 79 23" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.58 1.54L13.382 22.46h-4.14L18.442 1.54h4.14zm-8.831 0l-9.15 20.92H.5L9.602 1.54h4.147zM29.636 1.54h4.146l-9.15 20.92h-4.146l9.15-20.92zm21.183 16.156h4.747v4.764h-15.22v-4.764l8.26-7.125h-7.608V5.807h15.22v4.764l-8.327 7.125h2.928zm10.043-11.89h8.24c4.698 0 8.397 3.334 8.397 7.413v.032c0 4.08-3.7 7.446-8.398 7.446h-3.485v4.765h-4.754V5.807zm8.24 10.315c2.063 0 3.567-1.44 3.567-2.838v-.032c0-1.896-1.395-2.868-3.6-2.868h-3.453v5.738h3.486z" fill="#6C1CD3" />
+                                </svg>
+                                Pay with Zelle
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bank Transfer -->
+                    <div class="donation-method">
                         <h4 class="donation-method-title">Bank Transfer</h4>
-                        <p class="donation-method-description">Direct deposits to our foundation</p>
+                        <p class="donation-method-description">Direct wire or ACH deposit</p>
+                        <div class="payment-button-container">
+                            <button id="bank-transfer-button" class="payment-button bank-button">
+                                <svg height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 10V17H7V10H4M10 10V17H13V10H10M2 22H21V19H2V22M16 10V17H19V10H16M11.5 1L2 6V8H21V6L11.5 1Z" fill="#3454D1" />
+                                </svg>
+                                Bank Transfer Details
+                            </button>
+                        </div>
                     </div>
                 </div>
+                
+                <style>
+                    /* Updated Payment Methods Styling */
+                    .donation-methods {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                        gap: 2rem;
+                        margin-bottom: 4rem;
+                    }
+                    
+                    .donation-method {
+                        background-color: var(--dark-card);
+                        border-radius: 8px;
+                        padding: 1.5rem;
+                        box-shadow: var(--shadow-md);
+                        transition: all var(--transition-medium);
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    
+                    .donation-method:hover {
+                        transform: translateY(-5px);
+                        box-shadow: var(--shadow-lg);
+                    }
+                    
+                    .donation-method-title {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                        font-family: 'Montserrat', sans-serif;
+                    }
+                    
+                    .donation-method-description {
+                        font-size: 0.9rem;
+                        color: var(--text-tertiary);
+                        margin-bottom: 1.5rem;
+                    }
+                    
+                    .payment-button-container {
+                        margin-top: auto;
+                    }
+                    
+                    .payment-button {
+                        width: 100%;
+                        padding: 0.8rem 1rem;
+                        border-radius: 4px;
+                        border: none;
+                        font-weight: 500;
+                        font-size: 0.9rem;
+                        font-family: 'Montserrat', sans-serif;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+                        cursor: pointer;
+                        transition: all var(--transition-fast);
+                    }
+                    
+                    /* Stripe Button */
+                    .stripe-button {
+                        background-color: #635BFF;
+                        color: white;
+                        border: 1px solid #635BFF;
+                    }
+                    
+                    .stripe-button:hover {
+                        background-color: #8780FA;
+                    }
+                    
+                    /* Apple Pay Button */
+                    .apple-pay-button {
+                        background-color: black;
+                        color: white;
+                        border: 1px solid black;
+                    }
+                    
+                    .apple-pay-button:hover {
+                        background-color: #333;
+                    }
+                    
+                    /* Google Pay Button */
+                    .google-pay-button {
+                        background-color: white;
+                        color: #3c4043;
+                        border: 1px solid #8e8e8e;
+                    }
+                    
+                    .google-pay-button:hover {
+                        background-color: #f1f1f1;
+                    }
+                    
+                    /* PayPal Button */
+                    .paypal-button {
+                        background-color: #0070BA;
+                        color: white;
+                        border: 1px solid #0070BA;
+                    }
+                    
+                    .paypal-button:hover {
+                        background-color: #005ea6;
+                    }
+                    
+                    /* Venmo Button */
+                    .venmo-button {
+                        background-color: white;
+                        color: #3396CD;
+                        border: 1px solid #3396CD;
+                    }
+                    
+                    .venmo-button:hover {
+                        background-color: #f5f5f5;
+                    }
+                    
+                    /* Cash App Button */
+                    .cashapp-button {
+                        background-color: black;
+                        color: #00D54B;
+                        border: 1px solid #00D54B;
+                    }
+                    
+                    .cashapp-button:hover {
+                        background-color: #222;
+                    }
+                    
+                    /* Zelle Button */
+                    .zelle-button {
+                        background-color: white;
+                        color: #6C1CD3;
+                        border: 1px solid #6C1CD3;
+                    }
+                    
+                    .zelle-button:hover {
+                        background-color: #f5f5f5;
+                    }
+                    
+                    /* Bank Button */
+                    .bank-button {
+                        background-color: white;
+                        color: var(--royal-blue);
+                        border: 1px solid var(--royal-blue);
+                    }
+                    
+                    .bank-button:hover {
+                        background-color: #f5f5f5;
+                    }
+                </style>
                 
                 <div class="donation-impact">
                     <h3 class="impact-title">Your Impact</h3>
@@ -2854,10 +3091,24 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="member-img-container">
-                            <img src="/api/placeholder/400/400" alt="Board Member" class="member-img">
+                            <img src="/api/placeholder/400/400" alt="JonPierre Carlo Dunlap" class="member-img">
+                        </div>
+                        <h3 class="member-name">JonPierre Carlo Dunlap</h3>
+                        <div class="member-position">Chairperson</div>
+                        <p class="member-bio">Chief of Staff at NVIDIA with over 20 years of experience, bringing technological expertise and strategic vision to the foundation's mission of education and community support.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">in</a>
+                            <a href="#" class="social-link">tw</a>
+                            <a href="#" class="social-link">em</a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-img-container">
+                            <img src="/api/placeholder/400/400" alt="Jane Smith" class="member-img">
                         </div>
                         <h3 class="member-name">Jane Smith</h3>
-                        <div class="member-position">Chairperson</div>
+                        <div class="member-position">Vice Chair</div>
                         <p class="member-bio">Experienced non-profit leader with a passion for education and community development, bringing over 20 years of experience in philanthropic initiatives.</p>
                         <div class="member-social">
                             <a href="#" class="social-link">in</a>
@@ -2868,39 +3119,11 @@
                     
                     <div class="team-member">
                         <div class="member-img-container">
-                            <img src="/api/placeholder/400/400" alt="Board Member" class="member-img">
-                        </div>
-                        <h3 class="member-name">Michael Johnson</h3>
-                        <div class="member-position">Vice Chair</div>
-                        <p class="member-bio">Financial expert with extensive experience in philanthropic fund management and strategic planning for non-profit organizations.</p>
-                        <div class="member-social">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">tw</a>
-                            <a href="#" class="social-link">em</a>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-img-container">
-                            <img src="/api/placeholder/400/400" alt="Board Member" class="member-img">
+                            <img src="/api/placeholder/400/400" alt="Sarah Williams" class="member-img">
                         </div>
                         <h3 class="member-name">Sarah Williams</h3>
                         <div class="member-position">Treasurer</div>
                         <p class="member-bio">Corporate executive with a background in strategic planning, resource allocation, and financial oversight for educational institutions.</p>
-                        <div class="member-social">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">tw</a>
-                            <a href="#" class="social-link">em</a>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-img-container">
-                            <img src="/api/placeholder/400/400" alt="Board Member" class="member-img">
-                        </div>
-                        <h3 class="member-name">David Chen</h3>
-                        <div class="member-position">Secretary</div>
-                        <p class="member-bio">Education advocate with experience in academic administration and student success programs across multiple university systems.</p>
                         <div class="member-social">
                             <a href="#" class="social-link">in</a>
                             <a href="#" class="social-link">tw</a>
