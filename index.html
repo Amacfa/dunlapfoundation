@@ -444,7 +444,24 @@
             justify-content: space-between;
             align-items: center;
         }
+.header-logo-img {
+    height: 40px; /* Adjust based on your logo's size */
+    width: auto;
+    display: block;
+}
 
+/* Adjust the header container if needed */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Optional: Add a hover effect if desired */
+.logo:hover .header-logo-img {
+    opacity: 0.9;
+    transition: opacity var(--transition-fast);
+}
         .logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -2177,26 +2194,9 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <!-- Logo Icon -->
-                    <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 10C27.9086 10 10 27.9086 10 50C10 72.0914 27.9086 90 50 90C72.0914 90 90 72.0914 90 50C90 27.9086 72.0914 10 50 10Z" stroke="url(#paint0_linear)" stroke-width="4"/>
-                        <path d="M30 50C30 38.9543 38.9543 30 50 30C61.0457 30 70 38.9543 70 50C70 61.0457 61.0457 70 50 70C38.9543 70 30 61.0457 30 50Z" fill="url(#paint1_linear)"/>
-                        <defs>
-                            <linearGradient id="paint0_linear" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#3454D1"/>
-                                <stop offset="1" stop-color="#E5A9BC"/>
-                            </linearGradient>
-                            <linearGradient id="paint1_linear" x1="30" y1="30" x2="70" y2="70" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#3454D1"/>
-                                <stop offset="1" stop-color="#E5A9BC"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <span class="logo-text">Evelyn Dunlap Foundation</span>
-            </a>
+<a href="#" class="logo">
+    <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="header-logo-img">
+</a>
             
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
             
