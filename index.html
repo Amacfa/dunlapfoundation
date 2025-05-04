@@ -1619,8 +1619,8 @@
         }
 
         .member-img-container {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             position: relative;
@@ -1634,12 +1634,13 @@
             transform: translateY(-5px);
         }
 
-        .member-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-medium);
-        }
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+    transform: scale(1.9);
+}
 
         .team-member:hover .member-img {
             transform: scale(1.05);
