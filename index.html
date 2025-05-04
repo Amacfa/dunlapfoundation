@@ -2189,6 +2189,84 @@
             }
         }
     </style>
+    /* =====================================================================
+   Evelyn Dunlap Foundation – Mobile‑first enhancements
+   Add this file AFTER the main <style> block or bundle it via <link> so
+   that these rules override previous declarations.
+   ===================================================================== */
+
+/* ---------- 1. Safer full‑viewport hero on iOS & Android ---------- */
+.hero {
+  /* 100svh fixes Safari tool‑bar jump, falls back to 100vh elsewhere */
+  min-height: 100svh;
+}
+
+/* ---------- 2. Replace background video with lightweight image on     
+               touch devices (saves bandwidth & ensures autoplay rules) */
+@media (max-width: 768px) {
+  .hero-video { display: none !important; }
+  .hero {
+    background: url('./images/hero-mobile.jpg') no-repeat center/cover;
+  }
+}
+
+/* ---------- 3. Header & navigation scale‑down --------------------- */
+@media (max-width: 768px) {
+  header { padding: 0.75rem 0; }
+  .header-logo-img { height: 80px; }
+  .nav-list { gap: 1.25rem; }
+}
+
+/* ---------- 4. Typography – readable sizes & tighter line‑height ---- */
+@media (max-width: 576px) {
+  h1, .hero-title { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  p  { font-size: 1rem; line-height: 1.6; }
+}
+
+/* ---------- 5. Grid collapses for narrow viewports ------------------ */
+@media (max-width: 768px) {
+  .donation-methods,
+  .partners-grid,
+  .team-grid,
+  .testimonials-grid,
+  .grid,
+  .grid-2,
+  .grid-3,
+  .grid-4 { grid-template-columns: 1fr !important; }
+
+  .impact-stats { grid-template-columns: 1fr; }
+}
+
+/* ---------- 6. Touch‑friendly hit‑areas ---------------------------- */
+button,
+.btn,
+.mobile-nav-link { min-height: 48px; }
+
+/* ---------- 7. Disable heavy parallax on mobile -------------------- */
+@media (max-width: 768px) {
+  .decorative-element { transform: none !important; filter: blur(45px); }
+}
+
+/* ---------- 8. Respect user motion & accessibility preferences ------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- 9. Safe‑area padding for iPhone Notch ------------------ */
+body {
+  padding-top: env(safe-area-inset-top); /* constant() fallback removed per spec */
+}
+
+/* ---------- 10. Subtle glow opacity tweak on OLED dark‑mode -------- */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .decorative-element { opacity: 0.08; }
+}
+
+
+
+       
 </head>
 <body>
     <!-- Header -->
