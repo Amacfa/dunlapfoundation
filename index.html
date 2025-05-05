@@ -1080,153 +1080,163 @@
             margin: 0 auto 4rem;
         }
 
-  .donation-methods {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 4rem;
-    }
+        .donation-methods {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
         
-    .donation-method {
-        background-color: var(--dark-card);
-        border-radius: 8px;
-        padding: 3rem;
-        box-shadow: var(--shadow-lg);
-        transition: all var(--transition-medium);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
-        border: 1px solid rgba(99, 91, 255, 0.2);
-    }
+        .donation-method {
+            background-color: var(--dark-card);
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-medium);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(99, 91, 255, 0.2);
+        }
         
-    .donation-method:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-xl);
-        border-color: rgba(99, 91, 255, 0.4);
-    }
+        .donation-method:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(99, 91, 255, 0.4);
+        }
         
-  .donation-method-title {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        font-family: 'Cormorant Garamond', serif;
-        color: var(--royal-blue-light);
-    }
-    
-    .donation-method-description {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-    }
-    
-    .donation-amounts {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-        width: 100%;
-    }
-      
-    .amount-button {
-        padding: 1rem;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        background: transparent;
-        color: var(--text-primary);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: all var(--transition-fast);
-    }
-    
-    .amount-button:hover {
-        border-color: var(--royal-blue);
-        background: rgba(52, 84, 209, 0.1);
-        transform: translateY(-3px);
-    }
-    
-    .amount-button.active {
-        border-color: var(--royal-blue);
-        background: var(--royal-blue);
-        color: white;
-    }
-    
-    .custom-amount {
-        margin-bottom: 2rem;
-        width: 100%;
-    }
-    
-    .custom-amount-input {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        background: transparent;
-        color: var(--text-primary);
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.1rem;
-        text-align: center;
-        transition: all var(--transition-fast);
-    }
-    
-    .custom-amount-input:focus {
-        outline: none;
-        border-color: var(--royal-blue);
-        background: rgba(52, 84, 209, 0.1);
-    }
-    
+        .donation-method-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--royal-blue-light);
+        }
+        
+        .donation-method-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .amount-button {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .amount-button:hover {
+            border-color: var(--royal-blue);
+            background: rgba(52, 84, 209, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .amount-button.active {
+            border-color: var(--royal-blue);
+            background: var(--royal-blue);
+            color: white;
+        }
+        
+        .custom-amount {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .custom-amount-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .custom-amount-input:focus {
+            outline: none;
+            border-color: var(--royal-blue);
+            background: rgba(52, 84, 209, 0.1);
+        }
+        
         .payment-button-container {
-            margin-top: auto;
+            width: 100%;
         }
         
         .payment-button {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 4px;
+            padding: 1.5rem 2rem;
+            border-radius: 6px;
             border: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 1.2rem;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
             cursor: pointer;
             transition: all var(--transition-fast);
+            box-shadow: var(--shadow-lg);
         }
-
-            .payment-button {
-        width: 100%;
-        padding: 1.5rem 2rem;
-        border-radius: 6px;
-        border: none;
-        font-weight: 600;
-        font-size: 1.2rem;
-        font-family: 'Montserrat', sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-        cursor: pointer;
-        transition: all var(--transition-fast);
-        box-shadow: var(--shadow-lg);
-    }
         
         /* Stripe Button */
-    .stripe-button {
-        background-color: #635BFF;
-        color: white;
-        border: 1px solid #635BFF;
-    }
-    
-    .stripe-button:hover {
-        background-color: #8780FA;
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-xl);
-    }
+        .stripe-button {
+            background-color: #635BFF;
+            color: white;
+            border: 1px solid #635BFF;
+        }
+        
+        .stripe-button:hover {
+            background-color: #8780FA;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .donation-info {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        .donation-impact-preview {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .impact-preview-title {
+            color: var(--soft-pink);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .impact-preview-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
 
         .donation-impact {
             background-color: var(--dark-card);
@@ -1265,31 +1275,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
- .donation-info {
-        text-align: center;
-        margin-top: 2rem;
-        color: var(--text-tertiary);
-        font-size: 0.9rem;
-    }
-    
-    .donation-impact-preview {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 1.5rem;
-        border-radius: 6px;
-        margin-top: 2rem;
-        text-align: center;
-    }
-    
-    .impact-preview-title {
-        color: var(--soft-pink);
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-    }
-    
-    .impact-preview-text {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-    }
+
         .impact-stat {
             padding: 2rem;
         }
@@ -1375,7 +1361,7 @@
 
         .soiree-img {
             height: 500px;
-            background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)), url('/images/party.mp4') no-repeat center center/cover;
+            background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)), url('./images/party.mp4') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1448,7 +1434,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-                                .venue-img {
+        .venue-img {
             height: 250px;
             background: url('./images/blank') no-repeat center center/cover;
             position: relative;
@@ -1714,8 +1700,9 @@
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 3rem;
         }
 
@@ -1740,13 +1727,13 @@
             transform: translateY(-5px);
         }
 
-.member-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-medium);
-    transform: scale(1.9);
-}
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+            transform: scale(1.9);
+        }
 
         .team-member:hover .member-img {
             transform: scale(1.05);
@@ -2325,7 +2312,182 @@
                             </div>
                             <div class="form-group">
                                 <label for="essay" class="form-label">Personal Statement (500 words max)</label>
-                                <textarea id="essay" class="form-control" rows="5" required></textarea>
+                                <textarea id="contact-message" class="form-control" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-group form-group-full">
+                                    <button type="submit" class="btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Mobile nav links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.remove('active');
+                document.getElementById('mobileToggle').classList.remove('active');
+            });
+        });
+
+        // Scroll header style change
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for scroll animations
+            const animateOnScroll = (elements, className) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(className);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+
+                elements.forEach(el => {
+                    observer.observe(el);
+                });
+            };
+
+            // Apply animations to elements
+            animateOnScroll(document.querySelectorAll('.about-text'), 'animated');
+            animateOnScroll(document.querySelectorAll('.about-image'), 'animated');
+            animateOnScroll(document.querySelectorAll('.about-stats'), 'animated');
+            animateOnScroll(document.querySelectorAll('.scholarship-info'), 'animated');
+            animateOnScroll(document.querySelectorAll('.scholarship-form'), 'animated');
+            animateOnScroll(document.querySelectorAll('.donation-container'), 'animated');
+            animateOnScroll(document.querySelectorAll('.featured-event'), 'animated');
+            animateOnScroll(document.querySelectorAll('.events-calendar'), 'animated');
+            animateOnScroll(document.querySelectorAll('.partners-container'), 'animated');
+            animateOnScroll(document.querySelectorAll('.team-container'), 'animated');
+            animateOnScroll(document.querySelectorAll('.contact-container'), 'animated');
+        });
+
+        // Parallax effect for decorative elements
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const decorativeElements = document.querySelectorAll('.decorative-element');
+            decorativeElements.forEach(element => {
+                const speed = 0.05;
+                element.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        // Form submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            const scholarshipForm = document.getElementById('scholarshipForm');
+            if (scholarshipForm) {
+                scholarshipForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Form submission logic would go here
+                    alert('Scholarship application submitted successfully!');
+                    scholarshipForm.reset();
+                });
+            }
+
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Form submission logic would go here
+                    alert('Your message has been sent successfully!');
+                    contactForm.reset();
+                });
+            }
+
+            // Donation amount selection
+            const amountButtons = document.querySelectorAll('.amount-button');
+            const customAmountInput = document.querySelector('.custom-amount-input');
+            let selectedAmount = 100; // Default amount
+            
+            amountButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    amountButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedAmount = parseInt(this.dataset.amount);
+                    customAmountInput.value = ''; // Clear custom amount
+                    updateImpactPreview(selectedAmount);
+                });
+            });
+            
+            if (customAmountInput) {
+                customAmountInput.addEventListener('input', function() {
+                    amountButtons.forEach(btn => btn.classList.remove('active'));
+                    selectedAmount = parseInt(this.value) || 0;
+                    updateImpactPreview(selectedAmount);
+                });
+            }
+            
+            function updateImpactPreview(amount) {
+                const impactPreviewText = document.querySelector('.impact-preview-text');
+                if (impactPreviewText) {
+                    if (amount >= 250) {
+                        impactPreviewText.textContent = `${amount} provides books and supplies for ${Math.floor(amount / 100)} students for a semester`;
+                    } else if (amount >= 100) {
+                        impactPreviewText.textContent = `${amount} provides books and supplies for ${Math.floor(amount / 100)} student${Math.floor(amount / 100) > 1 ? 's' : ''} for a semester`;
+                    } else if (amount >= 50) {
+                        impactPreviewText.textContent = `${amount} supports student meal programs for a week`;
+                    } else if (amount >= 25) {
+                        impactPreviewText.textContent = `${amount} provides learning materials for multiple students`;
+                    } else if (amount > 0) {
+                        impactPreviewText.textContent = `Every dollar helps support our mission`;
+                    } else {
+                        impactPreviewText.textContent = ''; // Clear text if no amount
+                    }
+                }
+            }
+            
+            // Stripe checkout button
+            const stripeButton = document.getElementById('stripe-checkout-button');
+            if (stripeButton) {
+                stripeButton.addEventListener('click', function() {
+                    // Get the selected amount
+                    const amount = selectedAmount || parseInt(customAmountInput.value) || 100;
+                    
+                    // Stripe integration would go here
+                    alert(`Redirecting to secure payment for ${amount}...`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>d="essay" class="form-control" rows="5" required></textarea>
                             </div>
                             <button type="submit" class="btn form-submit">Submit Application</button>
                         </form>
@@ -2356,12 +2518,33 @@
                 <div class="donation-methods">
                     <!-- Credit Card with Stripe -->
                     <div class="donation-method">
-                        <h4 class="donation-method-title">Credit Card</h4>
-                        <p class="donation-method-description">Secure payment via Stripe</p>
+                        <h4 class="donation-method-title">Secure Donation</h4>
+                        <p class="donation-method-description">Make a difference with a secure donation through Stripe</p>
+                        
+                        <div class="donation-amounts">
+                            <button class="amount-button" data-amount="50">$50</button>
+                            <button class="amount-button active" data-amount="100">$100</button>
+                            <button class="amount-button" data-amount="250">$250</button>
+                        </div>
+                        
+                        <div class="custom-amount">
+                            <input type="number" class="custom-amount-input" placeholder="Enter custom amount" min="5" step="5">
+                        </div>
+                        
                         <div class="payment-button-container">
                             <button id="stripe-checkout-button" class="payment-button stripe-button">
-                                <img src="https://cdn.cdnlogo.com/logos/s/39/stripe.svg" alt="Stripe" height="24"> Pay with Card
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png" alt="Stripe" style="height: 24px; width: auto; filter: invert(1);">
+                                <span>Donate Now</span>
                             </button>
+                        </div>
+                        
+                        <div class="donation-info">
+                            <p>Your donation is tax-deductible. A receipt will be emailed to you immediately.</p>
+                        </div>
+                        
+                        <div class="donation-impact-preview">
+                            <h5 class="impact-preview-title">Your Impact</h5>
+                            <p class="impact-preview-text">$100 provides books and supplies for one student for a semester</p>
                         </div>
                     </div>
                 </div>
@@ -2690,134 +2873,4 @@
                                 
                                 <div class="form-group form-group-full">
                                     <label for="contact-message" class="form-label">Message</label>
-                                    <textarea id="contact-message" class="form-control" rows="5" required></textarea>
-                                </div>
-                                
-                                <div class="form-group form-group-full">
-                                    <button type="submit" class="btn">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            document.getElementById('mobileNav').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Mobile nav links
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobileNav').classList.remove('active');
-                document.getElementById('mobileToggle').classList.remove('active');
-            });
-        });
-
-        // Scroll header style change
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            // Intersection Observer for scroll animations
-            const animateOnScroll = (elements, className) => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add(className);
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-
-                elements.forEach(el => {
-                    observer.observe(el);
-                });
-            };
-
-            // Apply animations to elements
-            animateOnScroll(document.querySelectorAll('.about-text'), 'animated');
-            animateOnScroll(document.querySelectorAll('.about-image'), 'animated');
-            animateOnScroll(document.querySelectorAll('.about-stats'), 'animated');
-            animateOnScroll(document.querySelectorAll('.scholarship-info'), 'animated');
-            animateOnScroll(document.querySelectorAll('.scholarship-form'), 'animated');
-            animateOnScroll(document.querySelectorAll('.donation-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.featured-event'), 'animated');
-            animateOnScroll(document.querySelectorAll('.events-calendar'), 'animated');
-            animateOnScroll(document.querySelectorAll('.partners-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.team-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.contact-container'), 'animated');
-        });
-
-        // Parallax effect for decorative elements
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            const decorativeElements = document.querySelectorAll('.decorative-element');
-            decorativeElements.forEach(element => {
-                const speed = 0.05;
-                element.style.transform = `translateY(${scrollY * speed}px)`;
-            });
-        });
-
-        // Form submissions
-        document.addEventListener('DOMContentLoaded', function() {
-            const scholarshipForm = document.getElementById('scholarshipForm');
-            if (scholarshipForm) {
-                scholarshipForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Form submission logic would go here
-                    alert('Scholarship application submitted successfully!');
-                    scholarshipForm.reset();
-                });
-            }
-
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Form submission logic would go here
-                    alert('Your message has been sent successfully!');
-                    contactForm.reset();
-                });
-            }
-
-            // Stripe checkout button
-            const stripeButton = document.getElementById('stripe-checkout-button');
-            if (stripeButton) {
-                stripeButton.addEventListener('click', function() {
-                    // Stripe integration would go here
-                    alert('Redirecting to secure payment...');
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+                                    <textarea i
