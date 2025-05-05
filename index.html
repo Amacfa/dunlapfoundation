@@ -252,7 +252,6 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            text-decoration: none;
         }
 
         .btn::before {
@@ -447,7 +446,7 @@
         }
         
         .header-logo-img {
-            height: 180px;
+            height: 180px; /* Increased from 140px */
             width: auto;
             display: block;
         }
@@ -1081,163 +1080,153 @@
             margin: 0 auto 4rem;
         }
 
-        .donation-methods {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
+  .donation-methods {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 4rem;
+    }
         
-        .donation-method {
-            background-color: var(--dark-card);
-            border-radius: 8px;
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
-            transition: all var(--transition-medium);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid rgba(99, 91, 255, 0.2);
-        }
+    .donation-method {
+        background-color: var(--dark-card);
+        border-radius: 8px;
+        padding: 3rem;
+        box-shadow: var(--shadow-lg);
+        transition: all var(--transition-medium);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        border: 1px solid rgba(99, 91, 255, 0.2);
+    }
         
-        .donation-method:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(99, 91, 255, 0.4);
-        }
+    .donation-method:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-xl);
+        border-color: rgba(99, 91, 255, 0.4);
+    }
         
-        .donation-method-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--royal-blue-light);
-        }
-        
-        .donation-method-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        
-        .donation-amounts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-            width: 100%;
-        }
-        
-        .amount-button {
-            padding: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            background: transparent;
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-        
-        .amount-button:hover {
-            border-color: var(--royal-blue);
-            background: rgba(52, 84, 209, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        .amount-button.active {
-            border-color: var(--royal-blue);
-            background: var(--royal-blue);
-            color: white;
-        }
-        
-        .custom-amount {
-            margin-bottom: 2rem;
-            width: 100%;
-        }
-        
-        .custom-amount-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            background: transparent;
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: all var(--transition-fast);
-        }
-        
-        .custom-amount-input:focus {
-            outline: none;
-            border-color: var(--royal-blue);
-            background: rgba(52, 84, 209, 0.1);
-        }
-        
+  .donation-method-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--royal-blue-light);
+    }
+    
+    .donation-method-description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+    
+    .donation-amounts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+      
+    .amount-button {
+        padding: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--text-primary);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+    }
+    
+    .amount-button:hover {
+        border-color: var(--royal-blue);
+        background: rgba(52, 84, 209, 0.1);
+        transform: translateY(-3px);
+    }
+    
+    .amount-button.active {
+        border-color: var(--royal-blue);
+        background: var(--royal-blue);
+        color: white;
+    }
+    
+    .custom-amount {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    
+    .custom-amount-input {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        background: transparent;
+        color: var(--text-primary);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        text-align: center;
+        transition: all var(--transition-fast);
+    }
+    
+    .custom-amount-input:focus {
+        outline: none;
+        border-color: var(--royal-blue);
+        background: rgba(52, 84, 209, 0.1);
+    }
+    
         .payment-button-container {
-            width: 100%;
+            margin-top: auto;
         }
         
         .payment-button {
             width: 100%;
-            padding: 1.5rem 2rem;
-            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
             border: none;
-            font-weight: 600;
-            font-size: 1.2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             cursor: pointer;
             transition: all var(--transition-fast);
-            box-shadow: var(--shadow-lg);
         }
+
+            .payment-button {
+        width: 100%;
+        padding: 1.5rem 2rem;
+        border-radius: 6px;
+        border: none;
+        font-weight: 600;
+        font-size: 1.2rem;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        box-shadow: var(--shadow-lg);
+    }
         
         /* Stripe Button */
-        .stripe-button {
-            background-color: #635BFF;
-            color: white;
-            border: 1px solid #635BFF;
-        }
-        
-        .stripe-button:hover {
-            background-color: #8780FA;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .donation-info {
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
-        }
-        
-        .donation-impact-preview {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        
-        .impact-preview-title {
-            color: var(--soft-pink);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .impact-preview-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
+    .stripe-button {
+        background-color: #635BFF;
+        color: white;
+        border: 1px solid #635BFF;
+    }
+    
+    .stripe-button:hover {
+        background-color: #8780FA;
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-xl);
+    }
 
         .donation-impact {
             background-color: var(--dark-card);
@@ -1276,7 +1265,31 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-
+ .donation-info {
+        text-align: center;
+        margin-top: 2rem;
+        color: var(--text-tertiary);
+        font-size: 0.9rem;
+    }
+    
+    .donation-impact-preview {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 6px;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .impact-preview-title {
+        color: var(--soft-pink);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .impact-preview-text {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
         .impact-stat {
             padding: 2rem;
         }
@@ -1362,7 +1375,7 @@
 
         .soiree-img {
             height: 500px;
-            background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)), url('./images/v-2.mp4') no-repeat center center/cover;
+            background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)), url('/images/party.mp4') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1435,7 +1448,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .venue-img {
+                                .venue-img {
             height: 250px;
             background: url('./images/blank') no-repeat center center/cover;
             position: relative;
@@ -1701,9 +1714,8 @@
         }
 
         .team-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 3rem;
         }
 
@@ -1728,13 +1740,13 @@
             transform: translateY(-5px);
         }
 
-        .member-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-medium);
-            transform: scale(1.9);
-        }
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+    transform: scale(1.9);
+}
 
         .team-member:hover .member-img {
             transform: scale(1.05);
@@ -2003,6 +2015,10 @@
                 margin-bottom: 2rem;
             }
             
+            .donation-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .impact-stats {
                 grid-template-columns: 1fr;
             }
@@ -2036,7 +2052,7 @@
             }
             
             .header-logo-img {
-                height: 160px;
+                height: 160px; /* Slightly reduced on mobile but still larger than before */
             }
             
             .date-label {
@@ -2045,6 +2061,10 @@
         }
 
         @media (max-width: 576px) {
+            .donation-methods {
+                grid-template-columns: 1fr;
+            }
+            
             .contact-form-grid {
                 grid-template-columns: 1fr;
             }
@@ -2112,13 +2132,15 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Hero Background Video or Image -->
         <video class="hero-video" autoplay loop muted playsinline>
             <source src="./images/v-2.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         
-        <div class="hero-decorative-element blue-glow" style="top: 20%; right: 10%;"></div>
-        <div class="hero-decorative-element pink-glow" style="bottom: 20%; left: 10%;"></div>
+        <!-- Decorative Elements -->
+        <div class="hero-decorative-element blue-glow" style="top: 20%; right: 10%; opacity: 0.1;"></div>
+        <div class="hero-decorative-element pink-glow" style="bottom: 20%; left: 10%; opacity: 0.1;"></div>
         
         <div class="container">
             <div class="hero-content">
@@ -2332,34 +2354,14 @@
                 </div>
                 
                 <div class="donation-methods">
+                    <!-- Credit Card with Stripe -->
                     <div class="donation-method">
-                        <h4 class="donation-method-title">Secure Donation</h4>
-                        <p class="donation-method-description">Make a difference with a secure donation through Stripe</p>
-                        
-                        <div class="donation-amounts">
-                            <button class="amount-button" data-amount="50">$50</button>
-                            <button class="amount-button active" data-amount="100">$100</button>
-                            <button class="amount-button" data-amount="250">$250</button>
-                        </div>
-                        
-                        <div class="custom-amount">
-                            <input type="number" class="custom-amount-input" placeholder="Enter custom amount" min="5" step="5">
-                        </div>
-                        
+                        <h4 class="donation-method-title">Credit Card</h4>
+                        <p class="donation-method-description">Secure payment via Stripe</p>
                         <div class="payment-button-container">
                             <button id="stripe-checkout-button" class="payment-button stripe-button">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png" alt="Stripe" style="height: 24px; width: auto; filter: invert(1);">
-                                <span>Donate Now</span>
+                                <img src="https://cdn.cdnlogo.com/logos/s/39/stripe.svg" alt="Stripe" height="24"> Pay with Card
                             </button>
-                        </div>
-                        
-                        <div class="donation-info">
-                            <p>Your donation is tax-deductible. A receipt will be emailed to you immediately.</p>
-                        </div>
-                        
-                        <div class="donation-impact-preview">
-                            <h5 class="impact-preview-title">Your Impact</h5>
-                            <p class="impact-preview-text">$100 provides books and supplies for one student for a semester</p>
                         </div>
                     </div>
                 </div>
@@ -2402,6 +2404,7 @@
                 <p class="section-description">Discover our calendar of events, fundraisers, and community gatherings that support our mission and bring our community together.</p>
             </div>
             
+            <!-- Featured Event: Summer Soiree -->
             <div class="featured-event">
                 <div class="soiree-event">
                     <div class="soiree-date">July 26, 2025</div>
@@ -2445,6 +2448,7 @@
                 </div>
             </div>
             
+            <!-- Events Calendar -->
             <div class="events-calendar">
                 <h3 class="calendar-title">Calendar of Events</h3>
                 
@@ -2805,57 +2809,12 @@
                 });
             }
 
-            // Donation amount selection
-            const amountButtons = document.querySelectorAll('.amount-button');
-            const customAmountInput = document.querySelector('.custom-amount-input');
-            let selectedAmount = 100; // Default amount
-            
-            amountButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    amountButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    selectedAmount = parseInt(this.dataset.amount);
-                    customAmountInput.value = ''; // Clear custom amount
-                    updateImpactPreview(selectedAmount);
-                });
-            });
-            
-            if (customAmountInput) {
-                customAmountInput.addEventListener('input', function() {
-                    amountButtons.forEach(btn => btn.classList.remove('active'));
-                    selectedAmount = parseInt(this.value) || 0;
-                    updateImpactPreview(selectedAmount);
-                });
-            }
-            
-            function updateImpactPreview(amount) {
-                const impactPreviewText = document.querySelector('.impact-preview-text');
-                if (impactPreviewText) {
-                    if (amount >= 250) {
-                        impactPreviewText.textContent = `${amount} provides books and supplies for ${Math.floor(amount / 100)} students for a semester`;
-                    } else if (amount >= 100) {
-                        impactPreviewText.textContent = `${amount} provides books and supplies for ${Math.floor(amount / 100)} student${Math.floor(amount / 100) > 1 ? 's' : ''} for a semester`;
-                    } else if (amount >= 50) {
-                        impactPreviewText.textContent = `${amount} supports student meal programs for a week`;
-                    } else if (amount >= 25) {
-                        impactPreviewText.textContent = `${amount} provides learning materials for multiple students`;
-                    } else if (amount > 0) {
-                        impactPreviewText.textContent = `Every dollar helps support our mission`;
-                    } else {
-                        impactPreviewText.textContent = ''; // Clear text if no amount
-                    }
-                }
-            }
-            
             // Stripe checkout button
             const stripeButton = document.getElementById('stripe-checkout-button');
             if (stripeButton) {
                 stripeButton.addEventListener('click', function() {
-                    // Get the selected amount
-                    const amount = selectedAmount || parseInt(customAmountInput.value) || 100;
-                    
                     // Stripe integration would go here
-                    alert(`Redirecting to secure payment for ${amount}...`);
+                    alert('Redirecting to secure payment...');
                 });
             }
         });
