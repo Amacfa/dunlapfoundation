@@ -1081,51 +1081,104 @@
         }
 
         .donation-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            display: flex;
+            justify-content: center;
             margin-bottom: 4rem;
         }
         
         .donation-method {
             background-color: var(--dark-card);
             border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
             transition: all var(--transition-medium);
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(101, 91, 255, 0.3);
         }
         
         .donation-method:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
         
         .donation-method-title {
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-primary);
         }
         
         .donation-method-description {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+        }
+        
+        .donation-amount-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .amount-btn {
+            padding: 1rem;
+            border: 1px solid var(--soft-pink);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+        }
+        
+        .amount-btn:hover {
+            background: var(--soft-pink);
+            color: #000;
+        }
+        
+        .amount-btn.selected {
+            background: var(--soft-pink);
+            color: #000;
+        }
+        
+        .custom-amount {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--separator);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            text-align: center;
         }
         
         .payment-button-container {
             margin-top: auto;
+            width: 100%;
         }
         
         .payment-button {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 1.2rem 1rem;
             border-radius: 4px;
             border: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 1.1rem;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             align-items: center;
@@ -1608,14 +1661,15 @@
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 3rem;
+            display: flex;
+            justify-content: center;
         }
 
         .team-member {
             text-align: center;
             position: relative;
+            max-width: 400px;
+            width: 100%;
         }
 
         .member-img-container {
@@ -1634,13 +1688,12 @@
             transform: translateY(-5px);
         }
 
-.member-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-medium);
-    transform: scale(1.9);
-}
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
 
         .team-member:hover .member-img {
             transform: scale(1.05);
@@ -2414,7 +2467,7 @@
                 <div class="partners-grid">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="./images/Partner.png" alt="University Partner" class="partner-img">
+                            <img src="./images/blank" alt="University Partner" class="partner-img">
                             <div class="partner-img-overlay"></div>
                         </div>
                         <div class="partner-content">
@@ -2481,11 +2534,11 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="member-img-container">
-                            <img src="./images/JP.png" alt="JonPierre Carlo Dunlap" class="member-img">
+                            <img src="./images/f.png" alt="JonPierre Carlo Dunlap" class="member-img">
                         </div>
                         <h3 class="member-name">JonPierre Carlo Dunlap</h3>
-                        <div class="member-position">Chairperson</div>
-                        <p class="member-bio">Chief of Staff at NVIDIA with over 20 years of experience, bringing technological expertise and strategic vision to the foundation's mission of education and community support.</p>
+                        <div class="member-position">Chairperson & Founder</div>
+                        <p class="member-bio">Chief of Staff at NVIDIA with over 20 years of experience, JonPierre brings technological expertise and strategic vision to the foundation's mission of education and community support. His leadership reflects the same elegance and dedication to service that inspired the foundation's creation.</p>
                         <div class="member-social">
                             <a href="#" class="social-link" aria-label="LinkedIn">in</a>
                             <a href="#" class="social-link" aria-label="Twitter">tw</a>
@@ -2681,8 +2734,40 @@
             });
         });
 
-        // Form submissions
+                    // Form submissions
         document.addEventListener('DOMContentLoaded', function() {
+            // Donation amount selection
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const customAmountInput = document.getElementById('custom-amount');
+            let selectedAmount = 100; // Default amount
+
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedAmount = parseInt(this.dataset.amount);
+                    customAmountInput.value = '';
+                });
+            });
+
+            customAmountInput.addEventListener('input', function() {
+                amountBtns.forEach(btn => btn.classList.remove('selected'));
+                selectedAmount = parseInt(this.value) || 0;
+            });
+
+            // Stripe checkout button
+            const stripeButton = document.getElementById('stripe-checkout-button');
+            if (stripeButton) {
+                stripeButton.addEventListener('click', function() {
+                    if (selectedAmount > 0) {
+                        // Stripe integration would go here
+                        alert(`Redirecting to secure payment for ${selectedAmount}...`);
+                    } else {
+                        alert('Please select a donation amount');
+                    }
+                });
+            }
+
             const scholarshipForm = document.getElementById('scholarshipForm');
             if (scholarshipForm) {
                 scholarshipForm.addEventListener('submit', function(e) {
@@ -2703,14 +2788,7 @@
                 });
             }
 
-            // Stripe checkout button
-            const stripeButton = document.getElementById('stripe-checkout-button');
-            if (stripeButton) {
-                stripeButton.addEventListener('click', function() {
-                    // Stripe integration would go here
-                    alert('Redirecting to secure payment...');
-                });
-            }
+                    }
         });
     </script>
 </body>
