@@ -1387,18 +1387,30 @@
   position: relative; /* Needed for absolute positioning of children/pseudo-elements */
   overflow: hidden; /* Ensure video doesn't spill out */
 }
+.soiree-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if needed */
+    z-index: 0; /* Place video behind overlay and text */
+    /* Optional: Add filters like the hero video if desired */
+    /* filter: brightness(0.4) saturate(0.8); */
+}
 
+.soiree-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   /* Apply the gradient overlay */
+  background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7));
+  z-index: 1; /* Overlay should be above video, below text */
+}
 
-        .soiree-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(10, 12, 21, 0.8));
-            z-index: 1;
-        }
 
         .soiree-img h1 {
             font-size: 4rem;
