@@ -114,7 +114,7 @@
         }
 
         .text-gradient {
-       
+            background: linear-gradient(135deg, var(--royal-blue-light), var(--soft-pink));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -1373,17 +1373,21 @@
             box-shadow: var(--shadow-md);
         }
 
-        .soiree-img {
-            height: 500px;
-            background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)), url('/images/party.mp4') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 3rem;
-            position: relative;
-        }
+.soiree-img {
+  height: 500px;
+  /* REMOVE the background image URL here */
+  /* The gradient is now handled by ::before */
+  /* background: linear-gradient(rgba(10, 12, 21, 0.3), rgba(10, 12, 21, 0.7)); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 3rem;
+  position: relative; /* Needed for absolute positioning of children/pseudo-elements */
+  overflow: hidden; /* Ensure video doesn't spill out */
+}
+
 
         .soiree-img::before {
             content: '';
@@ -2408,15 +2412,14 @@
             <div class="featured-event">
                 <div class="soiree-event">
                     <div class="soiree-date">July 26, 2025</div>
-<div class="soiree-img">
-    <video class="hero-video" autoplay loop muted playsinline>
-        <source src="./images/party.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <h1>White-Themed Summer Soirée</h1>
-    <p>An elegant evening of fundraising, fashion, and philanthropy</p>
-</div>
-
+        <div class="soiree-img">
+            <video class="soiree-video" autoplay loop muted playsinline>
+                <source src="./images/party.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>White-Themed Summer Soirée</h1>
+            <p>An elegant evening of fundraising, fashion, and philanthropy</p>
+        </div>
                     
                     <div class="soiree-content">
                         <div class="soiree-details">
