@@ -15,8 +15,7 @@
 
 
         /* Custom Font Imports */
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
         /* Variables */
         :root {
             /* Base Colors */
@@ -899,31 +898,29 @@
         .about-img-wrapper:hover .about-img {
             transform: scale(1.05);
         }
+/* Updated CSS for .about-img-decoration with Playfair Display */
 .about-img-decoration {
     position: absolute;
     width: 100px;
     height: 100px;
-    border: 2px solid var(--royal-blue); /* Keeps the blue/purple border */
+    border: 2px solid var(--royal-blue);
     border-radius: 8px;
     top: -13px;
     left: -13px;
-    /* --- Text Styling & Positioning --- */
-    display: flex; /* Use flexbox to center content */
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
-    text-align: center; /* Center text if it wraps */
-    padding: 0.5rem; /* Add some inner padding */
-    color: var(--soft-pink); /* Use the soft pink variable */
-    font-family: 'Cormorant Garamond', cursive; /* Use the elegant serif font, fallback to generic cursive */
-    font-style: italic; /* Add italic style for a more cursive feel */
-    font-size: 0.9rem; /* Adjust size to fit (tweak as needed) */
-    font-weight: 600; /* Make it slightly bolder */
-    line-height: 1.2; /* Adjust line spacing if text wraps */
-    overflow: hidden; /* Hide text if it overflows the box */
-
-    /* --- Z-INDEX CHANGE --- */
-    /* Remove or comment out z-index: -1; */
-    z-index: 2; /* Bring the decoration (border + text) ABOVE the image wrapper */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    color: var(--soft-pink);
+    /* CHANGE FONT HERE */
+    font-family: 'Playfair Display', serif; /* Use Playfair Display, fallback to generic serif */
+    /* font-style: italic; /* REMOVE italic unless you specifically want it */ */
+    font-size: 1rem; /* Start with 1rem, adjust if needed for Playfair */
+    font-weight: 500; /* Adjust weight (Playfair has 400, 500, 600 available) */
+    line-height: 1.2;
+    overflow: hidden;
+    z-index: 2;
 }
 
 
