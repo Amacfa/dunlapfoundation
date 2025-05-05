@@ -556,12 +556,53 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
             z-index: 100;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            transition: all var(--transition-fast);
         }
+        
+        .mobile-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all var(--transition-fast);
+        }
+             .mobile-toggle span:nth-child(1) {
+            top: 8px;
+        }
+        
+        .mobile-toggle span:nth-child(2) {
+            top: 18px;
+        }
+        
+        .mobile-toggle span:nth-child(3) {
+            top: 28px;
+        }
+        
+        .mobile-toggle.active span:nth-child(1) {
+            transform: translateX(-50%) rotate(45deg);
+            top: 18px;
+        }
+        
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+            /* Improved visibility on scroll */
+        header.scrolled .mobile-toggle span {
+            background-color: var(--text-primary);
+        }
+        .mobile-toggle.active span:nth-child(3) {
+            transform: translateX(-50%) rotate(-45deg);
+            top: 18px;
+        }   
 
         .mobile-nav {
             position: fixed;
