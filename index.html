@@ -87,7 +87,7 @@
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 300;
             overflow-x: hidden;
         }
@@ -100,26 +100,23 @@
             line-height: 1.2;
         }
         
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            letter-spacing: -0.02em;
-        }
-        
-        h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            letter-spacing: -0.01em;
-        }
-        
-        h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
+/* Typography Adjustments */
+h1 {
+    font-size: clamp(2rem, 8vw, 3.8rem); /* Reduced from clamp(2.5rem, 8vw, 4.5rem) */
+}
+
+h2 {
+    font-size: clamp(1.7rem, 5vw, 2.5rem); /* Reduced from clamp(2rem, 5vw, 3rem) */
+}
+
+h3 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem); /* Reduced from clamp(1.5rem, 3vw, 2rem) */
+}
+
+p {
+    font-size: 1rem; /* Reduced from 1.1rem */
+    line-height: 1.7; /* Slightly reduced from 1.8 */
+}
 
         .text-gradient {
             background: linear-gradient(135deg, var(--royal-blue-light), var(--soft-pink));
@@ -131,7 +128,7 @@
         .elegance-quote {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
             color: var(--soft-pink-light);
             position: relative;
             padding: 2rem;
@@ -193,7 +190,7 @@
 
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -246,7 +243,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2.5rem;
+            padding: 0.9rem 2.2rem; /* Slightly reduced padding */
             background-color: transparent;
             color: var(--text-primary);
             border: 1px solid transparent;
@@ -255,7 +252,7 @@
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem
             transition: all var(--transition-medium);
             position: relative;
             overflow: hidden;
@@ -517,7 +514,7 @@
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -651,7 +648,7 @@
         .mobile-nav-link {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             letter-spacing: 1px;
             transition: color var(--transition-fast);
@@ -706,7 +703,7 @@
 
         .hero-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--soft-pink);
@@ -722,7 +719,7 @@
         }
 
         .hero-description {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             max-width: 800px;
             margin: 0 auto 3rem;
             opacity: 0;
@@ -916,7 +913,7 @@
     /* CHANGE FONT HERE */
     font-family: 'Playfair Display', serif; /* Use Playfair Display, fallback to generic serif */
     /* font-style: italic; /* REMOVE italic unless you specifically want it */ */
-    font-size: 1.2rem; /* Start with 1rem, adjust if needed for Playfair */
+    font-size: 1.1rem; /* Start with 1rem, adjust if needed for Playfair */
     font-weight: 600; /* Adjust weight (Playfair has 400, 500, 600 available) */
     line-height: 1.2;
     overflow: hidden;
@@ -955,7 +952,7 @@
 
         .stat-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             background: linear-gradient(135deg, var(--royal-blue-light), var(--soft-pink));
@@ -965,7 +962,7 @@
         }
 
         .stat-text {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -1097,7 +1094,7 @@
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -1110,7 +1107,7 @@
             border-radius: 4px;
             color: var(--text-primary);
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: all var(--transition-fast);
         }
 
@@ -1194,7 +1191,7 @@
     }
         
   .donation-method-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 600;
         margin-bottom: 1rem;
         font-family: 'Cormorant Garamond', serif;
@@ -1202,7 +1199,7 @@
     }
     
     .donation-method-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: var(--text-secondary);
         margin-bottom: 2rem;
     }
@@ -1223,7 +1220,7 @@
         color: var(--text-primary);
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1rem;
         cursor: pointer;
         transition: all var(--transition-fast);
     }
@@ -1253,7 +1250,7 @@
         background: transparent;
         color: var(--text-primary);
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.1rem;
+        font-size: 1rem;
         text-align: center;
         transition: all var(--transition-fast);
     }
@@ -1335,7 +1332,7 @@
         }
 
         .impact-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
         }
@@ -1382,7 +1379,7 @@
 
         .impact-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--soft-pink);
@@ -1403,7 +1400,7 @@
         }
 
         .impact-text {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
@@ -1652,14 +1649,14 @@
         }
 
         .event-day {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             line-height: 1;
             font-family: 'Cormorant Garamond', serif;
         }
 
         .event-month {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 0.5rem;
@@ -1671,7 +1668,7 @@
         }
 
         .event-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
@@ -2126,11 +2123,11 @@
             }
             
             .soiree-img h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .soiree-img p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
         }
     .section{
