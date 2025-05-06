@@ -771,10 +771,10 @@ header.scrolled .mobile-toggle span {
 .hero-content {
     max-width: 1000px;
     text-align: center;
-    /* FIX: Reverted padding (removed extra bottom padding) */
-    padding: 2rem 1.5rem;
-    position: relative;
-    z-index: 1;
+    /* FIX: Add bottom padding to ensure space below buttons for the scroll indicator */
+    padding: 2rem 1.5rem 6rem; /* Top: 2rem, Left/Right: 1.5rem, Bottom: 6rem */
+    position: relative; /* Keeps z-index working */
+    z-index: 1; /* Ensures content is above pseudo-elements if any */
 }
 
 
@@ -820,8 +820,8 @@ header.scrolled .mobile-toggle span {
 
 .hero-scroll {
     position: absolute;
-    /* FIX: Slightly increased bottom offset, ensure centering and default sizing */
-    bottom: 3rem; /* Trying 3rem instead of 2rem or 4rem */
+    /* FIX: Position 2rem from the absolute bottom of the .hero container */
+    bottom: 2rem; /* Adjust slightly if needed (e.g., 1.5rem, 2.5rem) */
     left: 50%;
     transform: translateX(-50%);
     color: var(--text-primary);
@@ -833,11 +833,20 @@ header.scrolled .mobile-toggle span {
     align-items: center;
     opacity: 0;
     animation: fadeIn 1s ease forwards 1.5s;
-    z-index: 2;
-    /* FIX: Explicitly set margin and width to defaults */
+    z-index: 2; /* Ensure it's above background elements */
     margin: 0;
     width: auto;
+    cursor: pointer; /* Add pointer cursor for better UX */
 }
+.hero-scroll:hover {
+    opacity: 0.8; /* Slight fade on hover */
+}
+.hero-scroll .fas { /* Assuming Font Awesome used for the arrow */
+    margin-top: 0.5rem; /* Space between text and arrow */
+    font-size: 1.2rem; /* Adjust arrow size */
+    animation: bounce 2s infinite; /* Add subtle bounce */
+}
+
 
 .scroll-text {
     margin-bottom: 0.5rem;
@@ -875,6 +884,17 @@ header.scrolled .mobile-toggle span {
     100% {
         opacity: 1;
         transform: translate(-50%, 0);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
     }
 }
 
