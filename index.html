@@ -165,14 +165,14 @@ p { margin-bottom: 1rem; }
 }
 
 .section {
-  padding: clamp(5rem, 10vh, 8rem) 0; 
+  padding: clamp(3rem, 6vh, 5rem) 0; /* Reduced vertical padding */
   position: relative; 
   overflow: hidden;
   z-index: 1;
 }
 
 .section-title-container {
-  margin-bottom: clamp(3rem, 8vh, 4rem);
+  margin-bottom: clamp(2rem, 5vh, 3rem); /* Reduced margin */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -200,7 +200,7 @@ p { margin-bottom: 1rem; }
 .section-description {
   max-width: 700px;
   text-align: center;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem; /* Reduced bottom margin */
   font-size: 1.05rem;
   color: var(--text-secondary);
 }
@@ -356,6 +356,671 @@ p { margin-bottom: 1rem; }
 
 .btn:focus-visible {
   outline: none;
+  box-shadow: var(--focus-ring), var(--shadow-md);
+}
+
+/* ---------- ANIMATIONS KEYFRAMES ---------- */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes rotateZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-6deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(15px);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes swingUp {
+  0% {
+    opacity: 0;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: top;
+    transform: rotateX(0);
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(-50%, 25px);
+  }
+  51% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ---------- RESPONSIVE MEDIA QUERIES ---------- */
+@media (max-width: 1200px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .about-content { gap: 3rem; }
+  .scholarship-options { gap: 3rem; }
+  
+  .container {
+    max-width: 1140px;
+  }
+  
+  .section-title-container {
+    margin-bottom: clamp(2.5rem, 6vh, 3.5rem);
+  }
+  
+  .section {
+    padding: clamp(3rem, 6vh, 5rem) 0;
+  }
+  
+  .decorative-element {
+    filter: blur(50px);
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    /* Adjust timing for mobile experience */
+    --ease-slow: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-med: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .navbar { display: none; }
+  .mobile-toggle { display: block; }
+  
+  .container {
+    max-width: 960px;
+  }
+
+  .grid-2,
+  .about-content,
+  .scholarship-options,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content { gap: 2rem; }
+  .scholarship-options { gap: 3rem; }
+
+  .about-image {
+    order: -1;
+    margin-bottom: 3rem;
+  }
+
+  .about-img-wrapper { max-width: 500px; margin: 0 auto; }
+
+  .impact-stats {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .soiree-img { min-height: 400px; }
+  .soiree-img h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
+  .soiree-img p { font-size: clamp(1rem, 2.5vw, 1.2rem); }
+
+  .header-logo-img { height: 160px; }
+
+  .section {
+    padding: clamp(3rem, 5vh, 4rem) 0;
+  }
+  
+  .card:hover,
+  .glass-card:hover,
+  .partner-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .container {
+    max-width: 720px;
+  }
+
+  /* Ensure grids stack to single column */
+  .grid,
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .team-grid,
+  .partners-grid,
+  .about-stats,
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-content {
+    padding: 2rem 1rem 9rem;
+  }
+  
+  .about-stats,
+  .impact-stats {
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+  
+  .hero-description {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons {
+    gap: 0.8rem;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .soiree-img h1 { font-size: clamp(2rem, 6vw, 2.7rem); }
+  .soiree-img p { font-size: clamp(0.9rem, 3vw, 1.1rem); }
+
+  .header-logo-img { height: 140px; }
+
+  .date-label { width: 120px; }
+  .date-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+
+  .event-card { flex-direction: column; }
+  .event-date {
+    width: 100%;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--separator);
+  }
+  .event-day { font-size: 1.8rem; }
+  .event-month { font-size: 0.9rem; }
+  
+  /* Hero animation timings */
+  .hero-subtitle {
+    animation-delay: 0.3s;
+  }
+  
+  .hero-title {
+    animation-delay: 0.4s;
+  }
+  
+  .hero-description {
+    animation-delay: 0.5s;
+  }
+  
+  .hero-buttons {
+    animation-delay: 0.6s;
+  }
+  
+  /* Reduce staggered delays on mobile */
+  .about-stats.animated .stat-item:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .about-stats.animated .stat-item:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    /* Even faster animations on smallest screens */
+    --ease-slow: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-med: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .container {
+    max-width: 540px;
+    padding: 0 1rem;
+  }
+
+  /* Further reduce animation intensity */
+  .card:hover,
+  .glass-card:hover,
+  .partner-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .section {
+    padding: clamp(2.5rem, 4vh, 3.5rem) 0;
+  }
+  
+  /* Minimal staggering on smallest screens */
+  .about-stats.animated .stat-item:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  
+  .about-stats.animated .stat-item:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .soiree-img { min-height: 350px; padding: 2rem; }
+  .soiree-date { font-size: 1rem; padding: 0.8rem 1.2rem; top: 1rem; right: 1rem;}
+
+  .header-logo-img { height: 120px; }
+
+  .mobile-nav { max-width: 280px; }
+
+  .stat-number, .impact-number { font-size: clamp(2rem, 8vw, 2.5rem); }
+  .stat-text, .impact-text { font-size: 0.8rem; }
+
+  .member-img-container { width: 150px; height: 150px; }
+
+  .social-icon { width: 40px; height: 40px; font-size: 1rem; }
+  .social-link { width: 30px; height: 30px; font-size: 0.8rem; }
+
+  .form-container { padding: 1.5rem; }
+  
+  /* Footer adjustments */
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .footer-logo-img {
+    height: 100px;
+  }
+  
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet landscape adjustments */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hero-title {
+    font-size: clamp(2.3rem, 6vw, 3.5rem);
+  }
+  
+  .hero-description {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+  }
+}
+
+/* Larger desktop adjustments */
+@media (min-width: 1400px) {
+  body {
+    font-size: 17px;
+  }
+  
+  .container {
+    max-width: 1320px;
+  }
+  
+  .header-logo-img {
+    height: 200px;
+  }
+  
+  h1 { font-size: clamp(3rem, 8vw, 4.5rem); }
+  h2 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
+  h3 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
+  
+  .section {
+    padding: clamp(4rem, 7vh, 6rem) 0;
+  }
+  
+  .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .soiree-img {
+    min-height: 600px;
+  }
+}
+
+/* High resolution screens */
+@media (min-width: 1800px) {
+  body {
+    font-size: 18px;
+  }
+  
+  .container {
+    max-width: 1600px;
+  }
+  
+  .decorative-element.blue-glow {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .decorative-element.pink-glow {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .decorative-element.gold-glow {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  .header, .footer, .mobile-toggle, .nav-cta, .hero-buttons, .back-to-top {
+    display: none !important;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    page-break-after: avoid;
+  }
+  
+  p, ul, ol, dl, table {
+    page-break-inside: avoid;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  .card, .glass-card, .partner-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .section {
+    padding: 1cm 0;
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility - reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .decorative-element {
+    animation: none !important;
+  }
+  
+  .hero-video, .soiree-video {
+    display: none !important;
+  }
+  
+  .hero-overlay, .soiree-img::before {
+    opacity: 1 !important;
+    background: var(--dark-bg) !important;
+  }
+  
+  .scroll-dot {
+    animation: none !important;
+  }
+  
+  .text-gradient {
+    animation: none !important;
+  }
+  
+  .btn::before {
+    transition: none !important;
+  }
+  
+  .card:hover, 
+  .glass-card:hover, 
+  .partner-card:hover,
+  .btn:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --royal-blue: #0000ff;
+    --royal-blue-light: #4444ff;
+    --soft-pink: #ff6699;
+    --soft-pink-light: #ff99cc;
+    --gold: #cc9900;
+    --gold-light: #ddaa00;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --text-tertiary: #dddddd;
+    --separator: rgba(255, 255, 255, 0.3);
+  }
+  
+  .card, .glass-card {
+    background-color: #000000;
+    border: 1px solid white;
+  }
+  
+  .text-gradient {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: #ffffff;
+  }
+  
+  .btn::before,
+  .form-control,
+  .footer-newsletter-input {
+    background: #000000;
+    border: 1px solid white;
+  }
+  
+  .stat-number,
+  .impact-number {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: #ffffff;
+  }
+}
   box-shadow: var(--focus-ring), var(--shadow-sm);
 }
 
@@ -1038,13 +1703,13 @@ header.scrolled .mobile-toggle span {
 .about-mission,
 .about-history,
 .about-inspiration {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem; /* Reduced from 2.5rem */
 }
 
 .about-mission-title,
 .about-history-title,
 .about-inspiration-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Reduced from 1rem */
   opacity: 0;
 }
 
@@ -1148,7 +1813,7 @@ header.scrolled .mobile-toggle span {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem; /* Reduced from 4rem */
   opacity: 0;
   transform: translateY(30px);
   transition: all var(--ease-slow);
@@ -1295,7 +1960,7 @@ header.scrolled .mobile-toggle span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem; /* Reduced from 4rem */
 }
 
 .scholarship-info {
@@ -1309,7 +1974,7 @@ header.scrolled .mobile-toggle span {
 }
 
 .scholarship-title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
   color: var(--royal-blue-light);
   opacity: 0;
 }
@@ -1329,13 +1994,13 @@ header.scrolled .mobile-toggle span {
 .scholarship-guidelines,
 .scholarship-dates,
 .scholarship-details {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem; /* Reduced from 2.5rem */
 }
 
 .guidelines-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem; /* Reduced from 2rem */
 }
 
 .guidelines-item {
@@ -1544,14 +2209,14 @@ textarea.form-control {
 .donation-intro {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem; /* Reduced from 4rem */
 }
 
 .donation-methods {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem; /* Reduced from 4rem */
 }
 
 .donation-method {
@@ -1679,12 +2344,12 @@ textarea.form-control {
 .donation-impact {
   background-color: var(--dark-card);
   border-radius: 8px;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem; /* Reduced from 4rem 2rem */
   text-align: center;
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
-  margin-top: 4rem;
+  margin-top: 3rem; /* Reduced from 4rem */
 }
 
 .donation-impact::before {
@@ -1707,7 +2372,7 @@ textarea.form-control {
 
 .impact-description {
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem; /* Reduced from 3rem */
   color: var(--text-secondary);
   font-size: 1.05rem;
 }
@@ -1811,7 +2476,7 @@ textarea.form-control {
 }
 
 .featured-event {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem; /* Reduced from 5rem */
   opacity: 0;
   transform: translateY(30px);
   transition: all var(--ease-slow);
@@ -1941,12 +2606,13 @@ textarea.form-control {
 }
 
 .soiree-content {
-  padding: 3rem;
+  padding: 2rem; /* Reduced from 3rem */
   background-color: var(--dark-card);
+  text-align: center; /* Added to center the RSVP button */
 }
 
 .soiree-details {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; /* Reduced from 3rem */
 }
 
 .soiree-details-title {
@@ -1954,81 +2620,9 @@ textarea.form-control {
   margin-bottom: 1.5rem;
 }
 
-.venue-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.venue-option {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: all var(--ease-med), transform var(--ease-fast), box-shadow var(--ease-fast);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(30px);
-  will-change: transform, box-shadow, filter;
-}
-
-.featured-event.animated .venue-option:nth-child(1) {
-  animation: fadeUp 0.7s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.featured-event.animated .venue-option:nth-child(2) {
-  animation: fadeUp 0.7s 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.venue-option:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-elegant);
-  filter: brightness(1.05);
-}
-
-.venue-img {
-  height: 250px;
-  background: url('./images/blank') no-repeat center center/cover;
-  position: relative;
-  background-color: var(--dark-surface);
-  transition: transform var(--ease-med), filter var(--ease-fast);
-  will-change: transform, filter;
-}
-
-.venue-option:hover .venue-img {
-  transform: scale(1.08);
-  filter: blur(2px) brightness(1.1);
-}
-
-.venue-img::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.6));
-}
-
-.venue-content {
-  padding: 2rem;
-  flex-grow: 1;
-}
-
-.venue-title {
-  margin-bottom: 1rem;
-  color: var(--soft-pink);
-  font-size: 1.4rem;
-}
-
-.partner-title {
-  font-size: 1.4rem;
-}
-
 .rsvp-button-container {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   opacity: 0;
 }
 
@@ -2076,7 +2670,7 @@ textarea.form-control {
   opacity: 0;
   transform: translateY(30px);
   transition: all var(--ease-slow);
-  margin-top: 4rem;
+  margin-top: 3rem; /* Reduced from 4rem */
 }
 
 .events-calendar.animated {
@@ -2084,7 +2678,7 @@ textarea.form-control {
 }
 
 .calendar-title {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; /* Reduced from 3rem */
   color: var(--text-primary);
   text-align: center;
 }
@@ -2094,7 +2688,7 @@ textarea.form-control {
   background-color: var(--dark-card);
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
   box-shadow: var(--shadow-md);
   transition: all var(--ease-med), transform var(--ease-fast), box-shadow var(--ease-fast);
   opacity: 0;
@@ -2205,7 +2799,7 @@ textarea.form-control {
 .partners-intro {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem; /* Reduced from 4rem */
 }
 
 .partners-grid {
@@ -2328,13 +2922,13 @@ textarea.form-control {
 .team-intro {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem; /* Reduced from 4rem */
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns for board members */
+  gap: 2rem;
 }
 
 .team-member {
@@ -2464,230 +3058,10 @@ textarea.form-control {
   color: white;
 }
 
-/* ---------- CONTACT SECTION ---------- */
-.contact-section {
-  position: relative;
-}
-
-.contact-blue-glow {
-  bottom: -100px;
-  right: -150px;
-}
-
-.contact-pink-glow {
-  top: 20%;
-  left: -100px;
-}
-
-.contact-container {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all var(--ease-slow);
-}
-
-.contact-container.animated {
-  animation: zoom var(--ease-reveal) forwards;
-}
-
-.contact-intro {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 4rem;
-}
-
-.contact-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
-}
-
-.contact-info {
-  background-color: var(--dark-card);
-  border-radius: 8px;
-  padding: 3rem;
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-info-title {
-  margin-bottom: 2.5rem;
-  color: var(--royal-blue-light);
-}
-
-.contact-method {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.contact-container.animated .contact-method:nth-child(1) {
-  animation: fadeLeft 0.7s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-method:nth-child(2) {
-  animation: fadeLeft 0.7s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-method:nth-child(3) {
-  animation: fadeLeft 0.7s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-method:nth-child(4) {
-  animation: fadeLeft 0.7s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.contact-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-light));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.4rem;
-  flex-shrink: 0;
-}
-
-.contact-text h4 {
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.contact-text p {
-  margin-bottom: 0;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.contact-social {
-  margin-top: 3rem;
-  border-top: 1px solid var(--separator);
-  padding-top: 2rem;
-  opacity: 0;
-}
-
-.contact-container.animated .contact-social {
-  animation: fadeUp 0.7s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.contact-social-title {
-  margin-bottom: 1.5rem;
-  color: var(--soft-pink);
-}
-
-.social-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.social-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  transition: all var(--ease-med);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.social-icon:hover {
-  background-color: var(--royal-blue);
-  color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(52, 84, 209, 0.2);
-}
-
-.social-icon:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-  background-color: var(--royal-blue);
-  color: white;
-}
-
-.contact-form-container {
-  background-color: var(--dark-card);
-  border-radius: 8px;
-  padding: 3rem;
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-form-title {
-  margin-bottom: 2.5rem;
-  color: var(--soft-pink);
-  text-align: center;
-}
-
-.contact-form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.form-group-full {
-  grid-column: 1 / -1;
-}
-
-.contact-container.animated .contact-form-grid .form-group:nth-child(1) {
-  animation: fadeRight 0.5s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-form-grid .form-group:nth-child(2) {
-  animation: fadeRight 0.5s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-form-grid .form-group:nth-child(3) {
-  animation: fadeRight 0.5s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-form-grid .form-group:nth-child(4) {
-  animation: fadeRight 0.5s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-form-grid .form-group:nth-child(5) {
-  animation: fadeRight 0.5s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.contact-container.animated .contact-form-grid .form-group:nth-child(6) {
-  animation: fadeRight 0.5s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* ---------- SECTION TRANSITION OVERLAYS ----------
-
-/* ---------- SECTION TRANSITION OVERLAYS ---------- */
-.section::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 150px;
-  background: linear-gradient(to top, var(--dark-bg), transparent);
-  pointer-events: none;
-  opacity: 0.7;
-  z-index: -1;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, var(--dark-bg), transparent);
-  pointer-events: none;
-  opacity: 0.7;
-  z-index: -1;
-}
-
 /* ---------- FOOTER STYLES ---------- */
 footer {
   background-color: var(--dark-surface);
-  padding: 5rem 0 2rem;
+  padding: 3rem 0 1.5rem; /* Reduced from 5rem 0 2rem */
   position: relative;
   overflow: hidden;
   border-top: 1px solid var(--separator);
@@ -2697,7 +3071,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem; /* Reduced from 4rem */
 }
 
 .footer-logo-container {
@@ -2830,67 +3204,15 @@ footer {
   color: var(--soft-pink);
 }
 
-.footer-newsletter-form {
+.footer-contact {
   display: flex;
-  margin-top: 1.5rem;
-  position: relative;
-}
-
-.footer-newsletter-input {
-  flex: 1;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--separator);
-  border-radius: 4px 0 0 4px;
-  color: var(--text-primary);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  transition: all var(--ease-fast);
-}
-
-.footer-newsletter-input:focus {
-  outline: none;
-  border-color: var(--royal-blue);
-  box-shadow: inset 0 0 0 1px var(--royal-blue);
-}
-
-.footer-newsletter-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.footer-newsletter-button {
-  background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-light));
-  color: white;
-  border: none;
-  padding: 1rem 1.5rem;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  transition: all var(--ease-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-newsletter-button:hover {
-  background: linear-gradient(135deg, var(--royal-blue-light), var(--royal-blue));
-  box-shadow: 0 5px 15px rgba(52, 84, 209, 0.3);
-}
-
-.footer-newsletter-button:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.footer-newsletter-button svg {
-  width: 20px;
-  height: 20px;
-  color: white;
+  flex-direction: column;
 }
 
 .footer-contact-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-tertiary);
   font-size: 0.95rem;
 }
@@ -2899,23 +3221,13 @@ footer {
   margin-right: 1rem;
   color: var(--soft-pink);
   font-size: 1.1rem;
-  margin-top: 0.3rem;
-}
-
-.footer-contact-text a {
-  color: var(--text-tertiary);
-  text-decoration: none;
-  transition: color var(--ease-fast);
-}
-
-.footer-contact-text a:hover {
-  color: var(--soft-pink);
+  margin-top: 0.2rem;
 }
 
 .footer-divider {
   height: 1px;
   background: var(--separator);
-  margin: 2rem 0;
+  margin: 1.5rem 0; /* Reduced from 2rem 0 */
 }
 
 .footer-bottom {
@@ -2923,7 +3235,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem;
   color: var(--text-tertiary);
   font-size: 0.9rem;
 }
@@ -2993,6 +3305,7 @@ footer {
   z-index: 100;
   border: none;
 }
+
 
 .back-to-top.visible {
   opacity: 1;
@@ -3719,7 +4032,6 @@ footer {
                     <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
                     <li class="nav-item"><a href="#partners" class="nav-link">Partners</a></li>
                     <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 
                 <div class="nav-cta">
@@ -3736,7 +4048,6 @@ footer {
                     <li><a href="#events" class="mobile-nav-link">Events</a></li>
                     <li><a href="#partners" class="mobile-nav-link">Partners</a></li>
                     <li><a href="#team" class="mobile-nav-link">Team</a></li>
-                    <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
                     <li><a href="#donate" class="btn">Donate Now</a></li>
                 </ul>
             </div>
@@ -4037,24 +4348,6 @@ footer {
                             <p>The evening will include fine dining, live entertainment, a silent auction featuring exclusive items and experiences, and presentations highlighting the impact of our foundation's work over the past year.</p>
                         </div>
                         
-                        <div class="venue-options">
-                            <div class="venue-option">
-                                <div class="venue-img"></div>
-                                <div class="venue-content">
-                                    <h4 class="venue-title">Palm Court at RH San Francisco</h4>
-                                    <p>An elegant venue featuring sophisticated architecture and stunning views of the city, providing the perfect backdrop for our summer celebration.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="venue-option">
-                                <div class="venue-img"></div>
-                                <div class="venue-content">
-                                    <h4 class="venue-title">Rooftop Lounge</h4>
-                                    <p>A private residence with panoramic views and intimate atmosphere for our exclusive event, creating a memorable experience for all attendees.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
                         <div class="rsvp-button-container">
                             <a href="#" class="rsvp-button">
                                 <span class="rsvp-icon">📅</span>
@@ -4215,111 +4508,103 @@ footer {
                             <a href="#" class="social-link" aria-label="Email">em</a>
                         </div>
                     </div>
+                    
+                    <div class="team-member">
+                        <div class="member-img-container">
+                            <img src="./images/blank" alt="Elena Morales" class="member-img">
+                        </div>
+                        <h3 class="member-name">Elena Morales</h3>
+                        <div class="member-position">Secretary</div>
+                        <p class="member-bio">Renowned education advocate with a background in nonprofit management and a passion for creating inclusive educational opportunities for underserved communities.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                            <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                            <a href="#" class="social-link" aria-label="Email">em</a>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-img-container">
+                            <img src="./images/blank" alt="Marcus Chen" class="member-img">
+                        </div>
+                        <h3 class="member-name">Marcus Chen</h3>
+                        <div class="member-position">Treasurer</div>
+                        <p class="member-bio">Financial expert with extensive experience in philanthropy and corporate social responsibility, ensuring transparent and effective management of foundation resources.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                            <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                            <a href="#" class="social-link" aria-label="Email">em</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="decorative-element blue-glow contact-blue-glow"></div>
-        <div class="decorative-element pink-glow contact-pink-glow"></div>
+    <!-- Footer (Low-profile) -->
+    <footer>
+        <div class="decorative-element blue-glow footer-blue-glow"></div>
+        <div class="decorative-element pink-glow footer-pink-glow"></div>
         
         <div class="container">
-            <div class="section-title-container">
-                <div class="section-subtitle">Get in Touch</div>
-                <h2 class="section-title">Contact <span class="text-gradient">Us</span></h2>
-                <div class="section-title-decoration"></div>
-                <p class="section-description">Have questions or want to learn more about our foundation? We'd love to hear from you. Reach out using the information below or send us a message.</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h3 class="contact-info-title">Our Information</h3>
-                        
-                        <div class="contact-method">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-text">
-                                <h4>Address</h4>
-                                <p>123 Foundation Way, San Francisco, CA 94105</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>(555) 123-4567</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="contact-icon">✉️</div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>info@evelyndunlapfoundation.org</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="contact-icon">⏰</div>
-                            <div class="contact-text">
-                                <h4>Office Hours</h4>
-                                <p>Monday - Friday: 9AM - 5PM</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-social">
-                            <h4 class="contact-social-title">Connect With Us</h4>
-                            <div class="social-icons">
-                                <a href="#" class="social-icon" aria-label="Facebook">fb</a>
-                                <a href="#" class="social-icon" aria-label="Twitter">tw</a>
-                                <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
-                                <a href="#" class="social-icon" aria-label="Instagram">ig</a>
-                            </div>
-                        </div>
+            <div class="footer-content">
+                <div class="footer-logo-container">
+                    <a href="#" class="footer-logo">
+                        <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="footer-logo-img">
+                    </a>
+                    <p class="footer-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook">fb</a>
+                        <a href="#" class="footer-social-icon" aria-label="Twitter">tw</a>
+                        <a href="#" class="footer-social-icon" aria-label="LinkedIn">in</a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram">ig</a>
                     </div>
-                    
-                    <div class="contact-form-container">
-                        <h3 class="contact-form-title">Send Us a Message</h3>
-                        <form id="contactForm">
-                            <div class="contact-form-grid">
-                                <div class="form-group">
-                                    <label for="contact-name" class="form-label">Your Name</label>
-                                    <input type="text" id="contact-name" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="contact-email" class="form-label">Email Address</label>
-                                    <input type="email" id="contact-email" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="contact-phone" class="form-label">Phone Number</label>
-                                    <input type="tel" id="contact-phone" class="form-control">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="contact-subject" class="form-label">Subject</label>
-                                    <input type="text" id="contact-subject" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group form-group-full">
-                                    <label for="contact-message" class="form-label">Message</label>
-                                    <textarea id="contact-message" class="form-control" rows="5" required></textarea>
-                                </div>
-                                
-                                <div class="form-group form-group-full">
-                                    <button type="submit" class="btn">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#home" class="footer-link">Home</a></li>
+                        <li class="footer-link-item"><a href="#about" class="footer-link">About Us</a></li>
+                        <li class="footer-link-item"><a href="#scholarship" class="footer-link">Scholarships</a></li>
+                        <li class="footer-link-item"><a href="#donate" class="footer-link">Donate</a></li>
+                        <li class="footer-link-item"><a href="#events" class="footer-link">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📍</span>
+                        <div class="footer-contact-text">123 Foundation Way, San Francisco, CA 94105</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📞</span>
+                        <div class="footer-contact-text">(555) 123-4567</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">✉️</span>
+                        <div class="footer-contact-text">info@evelyndunlapfoundation.org</div>
                     </div>
                 </div>
             </div>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 Evelyn Dunlap Foundation. All rights reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    <a href="#" class="footer-bottom-link">Terms of Service</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script>
         // Mobile menu toggle
