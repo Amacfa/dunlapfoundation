@@ -2247,17 +2247,26 @@ textarea.form-control {
     .venue-options {
         grid-template-columns: 1fr;
     }
-
+ .hero-content {
+        /* FIX: Increase bottom padding significantly on mobile */
+        /* Keep top padding, adjust horizontal/bottom */
+        padding: 2rem 1rem 9rem; /* Increased bottom padding to 9rem */
+    }
     .about-stats,
     .impact-stats {
         gap: 1.5rem; /* Reduce gap */
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center; /* Center buttons */
-    }
+    .hero-title {
+         font-size: clamp(2.2rem, 8vw, 3rem); /* Slightly smaller base size */
+     }
+     .hero-description {
+         font-size: clamp(0.9rem, 4vw, 1.1rem);
+         margin-bottom: 1.5rem; /* Reduce space below description */
+     }
+     .hero-buttons {
+         gap: 0.8rem; /* Reduce gap between buttons */
+     }
     .hero-buttons .btn {
         width: 100%; /* Make buttons full width */
         max-width: 300px; /* Limit max width */
