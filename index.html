@@ -734,6 +734,9 @@ header.scrolled .mobile-toggle span {
     position: relative;
     overflow: hidden;
     margin-top: 0; /* Ensure no top margin pushes it down */
+    /* FIX: Add padding to account for fixed header height */
+    padding-top: 10rem; /* Adjust value (e.g., 8rem, 12rem, 180px) as needed based on header height */
+    box-sizing: border-box; /* Ensure padding is included in height calculation if needed */
 }
 
 .hero-video {
@@ -767,10 +770,12 @@ header.scrolled .mobile-toggle span {
 .hero-content {
     max-width: 1000px;
     text-align: center;
-    padding: 2rem 1.5rem;
+    /* FIX: Add more bottom padding for spacing above scroll indicator */
+    padding: 2rem 1.5rem 6rem; /* Added 4rem extra padding at the bottom */
     position: relative;
     z-index: 1;
 }
+
 
 .hero-subtitle {
     font-family: 'Montserrat', sans-serif;
@@ -811,7 +816,7 @@ header.scrolled .mobile-toggle span {
 
 .hero-scroll {
     position: absolute;
-    bottom: 2rem;
+    bottom: 4rem
     left: 50%;
     transform: translateX(-50%);
     color: var(--text-primary);
