@@ -696,21 +696,23 @@ p {
         .hero-content {
             max-width: 1000px;
             text-align: center;
-            padding: 0 1.5rem;
+            padding: 2rem 1.5rem;
             position: relative;
             z-index: 1;
         }
 
         .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--soft-pink);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem; /* Reduced from 1rem */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--soft-pink);
+    margin-bottom: 2rem; /* Increased from 1.5rem to add more space below */
+    margin-top: 2rem; /* Added to create space above the subtitle */
+    padding: 0.5rem 0; /* Added padding above and below the text */
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
 
         .hero-title {
             margin-bottom: 2rem;
