@@ -726,17 +726,18 @@ header.scrolled .mobile-toggle span {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
-    min-height: 100vh; /* Use min-height for flexibility */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    margin-top: 0; /* Ensure no top margin pushes it down */
-    /* FIX: Add padding to account for fixed header height */
-    padding-top: 10rem; /* Adjust value (e.g., 8rem, 12rem, 180px) as needed based on header height */
-    box-sizing: border-box; /* Ensure padding is included in height calculation if needed */
+    margin-top: 0;
+    /* FIX: Reduced top padding for less dead space */
+    padding-top: 7rem; /* Reduced from 10rem. Adjust as needed (e.g., 6rem, 8rem) */
+    box-sizing: border-box;
 }
 
 .hero-video {
@@ -770,8 +771,8 @@ header.scrolled .mobile-toggle span {
 .hero-content {
     max-width: 1000px;
     text-align: center;
-    /* FIX: Add more bottom padding for spacing above scroll indicator */
-    padding: 2rem 1.5rem 6rem; /* Added 4rem extra padding at the bottom */
+    /* FIX: Reverted padding (removed extra bottom padding) */
+    padding: 2rem 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -791,36 +792,40 @@ header.scrolled .mobile-toggle span {
 }
 
 .hero-title {
-    margin-bottom: 2rem;
+    /* FIX: Reduced bottom margin */
+    margin-bottom: 1.5rem; /* Reduced from 2rem */
     opacity: 0;
     animation: fadeInUp 1s ease forwards 0.7s;
 }
 
 .hero-description {
-    font-size: clamp(1rem, 2vw, 1.25rem); /* Slightly increased max */
+    font-size: clamp(1rem, 2vw, 1.25rem);
     max-width: 800px;
-    margin: 0 auto 3rem;
+    /* FIX: Reduced bottom margin */
+    margin: 0 auto 2rem; /* Reduced bottom margin from 3rem */
     opacity: 0;
     animation: fadeInUp 1s ease forwards 0.9s;
-    color: var(--text-secondary); /* Improve contrast slightly */
+    color: var(--text-secondary);
 }
 
 .hero-buttons {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    /* FIX: Reduced gap between buttons */
+    gap: 1rem; /* Reduced from 1.5rem */
     opacity: 0;
     animation: fadeInUp 1s ease forwards 1.1s;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
 .hero-scroll {
     position: absolute;
-    bottom: 4rem
+    /* FIX: Slightly increased bottom offset, ensure centering and default sizing */
+    bottom: 3rem; /* Trying 3rem instead of 2rem or 4rem */
     left: 50%;
     transform: translateX(-50%);
     color: var(--text-primary);
-    font-size: 0.9rem; /* Kept relative size */
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     display: flex;
@@ -828,7 +833,10 @@ header.scrolled .mobile-toggle span {
     align-items: center;
     opacity: 0;
     animation: fadeIn 1s ease forwards 1.5s;
-    z-index: 2; /* Ensure above overlay/video */
+    z-index: 2;
+    /* FIX: Explicitly set margin and width to defaults */
+    margin: 0;
+    width: auto;
 }
 
 .scroll-text {
