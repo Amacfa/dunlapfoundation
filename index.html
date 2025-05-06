@@ -1241,10 +1241,10 @@ textarea.form-control { resize: vertical; min-height: 120px; }
             </div>
         </div>
     </section>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <script src="gsap-animations.js"></script> <script>
+<script src="gsap-animations.js"></script>
     <script>
         // Mobile menu toggle
         document.getElementById('mobileToggle').addEventListener('click', function() {
@@ -1260,15 +1260,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
             });
         });
 
-        // Scroll header style change
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        })
+
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1283,19 +1275,6 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 
 
 
-            // Apply animations to elements
-            animateOnScroll(document.querySelectorAll('.about-text'), 'animated');
-            animateOnScroll(document.querySelectorAll('.about-image'), 'animated');
-            animateOnScroll(document.querySelectorAll('.about-stats'), 'animated');
-            animateOnScroll(document.querySelectorAll('.scholarship-info'), 'animated');
-            animateOnScroll(document.querySelectorAll('.scholarship-form'), 'animated');
-            animateOnScroll(document.querySelectorAll('.donation-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.featured-event'), 'animated');
-            animateOnScroll(document.querySelectorAll('.events-calendar'), 'animated');
-            animateOnScroll(document.querySelectorAll('.partners-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.team-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.contact-container'), 'animated');
-        });
 
         // Parallax effect for decorative elements
         window.addEventListener('scroll', function() {
@@ -1307,37 +1286,32 @@ textarea.form-control { resize: vertical; min-height: 120px; }
             });
         });
 
-        // Form submissions
-        document.addEventListener('DOMContentLoaded', function() {
-            const scholarshipForm = document.getElementById('scholarshipForm');
-            if (scholarshipForm) {
-                scholarshipForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Form submission logic would go here
-                    alert('Scholarship application submitted successfully!');
-                    scholarshipForm.reset();
-                });
-            }
+     document.addEventListener('DOMContentLoaded', function() {
+         const scholarshipForm = document.getElementById('scholarshipForm');
+         if (scholarshipForm) {
+             scholarshipForm.addEventListener('submit', function(e) {
+                 e.preventDefault();
+                 alert('Scholarship application submitted successfully!');
+                 scholarshipForm.reset();
+             });
+         }
 
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Form submission logic would go here
-                    alert('Your message has been sent successfully!');
-                    contactForm.reset();
-                });
-            }
+         const contactForm = document.getElementById('contactForm');
+         if (contactForm) {
+             contactForm.addEventListener('submit', function(e) {
+                 e.preventDefault();
+                 alert('Your message has been sent successfully!');
+                 contactForm.reset();
+             });
+         }
 
-            // Stripe checkout button
-            const stripeButton = document.getElementById('stripe-checkout-button');
-            if (stripeButton) {
-                stripeButton.addEventListener('click', function() {
-                    // Stripe integration would go here
-                    alert('Redirecting to secure payment...');
-                });
-            }
-        });
+         const stripeButton = document.getElementById('stripe-checkout-button');
+         if (stripeButton) {
+             stripeButton.addEventListener('click', function() {
+                 alert('Redirecting to secure payment...');
+             });
+         }
+     }); // End Form Submission Listener
     </script>
 </body>
 </html>
