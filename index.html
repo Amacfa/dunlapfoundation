@@ -1241,7 +1241,10 @@ textarea.form-control { resize: vertical; min-height: 120px; }
             </div>
         </div>
     </section>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+    <script src="gsap-animations.js"></script> <script>
     <script>
         // Mobile menu toggle
         document.getElementById('mobileToggle').addEventListener('click', function() {
@@ -1265,7 +1268,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        })
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1278,25 +1281,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     });
 });
 
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            // Intersection Observer for scroll animations
-            const animateOnScroll = (elements, className) => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add(className);
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
 
-                elements.forEach(el => {
-                    observer.observe(el);
-                });
-            };
 
             // Apply animations to elements
             animateOnScroll(document.querySelectorAll('.about-text'), 'animated');
