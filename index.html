@@ -147,9 +147,6 @@
                     <div class="about-img-decoration">Evelyn Dunlap</div>
                 </div>
             </div>
-            
-
-            </div>
         </div>
     </section>
 
@@ -238,20 +235,15 @@
                         </div>
                         
                         <div class="scholarship-quote">
-                       
                         </div>
                     </div>
-                            <div class="apply-button-container">
-            <button id="openFormBtn" class="btn btn-alt">
-                Apply for Scholarship
-                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
-                </div>
-     
-                      
+                    <div class="apply-button-container">
+                        <button id="openFormBtn" class="btn btn-alt">
+                            Apply for Scholarship
+                            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -326,8 +318,6 @@
                         </div>
                     </div>
                 </div>
-                
-  
             </div>
         </div>
     </section>
@@ -778,231 +768,187 @@
             });
         });
         
-    </script>
-    <div id="formPopupOverlay" class="form-popup-overlay">
-    <div class="form-popup">
-        <button class="popup-close" id="closeFormBtn" aria-label="Close form">
-            <i class="fas fa-times"></i>
-        </button>
+        // Popup Form Functionality
+        const openFormBtn = document.getElementById('openFormBtn');
+        const closeFormBtn = document.getElementById('closeFormBtn');
+        const formPopupOverlay = document.getElementById('formPopupOverlay');
         
-        <div class="scholarship-form">
-            <div class="form-container">
-                <h3 class="form-title">Scholarship Application</h3>
-                <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation.</p>
-                
-                <div class="form-download">
-                    <a href="#" class="download-link">
-                        <span class="download-icon"><i class="fas fa-download"></i></span>
-                        Download Complete Application Packet
-                    </a>
-                </div>
-                
-                <form id="scholarshipForm">
-                    <div class="form-section">
-                        <h4 class="form-section-title">Personal Information</h4>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h4 class="form-section-title">Academic Information</h4>
-                        <div class="form-group">
-                            <label for="university" class="form-label">University/College</label>
-                            <input type="text" id="university" class="form-control" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="major" class="form-label">Field of Study</label>
-                                <input type="text" id="major" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="gradYear" class="form-label">Expected Graduation Year</label>
-                                <input type="number" id="gradYear" class="form-control" min="2025" max="2035" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="gpa" class="form-label">Current GPA</label>
-                                <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="enrollment" class="form-label">Enrollment Status</label>
-                                <select id="enrollment" class="form-control" required>
-                                    <option value="">Select status</option>
-                                    <option value="full-time">Full-time</option>
-                                    <option value="part-time">Part-time</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h4 class="form-section-title">Essays</h4>
-                        <div class="form-group">
-                            <label for="personalStatement" class="form-label">Personal Statement (500 words max)</label>
-                            <textarea id="personalStatement" class="form-control" rows="5" required></textarea>
-                            <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="impactEssay" class="form-label">Impact Essay (300 words max)</label>
-                            <textarea id="impactEssay" class="form-control" rows="4" required></textarea>
-                            <div class="form-help">Explain how you would use this scholarship to benefit both your education and community.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h4 class="form-section-title">References</h4>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="academicRef" class="form-label">Academic Reference Name</label>
-                                <input type="text" id="academicRef" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="academicRefEmail" class="form-label">Academic Reference Email</label>
-                                <input type="email" id="academicRefEmail" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="characterRef" class="form-label">Character Reference Name</label>
-                                <input type="text" id="characterRef" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="characterRefEmail" class="form-label">Character Reference Email</label>
-                                <input type="email" id="characterRefEmail" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group form-agreement">
-                        <input type="checkbox" id="agreement" required>
-                        <label for="agreement">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification.</label>
-                    </div>
-                    
-                    <button type="submit" class="btn form-submit">Submit Application</button>
-                    <div id="formStatusMessage" style="display: none;"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-// Popup Form Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const openFormBtn = document.getElementById('openFormBtn');
-    const closeFormBtn = document.getElementById('closeFormBtn');
-    const formPopupOverlay = document.getElementById('formPopupOverlay');
-    
-    // Function to open the popup
-    function openPopup() {
-        formPopupOverlay.classList.add('active');
-        document.body.classList.add('popup-active');
+        // Function to open the popup
+        function openPopup() {
+            formPopupOverlay.style.display = 'flex';
+            document.body.classList.add('popup-active');
+            
+            // Focus on the first input for accessibility
+            setTimeout(() => {
+                const firstInput = formPopupOverlay.querySelector('input, select, textarea');
+                if (firstInput) firstInput.focus();
+            }, 300);
+        }
         
-        // Focus on the first input for accessibility
-        setTimeout(() => {
-            const firstInput = formPopupOverlay.querySelector('input, select, textarea');
-            if (firstInput) firstInput.focus();
-        }, 300);
-    }
-    
-    // Function to close the popup
-    function closePopup() {
-        formPopupOverlay.classList.remove('active');
-        document.body.classList.remove('popup-active');
-    }
-    
-    // Event listeners
-    if (openFormBtn) {
-        openFormBtn.addEventListener('click', openPopup);
-    }
-    
-    if (closeFormBtn) {
-        closeFormBtn.addEventListener('click', closePopup);
-    }
-    
-    // Close on overlay click (but not when clicking the form itself)
-    if (formPopupOverlay) {
-        formPopupOverlay.addEventListener('click', function(e) {
-            if (e.target === formPopupOverlay) {
+        // Function to close the popup
+        function closePopup() {
+            formPopupOverlay.style.display = 'none';
+            document.body.classList.remove('popup-active');
+        }
+        
+        // Event listeners
+        if (openFormBtn) {
+            openFormBtn.addEventListener('click', openPopup);
+        }
+        
+        if (closeFormBtn) {
+            closeFormBtn.addEventListener('click', closePopup);
+        }
+        
+        // Close on overlay click (but not when clicking the form itself)
+        if (formPopupOverlay) {
+            formPopupOverlay.addEventListener('click', function(e) {
+                if (e.target === formPopupOverlay) {
+                    closePopup();
+                }
+            });
+        }
+        
+        // Close on Escape key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && formPopupOverlay.style.display === 'flex') {
                 closePopup();
             }
         });
-    }
-    
-    // Close on Escape key press
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && formPopupOverlay.classList.contains('active')) {
-            closePopup();
-        }
-    });
-    
-    // Handle nav-link clicks to open the form if they point to #scholarship-form
-    document.querySelectorAll('a[href="#scholarship-form"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            openPopup();
+        
+        // Handle nav-link clicks to open the form if they point to #scholarship-form
+        document.querySelectorAll('a[href="#scholarship-form"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                openPopup();
+            });
         });
-    });
+    </script>
     
-    // Update the existing form submission handler if needed
-    const scholarshipForm = document.getElementById('scholarshipForm');
-    if (scholarshipForm) {
-        scholarshipForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    <div id="formPopupOverlay" class="form-popup-overlay" style="display: none;">
+        <div class="form-popup">
+            <button class="popup-close" id="closeFormBtn" aria-label="Close form">
+                <i class="fas fa-times"></i>
+            </button>
             
-            // Create FormData object
-            const formData = new FormData(this);
-            
-            // Show loading state
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
-            submitBtn.disabled = true;
-            
-            // Create status message element if it doesn't exist
-            let statusMsg = document.getElementById('formStatusMessage');
-            if (!statusMsg) {
-                statusMsg = document.createElement('div');
-                statusMsg.id = 'formStatusMessage';
-                this.appendChild(statusMsg);
-            }
-            
-            // Simulate form submission (replace with actual submission logic)
-            setTimeout(() => {
-                // Success simulation
-                statusMsg.className = 'success';
-                statusMsg.textContent = 'Application submitted successfully! We will contact you soon.';
-                statusMsg.style.display = 'block';
-                scholarshipForm.reset();
-                
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Close popup after successful submission (optional)
-                // setTimeout(closePopup, 3000);
-            }, 1500);
-        });
-    }
-});
-</script>
+            <div class="scholarship-form">
+                <div class="form-container">
+                    <h3 class="form-title">Scholarship Application</h3>
+                    <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation.</p>
+                    
+                    <div class="form-download">
+                        <a href="#" class="download-link">
+                            <span class="download-icon"><i class="fas fa-download"></i></span>
+                            Download Complete Application Packet
+                        </a>
+                    </div>
+                    
+                    <form id="scholarshipForm">
+                        <div class="form-section">
+                            <h4 class="form-section-title">Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4 class="form-section-title">Academic Information</h4>
+                            <div class="form-group">
+                                <label for="university" class="form-label">University/College</label>
+                                <input type="text" id="university" class="form-control" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="major" class="form-label">Field of Study</label>
+                                    <input type="text" id="major" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gradYear" class="form-label">Expected Graduation Year</label>
+                                    <input type="number" id="gradYear" class="form-control" min="2025" max="2035" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gpa" class="form-label">Current GPA</label>
+                                    <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="enrollment" class="form-label">Enrollment Status</label>
+                                    <select id="enrollment" class="form-control" required>
+                                        <option value="">Select status</option>
+                                        <option value="full-time">Full-time</option>
+                                        <option value="part-time">Part-time</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4 class="form-section-title">Essays</h4>
+                            <div class="form-group">
+                                <label for="personalStatement" class="form-label">Personal Statement (500 words max)</label>
+                                <textarea id="personalStatement" class="form-control" rows="5" required></textarea>
+                                <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="impactEssay" class="form-label">Impact Essay (300 words max)</label>
+                                <textarea id="impactEssay" class="form-control" rows="4" required></textarea>
+                                <div class="form-help">Explain how you would use this scholarship to benefit both your education and community.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4 class="form-section-title">References</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="academicRef" class="form-label">Academic Reference Name</label>
+                                    <input type="text" id="academicRef" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="academicRefEmail" class="form-label">Academic Reference Email</label>
+                                    <input type="email" id="academicRefEmail" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="characterRef" class="form-label">Character Reference Name</label>
+                                    <input type="text" id="characterRef" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="characterRefEmail" class="form-label">Character Reference Email</label>
+                                    <input type="email" id="characterRefEmail" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-agreement">
+                            <input type="checkbox" id="agreement" required>
+                            <label for="agreement">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification.</label>
+                        </div>
+                        
+                        <button type="submit" class="btn form-submit">Submit Application</button>
+                        <div id="formStatusMessage" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
