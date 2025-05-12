@@ -1976,11 +1976,20 @@ header.scrolled .mobile-toggle span {
 }
 
 .scholarship-title {
-  margin-bottom: 1rem; /* Reduced from 1.5rem */
-  color: var(--royal-blue-light);
-  opacity: 0;
+    margin-bottom: 1.5rem;
+    color: var(--royal-blue-light);
+    position: relative;
+    padding-bottom: 0.5rem;
 }
-
+.scholarship-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--royal-blue), var(--soft-pink));
+}
 .scholarship-info.animated .scholarship-title:nth-of-type(1) {
   animation: fadeRight 0.7s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -1999,32 +2008,335 @@ header.scrolled .mobile-toggle span {
   margin-bottom: 2rem; /* Reduced from 2.5rem */
 }
 
+.guidelines-subtitle, .details-subtitle {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--soft-pink);
+}
+
 .guidelines-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem; /* Reduced from 2rem */
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
 }
 
 .guidelines-item {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
-  color: var(--text-secondary);
-  opacity: 0;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
 }
 
 .guidelines-item::before {
-  content: '';
-  position: absolute;
-  top: 0.5em;
-  transform: translateY(-50%);
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--soft-pink);
+    content: '';
+    position: absolute;
+    top: 0.5em;
+    transform: translateY(-50%);
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--soft-pink);
+}
+.process-timeline {
+    position: relative;
+    margin: 2rem 0 3rem;
+}
+.timeline-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
+.timeline-marker {
+    width: 30px;
+    height: 30px;
+    background-color: var(--royal-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-content {
+    padding-top: 0.25rem;
+}
+highlight-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba(52, 84, 209, 0.1);
+    padding: 1.25rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(52, 84, 209, 0.15);
+}
+
+.highlight-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+.highlight-content h4 {
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+* Approved Uses */
+.approved-uses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.use-category {
+    background-color: rgba(229, 169, 188, 0.1);
+    padding: 1.25rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.use-category:hover {
+    transform: translateY(-5px);
+    background-color: rgba(229, 169, 188, 0.15);
+}
+
+.use-category h5 {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.75rem;
+    color: var(--text-primary);
+}
+
+.use-icon {
+    margin-right: 0.5rem;
+}
+
+.use-category ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.use-category li {
+    margin-bottom: 0.5rem;
+}
+
+/* Important Notice */
+.important-notice {
+    background-color: rgba(211, 173, 105, 0.1);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.important-notice h4 {
+    margin: 0 0 0.75rem;
+    color: var(--gold);
+}
+
+.important-notice p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+/* Quote */
+.scholarship-quote {
+    text-align: center;
+    margin: 3rem 0 1rem;
+    padding: 0 2rem;
+}
+
+.scholarship-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    position: relative;
+    margin: 0 0 1rem;
+}
+
+.scholarship-quote blockquote::before,
+.scholarship-quote blockquote::after {
+    content: '"';
+    font-size: 3rem;
+    color: rgba(229, 169, 188, 0.2);
+    position: absolute;
+    line-height: 0;
+}
+
+.scholarship-quote blockquote::before {
+    top: 0.5rem;
+    left: -1.5rem;
+}
+
+.scholarship-quote blockquote::after {
+    bottom: 0;
+    right: -1.5rem;
+}
+
+.scholarship-quote cite {
+    font-style: normal;
+    color: var(--soft-pink);
+}
+
+/* Form Enhancements */
+.form-container {
+    background-color: var(--glass-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.form-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.form-download {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.download-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(52, 84, 209, 0.1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--royal-blue-light);
+    transition: all 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: rgba(52, 84, 209, 0.2);
+    transform: translateY(-2px);
+}
+
+.download-icon {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--separator);
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section-title {
+    margin-bottom: 1.25rem;
+    color: var(--royal-blue-light);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-help {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+}
+
+.form-info {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.document-list {
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.document-list li {
+    margin-bottom: 0.5rem;
+}
+
+.form-agreement {
+    display: flex;
+    align-items: flex-start;
+    margin: 2rem 0;
+}
+
+.form-agreement input {
+    margin-top: 0.25rem;
+    margin-right: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .scholarship-options {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .approved-uses,
+    .award-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+.highlight-content p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.timeline-content h4 {
+    margin: 0 0 0.25rem;
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--royal-blue), var(--soft-pink));
+}
+        
+.requirement-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: var(--royal-blue-light);
+}        
+.application-requirements .guidelines-item {
+    display: flex;
+    align-items: flex-start;
+}
 .scholarship-info.animated .guidelines-item:nth-child(1) {
   animation: slideUpFade 0.5s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -4182,86 +4494,299 @@ footer {
                 <p class="section-description">Our scholarship program supports deserving students in their educational journey, providing financial assistance and mentorship to help them achieve their academic goals.</p>
             </div>
             
-            <div class="scholarship-options">
-                <div class="scholarship-info">
-                    <h3 class="scholarship-title">Scholarship Guidelines</h3>
-                    <div class="scholarship-guidelines">
-                        <p>Our scholarship program is designed to support students who demonstrate academic excellence, leadership potential, and community involvement. Applicants are evaluated based on a holistic review of their achievements and aspirations.</p>
-                        
-                        <ul class="guidelines-list">
-                            <li class="guidelines-item">Must be enrolled in an accredited university or college</li>
-                            <li class="guidelines-item">Minimum GPA of 3.8 on a 4.0 scale</li>
-                            <li class="guidelines-item">Demonstrated leadership qualities and community involvement</li>
-                            <li class="guidelines-item">Financial need is considered in the selection process</li>
-                            <li class="guidelines-item">Commitment to academic excellence and personal growth</li>
-                        </ul>
-                    </div>
-                    
-                    <h3 class="scholarship-title">Key Dates</h3>
-                    <div class="scholarship-dates">
-                        <div class="date-item">
-                            <div class="date-label">Applications Open:</div>
-                            <div class="date-value">August 2025</div>
-                        </div>
-                        <div class="date-item">
-                            <div class="date-label">Applications Close:</div>
-                            <div class="date-value">November 2025</div>
-                        </div>
-                        <div class="date-item">
-                            <div class="date-label">Award Notification:</div>
-                            <div class="date-value">December 2025</div>
-                        </div>
-                        <div class="date-item">
-                            <div class="date-label">Award Ceremony:</div>
-                            <div class="date-value">January 2026</div>
-                        </div>
-                    </div>
-                    
-                    <h3 class="scholarship-title">Award Details</h3>
-                    <div class="scholarship-details">
-                        <p>Scholarship amounts range from $5000 to $10,000 based on merit and need. Funds are disbursed directly to the educational institution and can be used for tuition, books, and other academic expenses.</p>
-                        <p>Recipients also gain access to our mentorship program, connecting them with professionals in their field of study for guidance and support.</p>
+<div class="scholarship-options">
+    <div class="scholarship-info">
+        <h3 class="scholarship-title">Scholarship Guidelines</h3>
+        <div class="scholarship-guidelines">
+            <p>The Evelyn Dunlap Foundation Scholarship recognizes and supports students who embody academic excellence, leadership, and community engagement. Our holistic selection process evaluates candidates based on their potential to create meaningful impact in their communities while pursuing educational excellence.</p>
+            
+            <h4 class="guidelines-subtitle">Eligibility Requirements</h4>
+            <ul class="guidelines-list">
+                <li class="guidelines-item"><strong>Academic Excellence:</strong> Maintain a minimum GPA of 3.8 on a 4.0 scale with a rigorous course load</li>
+                <li class="guidelines-item"><strong>Enrollment Status:</strong> Be enrolled full-time (12+ credit hours per semester) at an accredited university or college</li>
+                <li class="guidelines-item"><strong>Leadership Profile:</strong> Demonstrate significant leadership experience through campus organizations, community involvement, or professional settings</li>
+                <li class="guidelines-item"><strong>Community Impact:</strong> Show evidence of meaningful community service and civic engagement</li>
+                <li class="guidelines-item"><strong>Personal Development:</strong> Display commitment to continued growth, resilience, and personal excellence</li>
+                <li class="guidelines-item"><strong>Future Vision:</strong> Articulate clear academic and career goals that align with the foundation's mission</li>
+            </ul>
+            
+            <h4 class="guidelines-subtitle">Application Requirements</h4>
+            <ul class="guidelines-list application-requirements">
+                <li class="guidelines-item"><span class="requirement-icon">📝</span> Completed application form</li>
+                <li class="guidelines-item"><span class="requirement-icon">📊</span> Official academic transcripts</li>
+                <li class="guidelines-item"><span class="requirement-icon">📋</span> Resume highlighting leadership experiences and community involvement</li>
+                <li class="guidelines-item"><span class="requirement-icon">✉️</span> Two letters of recommendation (one academic, one character reference)</li>
+                <li class="guidelines-item"><span class="requirement-icon">📄</span> Personal statement (500 words) describing your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values</li>
+                <li class="guidelines-item"><span class="requirement-icon">🎯</span> Impact essay (300 words) explaining how you would use this scholarship to benefit both your education and community</li>
+            </ul>
+        </div>
+        
+        <h3 class="scholarship-title">Selection Process</h3>
+        <div class="selection-process">
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Initial Screening</h4>
+                        <p>Applications reviewed for eligibility and completeness</p>
                     </div>
                 </div>
-                
-                <div class="scholarship-form">
-                    <div class="form-container">
-                        <h3 class="form-title">Scholarship Application</h3>
-                        <form id="scholarshipForm">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" id="name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="university" class="form-label">University/College</label>
-                                <input type="text" id="university" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="major" class="form-label">Field of Study</label>
-                                <input type="text" id="major" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="gpa" class="form-label">Current GPA</label>
-                                <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="essay" class="form-label">Personal Statement (500 words max)</label>
-                                <textarea id="essay" class="form-control" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn form-submit">Submit Application</button>
-                        </form>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Committee Review</h4>
+                        <p>Qualified applications evaluated by selection committee</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Finalist Selection</h4>
+                        <p>Top candidates identified as nominees</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Award Decisions</h4>
+                        <p>Final recipients selected from nominee pool</p>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <h3 class="scholarship-title">Key Dates</h3>
+        <div class="scholarship-dates">
+            <div class="date-item">
+                <div class="date-label">Applications Open:</div>
+                <div class="date-value">August 2025</div>
+            </div>
+            <div class="date-item">
+                <div class="date-label">Applications Close:</div>
+                <div class="date-value">November 2025</div>
+            </div>
+            <div class="date-item">
+                <div class="date-label">Nominee Notification:</div>
+                <div class="date-value">December 1, 2025</div>
+            </div>
+            <div class="date-item">
+                <div class="date-label">Award Ceremony:</div>
+                <div class="date-value">January 3, 2026</div>
+            </div>
+        </div>
+        
+        <h3 class="scholarship-title">Award Details</h3>
+        <div class="scholarship-details">
+            <div class="award-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-icon">💰</div>
+                    <div class="highlight-content">
+                        <h4>Award Amount</h4>
+                        <p>$5,000 to $10,000 per recipient</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">🔄</div>
+                    <div class="highlight-content">
+                        <h4>Renewability</h4>
+                        <p>Recipients may reapply annually</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">👨‍🏫</div>
+                    <div class="highlight-content">
+                        <h4>Mentorship</h4>
+                        <p>Access to professional mentoring network</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="details-subtitle">Fund Disbursement</h4>
+            <p>Scholarship funds are disbursed directly to the student to foster personal financial responsibility and provide flexibility for various educational expenses. This approach reflects our belief in the recipient's integrity and ability to manage these resources effectively.</p>
+            
+            <h4 class="details-subtitle">Approved Uses</h4>
+            <div class="approved-uses">
+                <div class="use-category">
+                    <h5><span class="use-icon">🎓</span> Academic Expenses</h5>
+                    <ul>
+                        <li>Tuition and program fees</li>
+                        <li>Required course materials</li>
+                        <li>Laboratory fees</li>
+                        <li>Technology for academic use</li>
+                    </ul>
+                </div>
+                <div class="use-category">
+                    <h5><span class="use-icon">📚</span> Educational Resources</h5>
+                    <ul>
+                        <li>Textbooks and reference materials</li>
+                        <li>Educational software</li>
+                        <li>Research expenses</li>
+                        <li>Academic conference fees</li>
+                    </ul>
+                </div>
+                <div class="use-category">
+                    <h5><span class="use-icon">🏠</span> Living Expenses</h5>
+                    <ul>
+                        <li>On-campus or off-campus housing</li>
+                        <li>Utilities for student residence</li>
+                        <li>Internet service for academic work</li>
+                        <li>Meal plans or food expenses</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h4 class="details-subtitle">Recipient Agreement</h4>
+            <p>All scholarship recipients must sign a comprehensive agreement that outlines:</p>
+            <ul>
+                <li>Commitment to use funds exclusively for educational purposes</li>
+                <li>Obligation to maintain minimum GPA requirements</li>
+                <li>Agreement to participate in foundation events including the awards ceremony</li>
+                <li>Willingness to provide periodic updates on academic progress</li>
+                <li>Consent to serve as an ambassador for the Evelyn Dunlap Foundation</li>
+            </ul>
+            
+            <div class="important-notice">
+                <h4>Important Notice</h4>
+                <p>Recipients must be present at the award ceremony on January 3, 2026, to receive their scholarship. The foundation reserves the right to request documentation verifying the educational use of funds. Recipients found to be in violation of the agreement may have future awards disbursed directly to their educational institution instead.</p>
+            </div>
+            
+            <div class="scholarship-quote">
+                <blockquote>
+                    "Education is not merely the acquisition of knowledge, but the transformation of character and the cultivation of purpose."
+                </blockquote>
+                <cite>— Evelyn Dunlap</cite>
+            </div>
+        </div>
+    </div>
+    
+    <div class="scholarship-form">
+        <div class="form-container">
+            <h3 class="form-title">Scholarship Application</h3>
+            <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation. Complete the application below or download our comprehensive application packet.</p>
+            
+            <div class="form-download">
+                <a href="#" class="download-link">
+                    <span class="download-icon">📥</span>
+                    Download Complete Application Packet
+                </a>
+            </div>
+            
+            <form id="scholarshipForm">
+                <div class="form-section">
+                    <h4 class="form-section-title">Personal Information</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4 class="form-section-title">Academic Information</h4>
+                    <div class="form-group">
+                        <label for="university" class="form-label">University/College</label>
+                        <input type="text" id="university" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="major" class="form-label">Field of Study</label>
+                            <input type="text" id="major" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradYear" class="form-label">Expected Graduation Year</label>
+                            <input type="number" id="gradYear" class="form-control" min="2025" max="2035" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gpa" class="form-label">Current GPA</label>
+                            <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="enrollment" class="form-label">Enrollment Status</label>
+                            <select id="enrollment" class="form-control" required>
+                                <option value="">Select status</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4 class="form-section-title">Essays</h4>
+                    <div class="form-group">
+                        <label for="personalStatement" class="form-label">Personal Statement (500 words max)</label>
+                        <textarea id="personalStatement" class="form-control" rows="5" required></textarea>
+                        <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="impactEssay" class="form-label">Impact Essay (300 words max)</label>
+                        <textarea id="impactEssay" class="form-control" rows="4" required></textarea>
+                        <div class="form-help">Explain how you would use this scholarship to benefit both your education and community.</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4 class="form-section-title">References</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="academicRef" class="form-label">Academic Reference Name</label>
+                            <input type="text" id="academicRef" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="academicRefEmail" class="form-label">Academic Reference Email</label>
+                            <input type="email" id="academicRefEmail" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="characterRef" class="form-label">Character Reference Name</label>
+                            <input type="text" id="characterRef" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="characterRefEmail" class="form-label">Character Reference Email</label>
+                            <input type="email" id="characterRefEmail" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h4 class="form-section-title">Supporting Documents</h4>
+                    <p class="form-info">Please note that the following documents should be emailed to <a href="mailto:scholarships@evelyndunlapfoundation.org">scholarships@evelyndunlapfoundation.org</a> with your full name in the subject line:</p>
+                    <ul class="document-list">
+                        <li>Official academic transcripts</li>
+                        <li>Resume/CV highlighting leadership and community involvement</li>
+                        <li>Two letters of recommendation (one academic, one character reference)</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group form-agreement">
+                    <input type="checkbox" id="agreement" required>
+                    <label for="agreement">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification.</label>
+                </div>
+                
+                <button type="submit" class="btn form-submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</div>
+
     </section>
 
     <!-- Donation Section -->
