@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evelyn Dunlap Foundation | Nourishing Lives, Empowering Minds</title>
     <style>
-/* Add this at the top - Basic Reset & Box Sizing */
 /* -------------------------------------------------
    Evelyn Dunlap Foundation • Complete CSS File
    -------------------------------------------------
@@ -99,7 +98,7 @@
 html { 
   scroll-behavior: smooth; 
   height: 100%;
-    font-size: 13px;
+  font-size: 13px;
 }
 body {
   background-color: var(--dark-bg);
@@ -140,7 +139,7 @@ p { margin-bottom: 1rem; }
   display: inline-block;
   transform: translateZ(0);
   will-change: transform;
- transition: background-position 1.4s cubic-bezier(0.33,1,0.68,1);
+  transition: background-position 1.4s cubic-bezier(0.33,1,0.68,1);
   background-size: 200% 100%;
   background-position: 0 0;
 }
@@ -222,8 +221,8 @@ p { margin-bottom: 1rem; }
   z-index: -1;
   pointer-events: none;
   will-change: transform, opacity;
-   transition: transform 1.2s cubic-bezier(0.33,1,0.68,1),
-              opacity   1.2s ease-out;
+  transition: transform 1.2s cubic-bezier(0.33,1,0.68,1),
+              opacity 1.2s ease-out;
 }
 
 .blue-glow {
@@ -359,671 +358,6 @@ p { margin-bottom: 1rem; }
 .btn:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring), var(--shadow-md);
-}
-
-/* ---------- ANIMATIONS KEYFRAMES ---------- */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes fadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes fadeLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-40px);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes fadeRight {
-  0% {
-    opacity: 0;
-    transform: translateX(40px);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes zoom {
-  0% {
-    opacity: 0;
-    transform: scale(0.85);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes rotateZoom {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) rotate(-6deg);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes blurIn {
-  0% {
-    opacity: 0;
-    filter: blur(15px);
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
-}
-
-@keyframes swingUp {
-  0% {
-    opacity: 0;
-    transform-origin: top;
-    transform: rotateX(-90deg);
-  }
-  100% {
-    opacity: 1;
-    transform-origin: top;
-    transform: rotateX(0);
-  }
-}
-
-@keyframes slideUpFade {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes revealLeft {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes revealWidth {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes pulseOpacity {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes scrollDown {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  50% {
-    opacity: 0;
-    transform: translate(-50%, 25px);
-  }
-  51% {
-    opacity: 0;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-8px);
-  }
-  60% {
-    transform: translateY(-4px);
-  }
-}
-
-/* ---------- RESPONSIVE MEDIA QUERIES ---------- */
-@media (max-width: 1200px) {
-  .grid-3, .grid-4 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-  
-  .about-content { gap: 3rem; }
-  .scholarship-options { gap: 3rem; }
-  
-  .container {
-    max-width: 1140px;
-  }
-  
-  .section-title-container {
-    margin-bottom: clamp(2.5rem, 6vh, 3.5rem);
-  }
-  
-  .section {
-    padding: clamp(3rem, 6vh, 5rem) 0;
-  }
-  
-  .decorative-element {
-    filter: blur(50px);
-  }
-}
-
-@media (max-width: 992px) {
-  :root {
-    /* Adjust timing for mobile experience */
-    --ease-slow: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-    --ease-med: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --ease-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .navbar { display: none; }
-  .mobile-toggle { display: block; }
-  
-  .container {
-    max-width: 960px;
-  }
-
-  .grid-2,
-  .about-content,
-  .scholarship-options,
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-content { gap: 2rem; }
-  .scholarship-options { gap: 3rem; }
-
-  .about-image {
-    order: -1;
-    margin-bottom: 3rem;
-  }
-
-  .about-img-wrapper { max-width: 500px; margin: 0 auto; }
-
-  .impact-stats {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-
-  .soiree-img { min-height: 400px; }
-  .soiree-img h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
-  .soiree-img p { font-size: clamp(1rem, 2.5vw, 1.2rem); }
-
-  .header-logo-img { height: 160px; }
-
-  .section {
-    padding: clamp(3rem, 5vh, 4rem) 0;
-  }
-  
-  .card:hover,
-  .glass-card:hover,
-  .partner-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .footer-content {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-  
-  .container {
-    max-width: 720px;
-  }
-
-  /* Ensure grids stack to single column */
-  .grid,
-  .grid-2,
-  .grid-3,
-  .grid-4,
-  .team-grid,
-  .partners-grid,
-  .about-stats,
-  .impact-stats {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-content {
-    padding: 2rem 1rem 9rem;
-  }
-  
-  .about-stats,
-  .impact-stats {
-    gap: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2.2rem, 8vw, 3rem);
-  }
-  
-  .hero-description {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-buttons {
-    gap: 0.8rem;
-  }
-  
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .soiree-img h1 { font-size: clamp(2rem, 6vw, 2.7rem); }
-  .soiree-img p { font-size: clamp(0.9rem, 3vw, 1.1rem); }
-
-  .header-logo-img { height: 140px; }
-
-  .date-label { width: 120px; }
-  .date-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-
-  .event-card { flex-direction: column; }
-  .event-date {
-    width: 100%;
-    padding: 1rem;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--separator);
-  }
-  .event-day { font-size: 1.8rem; }
-  .event-month { font-size: 0.9rem; }
-  
-  /* Hero animation timings */
-  .hero-subtitle {
-    animation-delay: 0.3s;
-  }
-  
-  .hero-title {
-    animation-delay: 0.4s;
-  }
-  
-  .hero-description {
-    animation-delay: 0.5s;
-  }
-  
-  .hero-buttons {
-    animation-delay: 0.6s;
-  }
-  
-  /* Reduce staggered delays on mobile */
-  .about-stats.animated .stat-item:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  
-  .about-stats.animated .stat-item:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  
-  .footer-bottom-links {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .back-to-top {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 576px) {
-  :root {
-    /* Even faster animations on smallest screens */
-    --ease-slow: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-    --ease-med: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --ease-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .container {
-    max-width: 540px;
-    padding: 0 1rem;
-  }
-
-  /* Further reduce animation intensity */
-  .card:hover,
-  .glass-card:hover,
-  .partner-card:hover {
-    transform: translateY(-3px);
-  }
-  
-  .section {
-    padding: clamp(2.5rem, 4vh, 3.5rem) 0;
-  }
-  
-  /* Minimal staggering on smallest screens */
-  .about-stats.animated .stat-item:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-  
-  .about-stats.animated .stat-item:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-
-  .soiree-img { min-height: 350px; padding: 2rem; }
-  .soiree-date { font-size: 1rem; padding: 0.8rem 1.2rem; top: 1rem; right: 1rem;}
-
-  .header-logo-img { height: 120px; }
-
-  .mobile-nav { max-width: 280px; }
-
-  .stat-number, .impact-number { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .stat-text, .impact-text { font-size: 0.8rem; }
-
-  .member-img-container { width: 150px; height: 150px; }
-
-  .social-icon { width: 40px; height: 40px; font-size: 1rem; }
-  .social-link { width: 30px; height: 30px; font-size: 0.8rem; }
-
-  .form-container { padding: 1.5rem; }
-  
-  /* Footer adjustments */
-  .footer {
-    padding: 3rem 0 1.5rem;
-  }
-  
-  .footer-logo-img {
-    height: 100px;
-  }
-  
-  .back-to-top {
-    width: 40px;
-    height: 40px;
-    bottom: 1rem;
-    right: 1rem;
-    font-size: 1.2rem;
-  }
-}
-
-/* Tablet landscape adjustments */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .hero-title {
-    font-size: clamp(2.3rem, 6vw, 3.5rem);
-  }
-  
-  .hero-description {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-  }
-}
-
-/* Larger desktop adjustments */
-@media (min-width: 1400px) {
-  body {
-    font-size: 17px;
-  }
-  
-  .container {
-    max-width: 1320px;
-  }
-  
-  .header-logo-img {
-    height: 200px;
-  }
-  
-  h1 { font-size: clamp(3rem, 8vw, 4.5rem); }
-  h2 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
-  h3 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
-  
-  .section {
-    padding: clamp(4rem, 7vh, 6rem) 0;
-  }
-  
-  .btn {
-    padding: 1rem 2.5rem;
-    font-size: 1rem;
-  }
-  
-  .soiree-img {
-    min-height: 600px;
-  }
-}
-
-/* High resolution screens */
-@media (min-width: 1800px) {
-  body {
-    font-size: 18px;
-  }
-  
-  .container {
-    max-width: 1600px;
-  }
-  
-  .decorative-element.blue-glow {
-    width: 350px;
-    height: 350px;
-  }
-  
-  .decorative-element.pink-glow {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .decorative-element.gold-glow {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-/* Print styles */
-@media print {
-  body {
-    background: white;
-    color: black;
-    font-size: 12pt;
-  }
-  
-  .header, .footer, .mobile-toggle, .nav-cta, .hero-buttons, .back-to-top {
-    display: none !important;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: black;
-    page-break-after: avoid;
-  }
-  
-  p, ul, ol, dl, table {
-    page-break-inside: avoid;
-  }
-  
-  img {
-    max-width: 100% !important;
-  }
-  
-  .card, .glass-card, .partner-card {
-    box-shadow: none;
-    border: 1px solid #ccc;
-  }
-  
-  .section {
-    padding: 1cm 0;
-    page-break-inside: avoid;
-  }
-}
-
-/* Accessibility - reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  .decorative-element {
-    animation: none !important;
-  }
-  
-  .hero-video, .soiree-video {
-    display: none !important;
-  }
-  
-  .hero-overlay, .soiree-img::before {
-    opacity: 1 !important;
-    background: var(--dark-bg) !important;
-  }
-  
-  .scroll-dot {
-    animation: none !important;
-  }
-  
-  .text-gradient {
-    animation: none !important;
-  }
-  
-  .btn::before {
-    transition: none !important;
-  }
-  
-  .card:hover, 
-  .glass-card:hover, 
-  .partner-card:hover,
-  .btn:hover {
-    transform: none !important;
-  }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-  :root {
-    --royal-blue: #0000ff;
-    --royal-blue-light: #4444ff;
-    --soft-pink: #ff6699;
-    --soft-pink-light: #ff99cc;
-    --gold: #cc9900;
-    --gold-light: #ddaa00;
-    --text-primary: #ffffff;
-    --text-secondary: #ffffff;
-    --text-tertiary: #dddddd;
-    --separator: rgba(255, 255, 255, 0.3);
-  }
-  
-  .card, .glass-card {
-    background-color: #000000;
-    border: 1px solid white;
-  }
-  
-  .text-gradient {
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    color: #ffffff;
-  }
-  
-  .btn::before,
-  .form-control,
-  .footer-newsletter-input {
-    background: #000000;
-    border: 1px solid white;
-  }
-  
-  .stat-number,
-  .impact-number {
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    color: #ffffff;
-  }
-}
-  box-shadow: var(--focus-ring), var(--shadow-sm);
 }
 
 .btn-icon {
@@ -1976,19 +1310,19 @@ header.scrolled .mobile-toggle span {
 }
 
 .scholarship-title {
-    margin-bottom: 1.5rem;
-    color: var(--royal-blue-light);
-    position: relative;
-    padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--royal-blue-light);
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 .scholarship-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(to right, var(--royal-blue), var(--soft-pink));
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--royal-blue), var(--soft-pink));
 }
 .scholarship-info.animated .scholarship-title:nth-of-type(1) {
   animation: fadeRight 0.7s 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -2009,333 +1343,120 @@ header.scrolled .mobile-toggle span {
 }
 
 .guidelines-subtitle, .details-subtitle {
-    font-size: 1.1rem;
-    margin: 1.5rem 0 0.75rem;
-    color: var(--soft-pink);
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--soft-pink);
 }
 
 .guidelines-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
 }
 
 .guidelines-item {
-    position: relative;
-    padding-left: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
 }
 
 .guidelines-item::before {
-    content: '';
-    position: absolute;
-    top: 0.5em;
-    transform: translateY(-50%);
-    left: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--soft-pink);
+  content: '';
+  position: absolute;
+  top: 0.5em;
+  transform: translateY(-50%);
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--soft-pink);
 }
 .process-timeline {
-    position: relative;
-    margin: 2rem 0 3rem;
+  position: relative;
+  margin: 2rem 0 3rem;
 }
 .timeline-item {
-    display: flex;
-    margin-bottom: 1.5rem;
-    position: relative;
+  display: flex;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .timeline-marker {
-    width: 30px;
-    height: 30px;
-    background-color: var(--royal-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-right: 1rem;
-    position: relative;
-    z-index: 1;
+  width: 30px;
+  height: 30px;
+  background-color: var(--royal-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-right: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .timeline-content {
-    padding-top: 0.25rem;
+  padding-top: 0.25rem;
 }
-highlight-item {
-    display: flex;
-    align-items: flex-start;
-    background-color: rgba(52, 84, 209, 0.1);
-    padding: 1.25rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(52, 84, 209, 0.1);
+  padding: 1.25rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .highlight-item:hover {
-    transform: translateY(-5px);
-    background-color: rgba(52, 84, 209, 0.15);
+  transform: translateY(-5px);
+  background-color: rgba(52, 84, 209, 0.15);
 }
 
 .highlight-icon {
-    font-size: 1.8rem;
-    margin-right: 1rem;
+  font-size: 1.8rem;
+  margin-right: 1rem;
 }
 
 .highlight-content h4 {
-    margin: 0 0 0.5rem;
-    color: var(--text-primary);
-}
-* Approved Uses */
-.approved-uses {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin: 1.5rem 0 2rem;
-}
-
-.use-category {
-    background-color: rgba(229, 169, 188, 0.1);
-    padding: 1.25rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.use-category:hover {
-    transform: translateY(-5px);
-    background-color: rgba(229, 169, 188, 0.15);
-}
-
-.use-category h5 {
-    display: flex;
-    align-items: center;
-    margin: 0 0 0.75rem;
-    color: var(--text-primary);
-}
-
-.use-icon {
-    margin-right: 0.5rem;
-}
-
-.use-category ul {
-    margin: 0;
-    padding-left: 1.5rem;
-    color: var(--text-secondary);
-}
-
-.use-category li {
-    margin-bottom: 0.5rem;
-}
-
-/* Important Notice */
-.important-notice {
-    background-color: rgba(211, 173, 105, 0.1);
-    border-left: 4px solid var(--gold);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 8px 8px 0;
-}
-
-.important-notice h4 {
-    margin: 0 0 0.75rem;
-    color: var(--gold);
-}
-
-.important-notice p {
-    margin: 0;
-    color: var(--text-secondary);
-}
-
-/* Quote */
-.scholarship-quote {
-    text-align: center;
-    margin: 3rem 0 1rem;
-    padding: 0 2rem;
-}
-
-.scholarship-quote blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    position: relative;
-    margin: 0 0 1rem;
-}
-
-.scholarship-quote blockquote::before,
-.scholarship-quote blockquote::after {
-    content: '"';
-    font-size: 3rem;
-    color: rgba(229, 169, 188, 0.2);
-    position: absolute;
-    line-height: 0;
-}
-
-.scholarship-quote blockquote::before {
-    top: 0.5rem;
-    left: -1.5rem;
-}
-
-.scholarship-quote blockquote::after {
-    bottom: 0;
-    right: -1.5rem;
-}
-
-.scholarship-quote cite {
-    font-style: normal;
-    color: var(--soft-pink);
-}
-
-/* Form Enhancements */
-.form-container {
-    background-color: var(--glass-card);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 2.5rem;
-    box-shadow: var(--shadow-lg);
-}
-
-.form-description {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--text-secondary);
-}
-
-.form-download {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.download-link {
-    display: inline-flex;
-    align-items: center;
-    background-color: rgba(52, 84, 209, 0.1);
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--royal-blue-light);
-    transition: all 0.3s ease;
-}
-
-.download-link:hover {
-    background-color: rgba(52, 84, 209, 0.2);
-    transform: translateY(-2px);
-}
-
-.download-icon {
-    margin-right: 0.75rem;
-    font-size: 1.2rem;
-}
-
-.form-section {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--separator);
-}
-
-.form-section:last-child {
-    border-bottom: none;
-}
-
-.form-section-title {
-    margin-bottom: 1.25rem;
-    color: var(--royal-blue-light);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.form-help {
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
-    margin-top: 0.5rem;
-}
-
-.form-info {
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-}
-
-.document-list {
-    padding-left: 1.5rem;
-    color: var(--text-secondary);
-}
-
-.document-list li {
-    margin-bottom: 0.5rem;
-}
-
-.form-agreement {
-    display: flex;
-    align-items: flex-start;
-    margin: 2rem 0;
-}
-
-.form-agreement input {
-    margin-top: 0.25rem;
-    margin-right: 0.75rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .scholarship-options {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .approved-uses,
-    .award-highlights {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr;
-    }
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
 }
 .highlight-content p {
-    margin: 0;
-    color: var(--text-secondary);
+  margin: 0;
+  color: var(--text-secondary);
 }
 
 .timeline-content h4 {
-    margin: 0 0 0.25rem;
-    color: var(--text-primary);
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
 }
 
 .timeline-content p {
-    margin: 0;
-    color: var(--text-secondary);
+  margin: 0;
+  color: var(--text-secondary);
 }
 
 .process-timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 15px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--royal-blue), var(--soft-pink));
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--royal-blue), var(--soft-pink));
 }
-        
+      
 .requirement-icon {
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
-    color: var(--royal-blue-light);
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: var(--royal-blue-light);
 }        
 .application-requirements .guidelines-item {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 .scholarship-info.animated .guidelines-item:nth-child(1) {
   animation: slideUpFade 0.5s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -2353,36 +1474,80 @@ highlight-item {
   animation: slideUpFade 0.5s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.date-item {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 1rem;
+/* Key Dates Styling */
+.key-dates-container {
+  margin: 2rem 0;
+}
+
+.key-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+}
+
+.key-date-card {
+  background-color: var(--glass-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all var(--ease-med);
   opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.scholarship-info.animated .date-item:nth-child(1) {
-  animation: fadeRight 0.5s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.scholarship-info.animated .date-item:nth-child(2) {
-  animation: fadeRight 0.5s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.scholarship-info.animated .date-item:nth-child(3) {
-  animation: fadeRight 0.5s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.scholarship-info.animated .date-item:nth-child(4) {
-  animation: fadeRight 0.5s 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.scholarship-info.animated .key-date-card:nth-child(1) {
+  animation-delay: 0.1s;
 }
 
-.date-label {
-  font-weight: 500;
+.scholarship-info.animated .key-date-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scholarship-info.animated .key-date-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.scholarship-info.animated .key-date-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.key-date-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.key-date-title {
+  font-weight: 600;
   color: var(--soft-pink);
-  width: 160px;
-  flex-shrink: 0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.date-value {
-  color: var(--text-secondary);
+.key-date-value {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .key-dates-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .key-date-card {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .key-dates-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .scholarship-form {
@@ -2495,10 +1660,203 @@ textarea.form-control {
   animation: fadeUp 0.5s 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+/* Approved Uses */
+.approved-uses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.use-category {
+  background-color: rgba(229, 169, 188, 0.1);
+  padding: 1.25rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.use-category:hover {
+  transform: translateY(-5px);
+  background-color: rgba(229, 169, 188, 0.15);
+}
+
+.use-category h5 {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.75rem;
+  color: var(--text-primary);
+}
+
+.use-icon {
+  margin-right: 0.5rem;
+}
+
+.use-category ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.use-category li {
+  margin-bottom: 0.5rem;
+}
+
+/* Important Notice */
+.important-notice {
+  background-color: rgba(211, 173, 105, 0.1);
+  border-left: 4px solid var(--gold);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.important-notice h4 {
+  margin: 0 0 0.75rem;
+  color: var(--gold);
+}
+
+.important-notice p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* Quote */
+.scholarship-quote {
+  text-align: center;
+  margin: 3rem 0 1rem;
+  padding: 0 2rem;
+}
+
+.scholarship-quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+.scholarship-quote blockquote::before,
+.scholarship-quote blockquote::after {
+  content: '"';
+  font-size: 3rem;
+  color: rgba(229, 169, 188, 0.2);
+  position: absolute;
+  line-height: 0;
+}
+
+.scholarship-quote blockquote::before {
+  top: 0.5rem;
+  left: -1.5rem;
+}
+
+.scholarship-quote blockquote::after {
+  bottom: 0;
+  right: -1.5rem;
+}
+
+.scholarship-quote cite {
+  font-style: normal;
+  color: var(--soft-pink);
+}
+
+/* Form Enhancements */
+.form-description {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+.form-download {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(52, 84, 209, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--royal-blue-light);
+  transition: all 0.3s ease;
+}
+
+.download-link:hover {
+  background-color: rgba(52, 84, 209, 0.2);
+  transform: translateY(-2px);
+}
+
+.download-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--separator);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.form-section-title {
+  margin-bottom: 1.25rem;
+  color: var(--royal-blue-light);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-help {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+}
+
+.form-info {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.document-list {
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.document-list li {
+  margin-bottom: 0.5rem;
+}
+
+.form-agreement {
+  display: flex;
+  align-items: flex-start;
+  margin: 2rem 0;
+}
+
+.form-agreement input {
+  margin-top: 0.25rem;
+  margin-right: 0.75rem;
+}
+
+/* Award Highlights */
+.award-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
 /* ---------- DONATION SECTION ---------- */
 .donation-section {
   position: relative;
-      padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
 
 .donation-blue-glow {
@@ -2529,60 +1887,72 @@ textarea.form-control {
 
 .donation-methods {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: stretch;
-  margin-bottom: 3rem; /* Reduced from 4rem */
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.givelify-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.givelify-primary-button {
+  transition: transform var(--ease-med), box-shadow var(--ease-med);
+  display: inline-block;
+}
+
+.givelify-primary-button img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.givelify-primary-button:hover {
+  transform: translateY(-5px);
+}
+
+.givelify-primary-button:hover img {
+  box-shadow: var(--shadow-lg);
 }
 
 .donation-method {
-  background-color: var(--dark-card);
-  border-radius: 8px;
-  padding: 3rem;
-  box-shadow: var(--shadow-lg);
-  transition: all var(--ease-med);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-  border: 1px solid rgba(99, 91, 255, 0.2);
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.donation-container.animated .donation-method {
-  animation: fadeUp 0.8s 0.2s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+    background-color: var(--dark-card);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--ease-med);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(99, 91, 255, 0.1);
+    margin: 0 auto 2rem;
 }
 
 .donation-method:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-xl);
-  border-color: rgba(99, 91, 255, 0.4);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(99, 91, 255, 0.3);
 }
 
 .donation-method-title {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--royal-blue-light);
-  opacity: 0;
-}
-
-.donation-container.animated .donation-method-title {
-  animation: fadeUp 0.6s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.6rem;
 }
 
 .donation-method-description {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  opacity: 0;
-}
-
-.donation-container.animated .donation-method-description {
-  animation: fadeUp 0.6s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
 }
 
 .payment-button-container {
@@ -2615,6 +1985,55 @@ textarea.form-control {
   position: relative;
   z-index: 1;
   overflow: hidden;
+}
+
+.payment-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+  transform: scale(0);
+  transition: transform var(--ease-med);
+  z-index: -1;
+}
+
+.payment-button:hover::after {
+  transform: scale(1);
+}
+
+.payment-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+.paypal-button {
+  background-color: #0070BA;
+  color: white;
+  border: 1px solid #0070BA;
+}
+
+.paypal-button:hover {
+  background-color: #005ea6;
+}
+
+.givelify-button {
+  background-color: #FF5D00;
+  color: white;
+  border: 1px solid #FF5D00;
+}
+
+.givelify-button:hover {
+  background-color: #e65400;
+}
+
+.givelify-instructions {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-style: italic;
 }
 
 .stripe-button {
@@ -2654,6 +2073,36 @@ textarea.form-control {
 .stripe-button img {
   height: 24px;
   width: auto;
+}
+
+.donation-alternative {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: var(--dark-card);
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.donation-alternative h4 {
+  margin-bottom: 0.75rem;
+  color: var(--soft-pink);
+}
+
+.donation-alternative p {
+  color: var(--text-secondary);
+}
+
+.donation-alternative a {
+  color: var(--royal-blue-light);
+  text-decoration: none;
+  transition: color var(--ease-fast);
+}
+
+.donation-alternative a:hover {
+  color: var(--soft-pink);
 }
 
 .donation-impact {
@@ -2775,10 +2224,50 @@ textarea.form-control {
   color: var(--text-secondary);
 }
 
+.donation-testimonial {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.donation-testimonial blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+.donation-testimonial blockquote::before,
+.donation-testimonial blockquote::after {
+  content: '"';
+  font-size: 3rem;
+  color: rgba(229, 169, 188, 0.2);
+  position: absolute;
+  line-height: 0;
+}
+
+.donation-testimonial blockquote::before {
+  top: 0.5rem;
+  left: -1.5rem;
+}
+
+.donation-testimonial blockquote::after {
+  bottom: 0;
+  right: -1.5rem;
+}
+
+.donation-testimonial cite {
+  font-style: normal;
+  color: var(--soft-pink);
+}
+
 /* ---------- EVENTS SECTION ---------- */
 .events-section {
   position: relative;
-padding-bottom: clamp(2rem, 4vh, 3rem);
+  padding-bottom: clamp(2rem, 4vh, 3rem);
 }
 
 .events-blue-glow {
@@ -3089,7 +2578,7 @@ padding-bottom: clamp(2rem, 4vh, 3rem);
 
 /* ---------- PARTNERS SECTION ---------- */
 .partners-section {
-    padding-top:    clamp(2rem, 4vh, 3rem);
+  padding-top: clamp(2rem, 4vh, 3rem);
   position: relative;
 }
 
@@ -3623,7 +3112,6 @@ footer {
   border: none;
 }
 
-
 .back-to-top.visible {
   opacity: 1;
   transform: translateY(0);
@@ -3844,7 +3332,6 @@ footer {
   
   .about-content { gap: 3rem; }
   .scholarship-options { gap: 3rem; }
-  .contact-wrapper { grid-template-columns: 1fr 1.2fr; gap: 3rem; }
   
   .container {
     max-width: 1140px;
@@ -3855,7 +3342,7 @@ footer {
   }
   
   .section {
-    padding: clamp(4rem, 8vh, 7rem) 0;
+    padding: clamp(3rem, 6vh, 5rem) 0;
   }
   
   .decorative-element {
@@ -3881,14 +3368,12 @@ footer {
   .grid-2,
   .about-content,
   .scholarship-options,
-  .venue-options,
-  .contact-wrapper {
+  .team-grid {
     grid-template-columns: 1fr;
   }
 
   .about-content { gap: 2rem; }
   .scholarship-options { gap: 3rem; }
-  .contact-wrapper { gap: 3rem; }
 
   .about-image {
     order: -1;
@@ -3908,13 +3393,12 @@ footer {
   .header-logo-img { height: 160px; }
 
   .section {
-    padding: clamp(3.5rem, 6vh, 5rem) 0;
+    padding: clamp(3rem, 5vh, 4rem) 0;
   }
   
   .card:hover,
   .glass-card:hover,
-  .partner-card:hover,
-  .venue-option:hover {
+  .partner-card:hover {
     transform: translateY(-5px);
   }
   
@@ -3945,8 +3429,7 @@ footer {
   .team-grid,
   .partners-grid,
   .about-stats,
-  .impact-stats,
-  .venue-options {
+  .impact-stats {
     grid-template-columns: 1fr;
   }
   
@@ -3984,8 +3467,6 @@ footer {
 
   .date-label { width: 120px; }
   .date-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-
-  .contact-form-grid { grid-template-columns: 1fr; }
 
   .event-card { flex-direction: column; }
   .event-date {
@@ -4030,20 +3511,6 @@ footer {
     gap: 2.5rem;
   }
   
-  .footer-newsletter-form {
-    flex-direction: column;
-  }
-  
-  .footer-newsletter-input {
-    border-radius: 4px;
-    margin-bottom: 1rem;
-  }
-  
-  .footer-newsletter-button {
-    border-radius: 4px;
-    width: 100%;
-  }
-  
   .footer-bottom-links {
     flex-direction: column;
     gap: 1rem;
@@ -4073,8 +3540,7 @@ footer {
   /* Further reduce animation intensity */
   .card:hover,
   .glass-card:hover,
-  .partner-card:hover,
-  .venue-option:hover {
+  .partner-card:hover {
     transform: translateY(-3px);
   }
   
@@ -4106,7 +3572,7 @@ footer {
   .social-icon { width: 40px; height: 40px; font-size: 1rem; }
   .social-link { width: 30px; height: 30px; font-size: 0.8rem; }
 
-  .form-container, .contact-form-container, .contact-info { padding: 1.5rem; }
+  .form-container { padding: 1.5rem; }
   
   /* Footer adjustments */
   .footer {
@@ -4156,7 +3622,7 @@ footer {
   h3 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
   
   .section {
-    padding: clamp(6rem, 12vh, 10rem) 0;
+    padding: clamp(4rem, 7vh, 6rem) 0;
   }
   
   .btn {
@@ -4226,7 +3692,7 @@ footer {
     max-width: 100% !important;
   }
   
-  .card, .glass-card, .partner-card, .venue-option {
+  .card, .glass-card, .partner-card {
     box-shadow: none;
     border: 1px solid #ccc;
   }
@@ -4275,8 +3741,7 @@ footer {
   
   .card:hover, 
   .glass-card:hover, 
-  .partner-card:hover, 
-  .venue-option:hover,
+  .partner-card:hover,
   .btn:hover {
     transform: none !important;
   }
@@ -4334,11 +3799,11 @@ footer {
                 <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="header-logo-img">
             </a>
             
-       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             
             <nav class="navbar">
                 <ul class="nav-list">
@@ -4494,299 +3959,192 @@ footer {
                 <p class="section-description">Our scholarship program supports deserving students in their educational journey, providing financial assistance and mentorship to help them achieve their academic goals.</p>
             </div>
             
-<div class="scholarship-options">
-    <div class="scholarship-info">
-        <h3 class="scholarship-title">Scholarship Guidelines</h3>
-        <div class="scholarship-guidelines">
-            <p>The Evelyn Dunlap Foundation Scholarship recognizes and supports students who embody academic excellence, leadership, and community engagement. Our holistic selection process evaluates candidates based on their potential to create meaningful impact in their communities while pursuing educational excellence.</p>
-            
-            <h4 class="guidelines-subtitle">Eligibility Requirements</h4>
-            <ul class="guidelines-list">
-                <li class="guidelines-item"><strong>Academic Excellence:</strong> Maintain a minimum GPA of 3.8 on a 4.0 scale with a rigorous course load</li>
-                <li class="guidelines-item"><strong>Enrollment Status:</strong> Be enrolled full-time (12+ credit hours per semester) at an accredited university or college</li>
-                <li class="guidelines-item"><strong>Leadership Profile:</strong> Demonstrate significant leadership experience through campus organizations, community involvement, or professional settings</li>
-                <li class="guidelines-item"><strong>Community Impact:</strong> Show evidence of meaningful community service and civic engagement</li>
-                <li class="guidelines-item"><strong>Personal Development:</strong> Display commitment to continued growth, resilience, and personal excellence</li>
-                <li class="guidelines-item"><strong>Future Vision:</strong> Articulate clear academic and career goals that align with the foundation's mission</li>
-            </ul>
-            
-            <h4 class="guidelines-subtitle">Application Requirements</h4>
-            <ul class="guidelines-list application-requirements">
-                <li class="guidelines-item"><span class="requirement-icon">📝</span> Completed application form</li>
-                <li class="guidelines-item"><span class="requirement-icon">📊</span> Official academic transcripts</li>
-                <li class="guidelines-item"><span class="requirement-icon">📋</span> Resume highlighting leadership experiences and community involvement</li>
-                <li class="guidelines-item"><span class="requirement-icon">✉️</span> Two letters of recommendation (one academic, one character reference)</li>
-                <li class="guidelines-item"><span class="requirement-icon">📄</span> Personal statement (500 words) describing your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values</li>
-                <li class="guidelines-item"><span class="requirement-icon">🎯</span> Impact essay (300 words) explaining how you would use this scholarship to benefit both your education and community</li>
-            </ul>
+            <div class="scholarship-options">
+                <div class="scholarship-info">
+                    <h3 class="scholarship-title">Scholarship Overview</h3>
+                    <div class="scholarship-guidelines">
+                        <p>The Evelyn Dunlap Foundation Scholarship supports students who demonstrate academic excellence, leadership potential, and community engagement. Our selection process identifies candidates poised to create meaningful impact while pursuing their education.</p>
+                        
+                        <h4 class="guidelines-subtitle">Key Requirements</h4>
+                        <ul class="guidelines-list">
+                            <li class="guidelines-item"><strong>Academic:</strong> 3.8+ GPA with full-time enrollment at an accredited institution</li>
+                            <li class="guidelines-item"><strong>Leadership:</strong> Demonstrated leadership experience and community involvement</li>
+                            <li class="guidelines-item"><strong>Vision:</strong> Clear academic goals that align with our foundation's mission</li>
+                        </ul>
+                        
+                        <h4 class="guidelines-subtitle">Application Package</h4>
+                        <ul class="guidelines-list application-requirements">
+                            <li class="guidelines-item"><span class="requirement-icon">📝</span> Completed application form and official transcripts</li>
+                            <li class="guidelines-item"><span class="requirement-icon">📋</span> Resume and two recommendation letters</li>
+                            <li class="guidelines-item"><span class="requirement-icon">📄</span> Personal statement and impact essay</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="scholarship-title">Selection & Timeline</h3>
+                    <div class="key-dates-container">
+                        <div class="key-dates-grid">
+                            <div class="key-date-card">
+                                <div class="key-date-title">Applications Open</div>
+                                <div class="key-date-value">August 2025</div>
+                            </div>
+                            <div class="key-date-card">
+                                <div class="key-date-title">Applications Close</div>
+                                <div class="key-date-value">November 2025</div>
+                            </div>
+                            <div class="key-date-card">
+                                <div class="key-date-title">Notifications</div>
+                                <div class="key-date-value">December 1, 2025</div>
+                            </div>
+                            <div class="key-date-card">
+                                <div class="key-date-title">Award Ceremony</div>
+                                <div class="key-date-value">January 3, 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="scholarship-title">Award Details</h3>
+                    <div class="scholarship-details">
+                        <div class="award-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">💰</div>
+                                <div class="highlight-content">
+                                    <h4>Award Amount</h4>
+                                    <p>$5,000 to $10,000 per recipient</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p>Funds can be used for tuition, educational resources, and essential living expenses. Recipients must maintain academic standards, participate in foundation events, and serve as ambassadors for the foundation.</p>
+                        
+                        <div class="important-notice">
+                            <h4>Important</h4>
+                            <p>Recipients must attend the award ceremony on January 3, 2026. The foundation may request documentation verifying educational use of funds.</p>
+                        </div>
+                        
+                        <div class="scholarship-quote">
+                       
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scholarship-form">
+                    <div class="form-container">
+                        <h3 class="form-title">Scholarship Application</h3>
+                        <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation.</p>
+                        
+                        <div class="form-download">
+                            <a href="#" class="download-link">
+                                <span class="download-icon">📥</span>
+                                Download Complete Application Packet
+                            </a>
+                        </div>
+                        
+                        <form id="scholarshipForm">
+                            <div class="form-section">
+                                <h4 class="form-section-title">Personal Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" id="firstName" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" id="lastName" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" id="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" id="phone" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4 class="form-section-title">Academic Information</h4>
+                                <div class="form-group">
+                                    <label for="university" class="form-label">University/College</label>
+                                    <input type="text" id="university" class="form-control" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="major" class="form-label">Field of Study</label>
+                                        <input type="text" id="major" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gradYear" class="form-label">Expected Graduation Year</label>
+                                        <input type="number" id="gradYear" class="form-control" min="2025" max="2035" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="gpa" class="form-label">Current GPA</label>
+                                        <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="enrollment" class="form-label">Enrollment Status</label>
+                                        <select id="enrollment" class="form-control" required>
+                                            <option value="">Select status</option>
+                                            <option value="full-time">Full-time</option>
+                                            <option value="part-time">Part-time</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4 class="form-section-title">Essays</h4>
+                                <div class="form-group">
+                                    <label for="personalStatement" class="form-label">Personal Statement (500 words max)</label>
+                                    <textarea id="personalStatement" class="form-control" rows="5" required></textarea>
+                                    <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="impactEssay" class="form-label">Impact Essay (300 words max)</label>
+                                    <textarea id="impactEssay" class="form-control" rows="4" required></textarea>
+                                    <div class="form-help">Explain how you would use this scholarship to benefit both your education and community.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4 class="form-section-title">References</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="academicRef" class="form-label">Academic Reference Name</label>
+                                        <input type="text" id="academicRef" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="academicRefEmail" class="form-label">Academic Reference Email</label>
+                                        <input type="email" id="academicRefEmail" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="characterRef" class="form-label">Character Reference Name</label>
+                                        <input type="text" id="characterRef" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="characterRefEmail" class="form-label">Character Reference Email</label>
+                                        <input type="email" id="characterRefEmail" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group form-agreement">
+                                <input type="checkbox" id="agreement" required>
+                                <label for="agreement">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification.</label>
+                            </div>
+                            
+                            <button type="submit" class="btn form-submit">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <h3 class="scholarship-title">Selection Process</h3>
-        <div class="selection-process">
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h4>Initial Screening</h4>
-                        <p>Applications reviewed for eligibility and completeness</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h4>Committee Review</h4>
-                        <p>Qualified applications evaluated by selection committee</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h4>Finalist Selection</h4>
-                        <p>Top candidates identified as nominees</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <h4>Award Decisions</h4>
-                        <p>Final recipients selected from nominee pool</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <h3 class="scholarship-title">Key Dates</h3>
-        <div class="scholarship-dates">
-            <div class="date-item">
-                <div class="date-label">Applications Open:</div>
-                <div class="date-value">August 2025</div>
-            </div>
-            <div class="date-item">
-                <div class="date-label">Applications Close:</div>
-                <div class="date-value">November 2025</div>
-            </div>
-            <div class="date-item">
-                <div class="date-label">Nominee Notification:</div>
-                <div class="date-value">December 1, 2025</div>
-            </div>
-            <div class="date-item">
-                <div class="date-label">Award Ceremony:</div>
-                <div class="date-value">January 3, 2026</div>
-            </div>
-        </div>
-        
-        <h3 class="scholarship-title">Award Details</h3>
-        <div class="scholarship-details">
-            <div class="award-highlights">
-                <div class="highlight-item">
-                    <div class="highlight-icon">💰</div>
-                    <div class="highlight-content">
-                        <h4>Award Amount</h4>
-                        <p>$5,000 to $10,000 per recipient</p>
-                    </div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-icon">🔄</div>
-                    <div class="highlight-content">
-                        <h4>Renewability</h4>
-                        <p>Recipients may reapply annually</p>
-                    </div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-icon">👨‍🏫</div>
-                    <div class="highlight-content">
-                        <h4>Mentorship</h4>
-                        <p>Access to professional mentoring network</p>
-                    </div>
-                </div>
-            </div>
-            
-            <h4 class="details-subtitle">Fund Disbursement</h4>
-            <p>Scholarship funds are disbursed directly to the student to foster personal financial responsibility and provide flexibility for various educational expenses. This approach reflects our belief in the recipient's integrity and ability to manage these resources effectively.</p>
-            
-            <h4 class="details-subtitle">Approved Uses</h4>
-            <div class="approved-uses">
-                <div class="use-category">
-                    <h5><span class="use-icon">🎓</span> Academic Expenses</h5>
-                    <ul>
-                        <li>Tuition and program fees</li>
-                        <li>Required course materials</li>
-                        <li>Laboratory fees</li>
-                        <li>Technology for academic use</li>
-                    </ul>
-                </div>
-                <div class="use-category">
-                    <h5><span class="use-icon">📚</span> Educational Resources</h5>
-                    <ul>
-                        <li>Textbooks and reference materials</li>
-                        <li>Educational software</li>
-                        <li>Research expenses</li>
-                        <li>Academic conference fees</li>
-                    </ul>
-                </div>
-                <div class="use-category">
-                    <h5><span class="use-icon">🏠</span> Living Expenses</h5>
-                    <ul>
-                        <li>On-campus or off-campus housing</li>
-                        <li>Utilities for student residence</li>
-                        <li>Internet service for academic work</li>
-                        <li>Meal plans or food expenses</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <h4 class="details-subtitle">Recipient Agreement</h4>
-            <p>All scholarship recipients must sign a comprehensive agreement that outlines:</p>
-            <ul>
-                <li>Commitment to use funds exclusively for educational purposes</li>
-                <li>Obligation to maintain minimum GPA requirements</li>
-                <li>Agreement to participate in foundation events including the awards ceremony</li>
-                <li>Willingness to provide periodic updates on academic progress</li>
-                <li>Consent to serve as an ambassador for the Evelyn Dunlap Foundation</li>
-            </ul>
-            
-            <div class="important-notice">
-                <h4>Important Notice</h4>
-                <p>Recipients must be present at the award ceremony on January 3, 2026, to receive their scholarship. The foundation reserves the right to request documentation verifying the educational use of funds. Recipients found to be in violation of the agreement may have future awards disbursed directly to their educational institution instead.</p>
-            </div>
-            
-            <div class="scholarship-quote">
-                <blockquote>
-                    "Education is not merely the acquisition of knowledge, but the transformation of character and the cultivation of purpose."
-                </blockquote>
-                <cite>— Evelyn Dunlap</cite>
-            </div>
-        </div>
-    </div>
-    
-    <div class="scholarship-form">
-        <div class="form-container">
-            <h3 class="form-title">Scholarship Application</h3>
-            <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation. Complete the application below or download our comprehensive application packet.</p>
-            
-            <div class="form-download">
-                <a href="#" class="download-link">
-                    <span class="download-icon">📥</span>
-                    Download Complete Application Packet
-                </a>
-            </div>
-            
-            <form id="scholarshipForm">
-                <div class="form-section">
-                    <h4 class="form-section-title">Personal Information</h4>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" id="firstName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" id="lastName" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4 class="form-section-title">Academic Information</h4>
-                    <div class="form-group">
-                        <label for="university" class="form-label">University/College</label>
-                        <input type="text" id="university" class="form-control" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="major" class="form-label">Field of Study</label>
-                            <input type="text" id="major" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="gradYear" class="form-label">Expected Graduation Year</label>
-                            <input type="number" id="gradYear" class="form-control" min="2025" max="2035" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="gpa" class="form-label">Current GPA</label>
-                            <input type="number" step="0.01" min="0" max="4.0" id="gpa" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="enrollment" class="form-label">Enrollment Status</label>
-                            <select id="enrollment" class="form-control" required>
-                                <option value="">Select status</option>
-                                <option value="full-time">Full-time</option>
-                                <option value="part-time">Part-time</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4 class="form-section-title">Essays</h4>
-                    <div class="form-group">
-                        <label for="personalStatement" class="form-label">Personal Statement (500 words max)</label>
-                        <textarea id="personalStatement" class="form-control" rows="5" required></textarea>
-                        <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="impactEssay" class="form-label">Impact Essay (300 words max)</label>
-                        <textarea id="impactEssay" class="form-control" rows="4" required></textarea>
-                        <div class="form-help">Explain how you would use this scholarship to benefit both your education and community.</div>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4 class="form-section-title">References</h4>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="academicRef" class="form-label">Academic Reference Name</label>
-                            <input type="text" id="academicRef" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="academicRefEmail" class="form-label">Academic Reference Email</label>
-                            <input type="email" id="academicRefEmail" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="characterRef" class="form-label">Character Reference Name</label>
-                            <input type="text" id="characterRef" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="characterRefEmail" class="form-label">Character Reference Email</label>
-                            <input type="email" id="characterRefEmail" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-section">
-                    <h4 class="form-section-title">Supporting Documents</h4>
-                    <p class="form-info">Please note that the following documents should be emailed to <a href="mailto:scholarships@evelyndunlapfoundation.org">scholarships@evelyndunlapfoundation.org</a> with your full name in the subject line:</p>
-                    <ul class="document-list">
-                        <li>Official academic transcripts</li>
-                        <li>Resume/CV highlighting leadership and community involvement</li>
-                        <li>Two letters of recommendation (one academic, one character reference)</li>
-                    </ul>
-                </div>
-                
-                <div class="form-group form-agreement">
-                    <input type="checkbox" id="agreement" required>
-                    <label for="agreement">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification.</label>
-                </div>
-                
-                <button type="submit" class="btn form-submit">Submit Application</button>
-            </form>
-        </div>
-    </div>
-</div>
-
     </section>
 
     <!-- Donation Section -->
@@ -4808,16 +4166,32 @@ footer {
                 </div>
                 
                 <div class="donation-methods">
-                    <!-- Credit Card with Stripe -->
+                    <!-- PayPal Donation Option -->
                     <div class="donation-method">
-                        <h4 class="donation-method-title">Credit Card</h4>
-                        <p class="donation-method-description">Secure payment via Stripe</p>
+                        <h4 class="donation-method-title">PayPal</h4>
+                        <p class="donation-method-description">Fast, secure donations via PayPal</p>
                         <div class="payment-button-container">
-                            <button id="stripe-checkout-button" class="payment-button stripe-button">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" height="24"> Pay with Card
-                            </button>
+                            <a href="https://www.paypal.me/newhomeamez" target="_blank" class="payment-button paypal-button">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" height="24"> Donate with PayPal
+                            </a>
                         </div>
                     </div>
+                    
+                    <!-- Givelify Donation Option -->
+                    <div class="donation-method">
+                        <h4 class="donation-method-title">Givelify</h4>
+                        <p class="donation-method-description">Support through the Givelify platform</p>
+                        <div class="payment-button-container">
+                            <a href="https://www.givelify.com/" target="_blank" class="payment-button givelify-button">
+                                <img src="https://support.givelify.com/hc/theming_assets/01HZPGJX4PEA9FNVV6Q99YAE68" alt="Givelify" height="24"> Donate with Givelify
+                            </a>
+                        </div>
+                        
+                </div>
+                
+                <div class="donation-alternative">
+                    <h4>Other Ways to Give</h4>
+                    <p>For stock donations, planned giving, or other contribution methods, please contact <a href="mailto:donations@evelyndunlapfoundation.org">donations@evelyndunlapfoundation.org</a> for more information.</p>
                 </div>
                 
                 <div class="donation-impact">
@@ -4826,20 +4200,27 @@ footer {
                     
                     <div class="impact-stats">
                         <div class="impact-stat">
-                            <div class="impact-number">4</div>
+                            <div class="impact-number">$24K</div>
                             <div class="impact-text">Scholarships Awarded</div>
                         </div>
                         
                         <div class="impact-stat">
-                            <div class="impact-number">$24K</div>
+                            <div class="impact-number">$225K+</div>
                             <div class="impact-text">Funds Distributed</div>
                         </div>
                         
                         <div class="impact-stat">
-                            <div class="impact-number">5</div>
-                            <div class="impact-text">Partner Organizations</div>
+                            <div class="impact-number">3</div>
+                            <div class="impact-text">Partner Institutions</div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="donation-testimonial">
+                    <blockquote>
+                        "Through the support of donors like you, I've been able to focus on my studies without the burden of financial stress. The Evelyn Dunlap Foundation scholarship has truly changed my life's trajectory."
+                    </blockquote>
+                    <cite>— Marcus Johnson, 2024 Scholarship Recipient</cite>
                 </div>
             </div>
         </div>
@@ -4862,14 +4243,14 @@ footer {
             <div class="featured-event">
                 <div class="soiree-event">
                     <div class="soiree-date">July 26, 2025</div>
-        <div class="soiree-img">
-            <video class="soiree-video" autoplay loop muted playsinline>
-                <source src="./images/party.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <h1>White-Themed Summer Soirée</h1>
-            <p>An elegant evening of fundraising, fashion, and philanthropy</p>
-        </div>
+                    <div class="soiree-img">
+                        <video class="soiree-video" autoplay loop muted playsinline>
+                            <source src="./images/party.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <h1>White-Themed Summer Soirée</h1>
+                        <p>An elegant evening of fundraising, fashion, and philanthropy</p>
+                    </div>
                     
                     <div class="soiree-content">
                         <div class="soiree-details">
@@ -5045,7 +4426,7 @@ footer {
                         </div>
                         <h3 class="member-name">Dr. Sohair Saghezchi</h3>
                         <div class="member-position">Chairperson</div>
-                        <p class="member-bio">Dr. Sohail Saghezchi is an Associate Professor and Residency Program Director of Oral & Maxillofacial Surgery at UCSF, bringing seasoned clinical and academic leadership to the Board of Directors.</p>
+                        <p class="member-bio">Dr. Sohail Saghezchi is an Associate Professor and Residency Program Director of Oral & Maxillofacial Surgery at UCSF, bringing seasoned clinical and academic leadership to the Board of Directors.</p>
                         <div class="member-social">
                             <a href="#" class="social-link" aria-label="LinkedIn">in</a>
                             <a href="#" class="social-link" aria-label="Twitter">tw</a>
@@ -5057,7 +4438,7 @@ footer {
                         <div class="member-img-container">
                             <img src="./images/b-c.png" alt="Marcus Chen" class="member-img">
                         </div>
-                           <h3 class="member-name">Eunice Allen</h3>
+                        <h3 class="member-name">Eunice Allen</h3>
                         <div class="member-position">Chairperson</div>
                         <p class="member-bio">Eunice Allen holds a Master of Business Administration and a Bachelor of Science in Finance. She brings a strong foundation in financial strategy and business operations.</p>
                         <div class="member-social">
@@ -5163,14 +4544,14 @@ footer {
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click',e=>{
-        e.preventDefault();
-        const target=document.querySelector(anchor.getAttribute('href'));
-        if(!target) return;
-        const headerH=document.getElementById('header').offsetHeight;
-        window.scrollTo({top:target.offsetTop-headerH,behavior:'smooth'});
-    });
-});
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                const headerH = document.getElementById('header').offsetHeight;
+                window.scrollTo({top: target.offsetTop - headerH, behavior: 'smooth'});
+            });
+        });
 
         // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
@@ -5203,7 +4584,22 @@ footer {
             animateOnScroll(document.querySelectorAll('.events-calendar'), 'animated');
             animateOnScroll(document.querySelectorAll('.partners-container'), 'animated');
             animateOnScroll(document.querySelectorAll('.team-container'), 'animated');
-            animateOnScroll(document.querySelectorAll('.contact-container'), 'animated');
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 600) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+            }
         });
 
         // Parallax effect for decorative elements
@@ -5225,25 +4621,6 @@ footer {
                     // Form submission logic would go here
                     alert('Scholarship application submitted successfully!');
                     scholarshipForm.reset();
-                });
-            }
-
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Form submission logic would go here
-                    alert('Your message has been sent successfully!');
-                    contactForm.reset();
-                });
-            }
-
-            // Stripe checkout button
-            const stripeButton = document.getElementById('stripe-checkout-button');
-            if (stripeButton) {
-                stripeButton.addEventListener('click', function() {
-                    // Stripe integration would go here
-                    alert('Redirecting to secure payment...');
                 });
             }
         });
