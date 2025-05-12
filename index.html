@@ -1113,36 +1113,33 @@ header.scrolled .mobile-toggle span {
 }
 
 /* Enhanced image decoration animation */
-.about-img-decoration {
-  position: absolute;
-  width: auto;
-  max-width: 150px;
-  height: auto;
-  border: 2px solid var(--royal-blue);
-  border-radius: 8px;
-  top: -15px;
-  left: -15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.8rem 1rem;
-  color: var(--soft-pink);
-  background-color: var(--dark-card);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.2;
-  z-index: 2;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--ease-med);
+.about-img-decoration{
+  /* position the badge bottom‑left instead of hovering awkwardly */
+  position:absolute;               /* already set, but here for clarity   */
+  bottom:1.5rem;
+  left:1.5rem;
+  top:auto;
+
+  /* bring its look in‑line with the site’s buttons/cards */
+  background:linear-gradient(135deg,var(--royal-blue) 0%,var(--soft-pink) 100%);
+  color:var(--text-primary);
+  font-family:'Montserrat',sans-serif;
+  font-size:0.95rem;
+  font-weight:600;
+  letter-spacing:1px;
+
+  padding:0.6rem 1.4rem;
+  border:none;
+  border-radius:4px;
+  max-width:none;
+  box-shadow:var(--shadow-lg);
+  transition:transform var(--ease-med),background var(--ease-med);
 }
 
-.about-img-wrapper:hover .about-img-decoration {
-  transform: translateY(-5px) translateX(5px);
-  box-shadow: var(--shadow-elegant);
-  border-color: var(--soft-pink);
-  background-color: rgba(26, 32, 56, 0.6);
+.about-img-wrapper:hover .about-img-decoration{
+  /* subtle lift + colour shift on hover */
+  transform:translateY(-3px);
+  background:linear-gradient(135deg,var(--soft-pink) 0%,var(--royal-blue-light) 100%);
 }
 
 .about-stats {
@@ -1538,7 +1535,10 @@ header.scrolled .mobile-toggle span {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  
+   .about-img-decoration{
+    font-size:0.85rem;
+    padding:0.5rem 1rem;
+  } 
   .key-date-card {
     padding: 1.25rem 1rem;
   }
@@ -2298,22 +2298,16 @@ textarea.form-control {
   box-shadow: var(--shadow-xl);
 }
 
-.soiree-date {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-light));
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  z-index: 3;
-  box-shadow: var(--shadow-md);
-  font-family: 'Montserrat', sans-serif;
-  transition: all var(--ease-med);
-  overflow: hidden;
-  position: relative;
+.soiree-date{
+  /* nudge in from the edge & shrink a hair so long strings never clip    */
+  top:1rem;
+  right:1rem;
+  padding:0.75rem 1.4rem;
+  font-size:1.2rem;
+  white-space:nowrap;              /* stop inner wrap → no “July” break   */
+  border-radius:6px;
+  max-width:calc(100% - 2rem);     /* respects card padding on small widths */
+  overflow:visible;                /* ensure glow/hover isn’t trimmed     */
 }
 
 .soiree-date::before {
