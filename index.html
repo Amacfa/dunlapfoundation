@@ -2298,17 +2298,54 @@ textarea.form-control {
   box-shadow: var(--shadow-xl);
 }
 
-.soiree-date{
-  /* nudge in from the edge & shrink a hair so long strings never clip    */
-  top:1rem;
-  right:1rem;
-  padding:0.75rem 1.4rem;
-  font-size:1.2rem;
-  white-space:nowrap;              /* stop inner wrap → no “July” break   */
-  border-radius:6px;
-  max-width:calc(100% - 2rem);     /* respects card padding on small widths */
-  overflow:visible;                /* ensure glow/hover isn’t trimmed     */
+.soiree-date {
+  /* Refined positioning */
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  
+  /* Luxury glass effect with vibrant gradient */
+  background: linear-gradient(135deg, 
+                rgba(52, 84, 209, 0.85) 0%, 
+                rgba(76, 107, 230, 0.85) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Elegant styling */
+  color: white;
+  padding: 0.9rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+  
+  /* Refined borders and shadows */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 
+              inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  
+  /* Prevent text wrapping/clipping */
+  white-space: nowrap;
+  max-width: calc(100% - 3rem);
+  overflow: visible;
+  
+  /* Other properties */
+  z-index: 3;
+  transition: all var(--ease-med);
 }
+
+.soiree-event:hover .soiree-date {
+  /* Luxurious hover effect */
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, 
+                rgba(76, 107, 230, 0.9) 0%, 
+                rgba(52, 84, 209, 0.9) 100%);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 
+              inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 
 .soiree-date::before {
   content: '';
@@ -2327,10 +2364,7 @@ textarea.form-control {
   transform: rotate(45deg) translateY(175%);
 }
 
-.soiree-event:hover .soiree-date {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(52, 84, 209, 0.3);
-}
+
 
 .soiree-img {
   min-height: 500px;
