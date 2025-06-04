@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for the Evelyn Dunlap Foundation Scholarship to support your educational journey.">
+    <meta name="keywords" content="Evelyn Dunlap Foundation, scholarships, education, application, financial aid">
+    <meta name="author" content="Evelyn Dunlap Foundation">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Scholarship Application | Evelyn Dunlap Foundation">
+    <meta property="og:description" content="Apply for the Evelyn Dunlap Foundation Scholarship to support your higher education goals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.evelyndunlapfoundation.org/scholarship-application">
+    <meta property="og:image" content="https://www.evelyndunlapfoundation.org/images/og-image.jpg">
+    
+    <title>Scholarship Application | Evelyn Dunlap Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* Additional styles for the scholarship page */
+        .scholarship-page-section {
+            padding-top: 250px !important; /* Increased padding to fix overlap with header */
+            min-height: auto;
+        }
+        
+        .scholarship-details-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+        
+        .scholarship-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .scholarship-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .scholarship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.33,1,0.68,1);
+        }
+        
+        .scholarship-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .scholarship-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(10, 12, 21, 0.2) 0%, 
+                rgba(10, 12, 21, 0.4) 100%);
+            z-index: 1;
+        }
+        
+        .timeline-vertical {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 3rem;
+        }
+        
+        .timeline-vertical::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--royal-blue), var(--soft-pink));
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--royal-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(52, 84, 209, 0.2);
+        }
+        
+        .timeline-title {
+            color: var(--royal-blue-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .scholarship-columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .scholarship-image {
+                min-height: 300px;
+                order: -1;
+            }
+            
+            .scholarship-page-section {
+                padding-top: 120px !important; /* Slightly reduced for mobile */
+            }
+        }
+        
+        /* Success message styling - IMPROVED */
+        .application-success {
+            display: none;
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Added fade-in animation for thank you section */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Added animation to active success section */
+        .application-success.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--royal-blue-light), var(--soft-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 10px rgba(52, 84, 209, 0.3));
+        }
+        
+        .success-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .success-message {
+            margin-bottom: 2rem;
+        }
+        
+        .what-to-expect {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .what-to-expect h3 {
+            color: var(--soft-pink);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .what-to-expect ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0;
+        }
+        
+        .what-to-expect li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .what-to-expect li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .thank-you-actions {
+            margin-top: 2rem;
+        }
+        
+        /* Ensure proper section spacing */
+        .section-title-container {
+            margin-top: 0;
+            margin-bottom: 3rem;
+        }
+        
+        /* EXPLICIT FORM STYLING - Ensure visibility */
+        .form-container {
+            background-color: rgba(20, 24, 42, 0.7);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+            display: block;
+            box-sizing: border-box;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--royal-blue);
+            box-shadow: 0 0 0 3px rgba(52, 84, 209, 0.2);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        input[type="checkbox"], 
+        input[type="radio"] {
+            width: auto;
+            margin-right: 0.5rem;
+            margin-top: 0.3rem;
+        }
+        
+        .form-agreement {
+            display: flex;
+            align-items: flex-start;
+            margin: 2rem 0;
+        }
+        
+        .form-agreement label {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+        
+        .form-help {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+        }
+        
+        input[type="file"].form-control {
+            padding: 0.75rem;
+            background-color: rgba(20, 24, 42, 0.5);
+        }
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .form-section-title {
+            color: var(--soft-pink);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-light));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-submit-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .submit-icon {
+            margin-right: 0.8rem;
+        }
+        
+        #formStatusMessage {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        #formStatusMessage.success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        #formStatusMessage.error {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="header-logo-img">
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item active"><a href="index.html#scholarship" class="nav-link">Scholarship</a></li>
+                    <li class="nav-item"><a href="index.html#donate" class="nav-link">Donate</a></li>
+                    <li class="nav-item"><a href="index.html#events" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="index.html#partners" class="nav-link">Partners</a></li>
+                    <li class="nav-item"><a href="index.html#team" class="nav-link">Team</a></li>
+                </ul>
+                
+                <div class="nav-cta">
+                    <a href="index.html#donate" class="btn">Donate Now</a>
+                </div>
+            </nav>
+            
+            <div class="mobile-nav" id="mobileNav" aria-labelledby="mobileToggle">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html#home" class="mobile-nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                    <li><a href="index.html#scholarship" class="mobile-nav-link">Scholarship</a></li>
+                    <li><a href="index.html#donate" class="mobile-nav-link">Donate</a></li>
+                    <li><a href="index.html#events" class="mobile-nav-link">Events</a></li>
+                    <li><a href="index.html#partners" class="mobile-nav-link">Partners</a></li>
+                    <li><a href="index.html#team" class="mobile-nav-link">Team</a></li>
+                    <li><a href="index.html#donate" class="btn">Donate Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Scholarship Section -->
+    <section class="section scholarship-page-section" id="scholarship-details">
+        <div class="decorative-element blue-glow" style="top: 20%; right: -100px;"></div>
+        <div class="decorative-element pink-glow" style="bottom: 30%; left: -150px;"></div>
+        
+        <div class="container">
+            <div class="section-title-container">
+                <div class="section-subtitle">Educational Opportunities</div>
+                <h1 class="section-title">Scholarship <span class="text-gradient">Program</span></h1>
+                <div class="section-title-decoration"></div>
+                <p class="section-description">The Evelyn Dunlap Foundation Scholarship supports deserving students in their educational journey, providing financial assistance and mentorship to help them achieve their academic goals.</p>
+            </div>
+            
+            <div class="scholarship-details-container" id="scholarshipDetails">
+                <div class="scholarship-columns">
+                    <div class="scholarship-content">
+                        <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem;">Scholarship Overview</h3>
+                        <p>The Evelyn Dunlap Foundation Scholarship supports students who demonstrate academic excellence, leadership potential, and community engagement. Our selection process identifies candidates poised to create meaningful impact while pursuing their education.</p>
+                        
+                        <h4 class="guidelines-subtitle">Key Requirements</h4>
+                        <ul class="guidelines-list">
+                            <li class="guidelines-item"><strong>Academic:</strong> 3.8+ GPA with full-time enrollment at an accredited institution</li>
+                            <li class="guidelines-item"><strong>Leadership:</strong> Demonstrated leadership experience and community involvement</li>
+                            <li class="guidelines-item"><strong>Vision:</strong> Clear academic goals that align with our foundation's mission</li>
+                        </ul>
+                        
+                        <h4 class="guidelines-subtitle">Application Package</h4>
+                        <ul class="guidelines-list application-requirements">
+                            <li class="guidelines-item"><span class="requirement-icon"><i class="far fa-file-alt"></i></span> Completed application form and official transcripts</li>
+                            <li class="guidelines-item"><span class="requirement-icon"><i class="far fa-file-alt"></i></span> Resume and two recommendation letters</li>
+                            <li class="guidelines-item"><span class="requirement-icon"><i class="far fa-file-alt"></i></span> Personal statement and impact essay</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scholarship-image">
+                        <img src="./images/f.png" alt="Evelyn Dunlap Foundation Scholarship Recipients">
+                    </div>
+                </div>
+                
+                <h3 style="color: var(--soft-pink); margin: 3rem 0 1.5rem;">Selection & Timeline</h3>
+                
+                <div class="key-dates-container">
+                    <div class="key-dates-grid">
+                        <div class="key-date-card">
+                            <div class="key-date-title">Applications Open</div>
+                            <div class="key-date-value">August 2025</div>
+                        </div>
+                        <div class="key-date-card">
+                            <div class="key-date-title">Applications Close</div>
+                            <div class="key-date-value">November 2025</div>
+                        </div>
+                        <div class="key-date-card">
+                            <div class="key-date-title">Notifications</div>
+                            <div class="key-date-value">December 1, 2025</div>
+                        </div>
+                        <div class="key-date-card">
+                            <div class="key-date-title">Award Ceremony</div>
+                            <div class="key-date-value">January 3, 2026</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="color: var(--gold); margin: 3rem 0 1.5rem;">Application Process</h3>
+                
+                <div class="timeline-vertical">
+                    <div class="timeline-step">
+                        <div class="timeline-marker">1</div>
+                        <h4 class="timeline-title">Submit Your Application</h4>
+                        <p>Fill out the complete application form below with all required personal and academic information.</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-marker">2</div>
+                        <h4 class="timeline-title">Initial Review</h4>
+                        <p>Our scholarship committee will evaluate all applications based on academic achievement, leadership potential, and alignment with our mission.</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-marker">3</div>
+                        <h4 class="timeline-title">Finalist Selection</h4>
+                        <p>Selected finalists may be contacted for additional information or interviews.</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-marker">4</div>
+                        <h4 class="timeline-title">Award Notification</h4>
+                        <p>All applicants will be notified of their status by December 1, 2025. Recipients must attend the award ceremony on January 3, 2026.</p>
+                    </div>
+                </div>
+                
+                <h3 style="color: var(--royal-blue-light); margin: 3rem 0 1.5rem;">Award Details</h3>
+                
+                <div class="award-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="highlight-content">
+                            <h4>Award Amount</h4>
+                            <p>$5,000 to $10,000 per recipient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Funds can be used for tuition, educational resources, and essential living expenses. Recipients must maintain academic standards, participate in foundation events, and serve as ambassadors for the foundation.</p>
+                
+                <div class="important-notice">
+                    <h4>Important</h4>
+                    <p>Recipients must attend the award ceremony on January 3, 2026. The foundation may request documentation verifying educational use of funds.</p>
+                </div>
+                
+                <div class="elegance-quote" style="margin: 3rem auto;">
+                    "Education is the most powerful weapon which you can use to change the world. The Evelyn Dunlap Foundation is committed to empowering students to create that change."
+                </div>
+            </div>
+            
+            <!-- Application Form Section -->
+            <div class="form-container" id="applicationForm" style="max-width: 800px; margin: 4rem auto;">
+                <h3 class="form-title">Scholarship Application</h3>
+                <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation.</p>
+                
+                <form id="scholarshipForm">
+                    <div class="form-section">
+                        <h4 class="form-section-title">Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" id="address" name="address" class="form-control">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" id="city" name="city" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" id="state" name="state" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip" class="form-label">ZIP Code</label>
+                                <input type="text" id="zip" name="zip" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4 class="form-section-title">Academic Information</h4>
+                        <div class="form-group">
+                            <label for="highSchool" class="form-label">High School</label>
+                            <input type="text" id="highSchool" name="highSchool" class="form-control">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="graduationYear" class="form-label">High School Graduation Year</label>
+                                <input type="number" id="graduationYear" name="graduationYear" class="form-control" min="2000" max="2030">
+                            </div>
+                            <div class="form-group">
+                                <label for="gpa" class="form-label">Current GPA</label>
+                                <input type="number" step="0.01" min="0" max="4.0" id="gpa" name="gpa" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="college" class="form-label">University/College</label>
+                            <input type="text" id="college" name="college" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="major" class="form-label">Field of Study/Major</label>
+                            <input type="text" id="major" name="major" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4 class="form-section-title">Essays</h4>
+                        <div class="form-group">
+                            <label for="essay" class="form-label">Personal Statement (500 words max)</label>
+                            <textarea id="essay" name="essay" class="form-control" rows="5" required></textarea>
+                            <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="activities" class="form-label">Activities & Leadership (300 words max)</label>
+                            <textarea id="activities" name="activities" class="form-control" rows="4" required></textarea>
+                            <div class="form-help">Describe your extracurricular activities, leadership roles, and community service experience.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4 class="form-section-title">Documents</h4>
+                        <div class="form-group">
+                            <label for="transcript" class="form-label">Upload Transcript (PDF format)</label>
+                            <input type="file" id="transcript" name="transcript" class="form-control" accept=".pdf">
+                            <div class="form-help">Please upload an official or unofficial transcript from your current educational institution.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="recommendationLetter" class="form-label">Upload Recommendation Letter (PDF format)</label>
+                            <input type="file" id="recommendationLetter" name="recommendationLetter" class="form-control" accept=".pdf">
+                            <div class="form-help">Please upload at least one letter of recommendation from a teacher, professor, or mentor.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group form-agreement">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">I certify that all information provided is accurate and complete. I understand that false information may result in disqualification. I consent to the Evelyn Dunlap Foundation using my information for scholarship consideration.</label>
+                    </div>
+                    
+                    <div class="form-submit-container">
+                        <button type="submit" class="btn form-submit">
+                            <span class="submit-icon"><i class="fas fa-paper-plane"></i></span>
+                            Submit Application
+                        </button>
+                    </div>
+                    
+                    <div id="formStatusMessage"></div>
+                </form>
+            </div>
+            
+            <!-- Success Message (Initially Hidden) - IMPROVED -->
+            <div class="application-success" id="applicationSuccess">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
+                <h2 class="success-title">Application Received</h2>
+                
+                <div class="success-message">
+                    <p>Thank you for submitting your scholarship application to the Evelyn Dunlap Foundation. We appreciate your interest in our program and your commitment to education.</p>
+                    
+                    <p>Our team will carefully review your application. If you are selected for the next stage of the process, we will contact you at the email address provided in your application.</p>
+                    
+                    <div class="what-to-expect">
+                        <h3>What to Expect Next</h3>
+                        <ul>
+                            <li>You will receive a confirmation email shortly</li>
+                            <li>Applications are reviewed by our selection committee</li>
+                            <li>Finalists will be contacted for additional information or interviews</li>
+                            <li>All applicants will be notified of their status by December 1, 2025</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="thank-you-actions">
+                    <a href="index.html" class="btn">
+                        <i class="fas fa-home"></i> Return to Homepage
+                    </a>
+                    
+                    <a href="index.html#events" class="btn btn-alt">
+                        <i class="fas fa-calendar-alt"></i> Explore Our Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Low-profile) -->
+    <footer>
+        <div class="decorative-element blue-glow footer-blue-glow"></div>
+        <div class="decorative-element pink-glow footer-pink-glow"></div>
+        
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-container">
+                    <a href="index.html" class="footer-logo">
+                        <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="footer-logo-img">
+                    </a>
+                    <p class="footer-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="index.html#home" class="footer-link">Home</a></li>
+                        <li class="footer-link-item"><a href="index.html#about" class="footer-link">About Us</a></li>
+                        <li class="footer-link-item"><a href="index.html#scholarship" class="footer-link">Scholarships</a></li>
+                        <li class="footer-link-item"><a href="index.html#donate" class="footer-link">Donate</a></li>
+                        <li class="footer-link-item"><a href="index.html#events" class="footer-link">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <div class="footer-contact-text">San Francisco, CA</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon"><i class="fas fa-phone"></i></span>
+                        <div class="footer-contact-text">(310) 924-9557</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon"><i class="fas fa-envelope"></i></span>
+                        <div class="footer-contact-text">info@evelyndunlapfoundation.org</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 Evelyn Dunlap Foundation. All rights reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    <a href="#" class="footer-bottom-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    document.getElementById('mobileNav').classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+
+            // Mobile nav links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    document.getElementById('mobileNav').classList.remove('active');
+                    document.getElementById('mobileToggle').classList.remove('active');
+                });
+            });
+
+            // Scroll header style change
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 600) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+            }
+            
+            // Form submission handling with Cloudflare Worker - FIXED
+            const scholarshipForm = document.getElementById('scholarshipForm');
+            if (scholarshipForm) {
+                scholarshipForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent the default form submission
+                    
+                    // Show loading state on the button
+                    const submitBtn = this.querySelector('.form-submit');
+                    const originalHtml = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    submitBtn.disabled = true;
+                    
+                    // Clear any previous status messages
+                    const statusMessage = document.getElementById('formStatusMessage');
+                    statusMessage.style.display = 'none';
+                    statusMessage.className = '';
+                    
+                    // Create a FormData object from the form
+                    const formData = new FormData(this);
+                    
+                    // Send the form data to your Cloudflare Worker
+                    fetch('https://scholarship-form-handler-young-sky-8381.amacfa.workers.dev', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Server responded with status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                        
+                        // Hide the form
+                        document.getElementById('applicationForm').style.display = 'none';
+                        
+                        // Show and activate the success message with animation
+                        const successElement = document.getElementById('applicationSuccess');
+                        successElement.classList.add('active');
+                        
+                        // Reset button state (though now hidden)
+                        submitBtn.innerHTML = originalHtml;
+                        submitBtn.disabled = false;
+                        
+                        // Scroll to success message
+                        successElement.scrollIntoView({ behavior: 'smooth' });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        
+                        // Show error message
+                        statusMessage.textContent = 'There was an error submitting your application. Please try again.';
+                        statusMessage.style.display = 'block';
+                        statusMessage.className = 'error';
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalHtml;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
