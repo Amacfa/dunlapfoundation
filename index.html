@@ -18,12 +18,84 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0c15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-inner {
+            text-align: center;
+        }
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #4a90e2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        .loader-text {
+            color: #ffffff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Smooth scroll for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Ensure all sections have proper spacing */
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+    </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-inner">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Loading...</p>
+        </div>
+    </div>
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="header-logo-img">
             </a>
             
@@ -37,6 +109,7 @@
                 <ul class="nav-list">
                     <li class="nav-item active"><a href="#home" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="evelyn-bio.html" class="nav-link">Biography</a></li>
                     <li class="nav-item"><a href="#scholarship" class="nav-link">Scholarship</a></li>
                     <li class="nav-item"><a href="#donate" class="nav-link">Donate</a></li>
                     <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
@@ -53,6 +126,7 @@
                 <ul class="mobile-nav-list">
                     <li><a href="#home" class="mobile-nav-link">Home</a></li>
                     <li><a href="#about" class="mobile-nav-link">About</a></li>
+                    <li><a href="evelyn-bio.html" class="mobile-nav-link">Biography</a></li>
                     <li><a href="#scholarship" class="mobile-nav-link">Scholarship</a></li>
                     <li><a href="#donate" class="mobile-nav-link">Donate</a></li>
                     <li><a href="#events" class="mobile-nav-link">Events</a></li>
@@ -497,7 +571,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo-container">
-                    <a href="#" class="footer-logo">
+                    <a href="#home" class="footer-logo">
                         <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="footer-logo-img">
                     </a>
                     <p class="footer-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
@@ -679,6 +753,19 @@
     </script>
 
     <script>
+        // Page loader
+        window.addEventListener('load', function() {
+            const pageLoader = document.querySelector('.page-loader');
+            if (pageLoader) {
+                setTimeout(() => {
+                    pageLoader.classList.add('fade-out');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }, 300); // Small delay to ensure smooth transition
+            }
+        });
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
             const mobileToggle = document.getElementById('mobileToggle');
@@ -688,6 +775,7 @@
                     this.classList.toggle('active');
                 });
             }
+
 
             // Mobile nav links
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
