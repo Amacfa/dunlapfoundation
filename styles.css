@@ -3437,7 +3437,7 @@ body.modal-open {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns for board members */
+  grid-template-columns: repeat(4, 1fr); /* Updated to 4 columns for board members */
   gap: 2rem;
 }
 
@@ -3455,6 +3455,9 @@ body.modal-open {
 }
 .team-container.animated .team-member:nth-child(3) {
   animation: fadeUp 0.8s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.team-container.animated .team-member:nth-child(4) {
+  animation: fadeUp 0.8s 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .member-img-container {
