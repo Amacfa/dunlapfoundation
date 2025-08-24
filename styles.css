@@ -3465,6 +3465,9 @@ body.modal-open {
 .team-container.animated .team-member:nth-child(6) {
   animation: fadeUp 0.8s 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+.team-container.animated .team-member:nth-child(7) {
+  animation: fadeUp 0.8s 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
 
 .member-img-container {
   width: 200px;
