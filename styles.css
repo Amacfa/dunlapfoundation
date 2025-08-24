@@ -3437,7 +3437,7 @@ body.modal-open {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Updated to 4 columns for board members */
+  grid-template-columns: repeat(3, 1fr); /* Updated to 3 columns to accommodate 6 board members */
   gap: 2rem;
 }
 
@@ -3458,6 +3458,12 @@ body.modal-open {
 }
 .team-container.animated .team-member:nth-child(4) {
   animation: fadeUp 0.8s 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.team-container.animated .team-member:nth-child(5) {
+  animation: fadeUp 0.8s 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.team-container.animated .team-member:nth-child(6) {
+  animation: fadeUp 0.8s 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .member-img-container {
@@ -3483,10 +3489,16 @@ body.modal-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: all var(--ease-med);
   transform: scale(.85);
   display: block;
   animation: zoom 1.2s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Specific positioning for Henry's image */
+.team-member:nth-child(6) .member-img {
+  object-position: center top;
 }
 
 .team-member:hover .member-img {
