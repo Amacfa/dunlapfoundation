@@ -391,30 +391,10 @@
                 <div class="soiree-event">
                     <div class="soiree-date">August 23, 2025 - COMPLETED</div>
                     <div class="soiree-img">
-                        <div class="soiree-slideshow">
-                            <div class="soiree-slide active">
-                                <img src="./sorieephotos/133ec9ee-8f4e-4430-a43e-1495c86d7c8a.JPG" alt="Summer Soirée Photo 1" loading="lazy">
-                            </div>
-                            <div class="soiree-slide">
-                                <img src="./sorieephotos/52d4cb3e-a268-40b2-8738-647143562f58.JPG" alt="Summer Soirée Photo 2" loading="lazy">
-                            </div>
-                            <div class="soiree-slide">
-                                <img src="./sorieephotos/5a06683c-a356-4b8c-a721-babba8916639.JPG" alt="Summer Soirée Photo 3" loading="lazy">
-                            </div>
-                            <div class="soiree-slide">
-                                <img src="./sorieephotos/ea59f944-97b6-4806-8312-ba2dc4387bf1.JPG" alt="Summer Soirée Photo 4" loading="lazy">
-                            </div>
-                            <div class="soiree-slide">
-                                <img src="./sorieephotos/eabcdeb6-6c62-4219-bcf0-6080a2dc8d41.JPG" alt="Summer Soirée Photo 5" loading="lazy">
-                            </div>
-                            <div class="slideshow-dots">
-                                <div class="slideshow-dot active" data-slide="0"></div>
-                                <div class="slideshow-dot" data-slide="1"></div>
-                                <div class="slideshow-dot" data-slide="2"></div>
-                                <div class="slideshow-dot" data-slide="3"></div>
-                                <div class="slideshow-dot" data-slide="4"></div>
-                            </div>
-                        </div>
+                        <video class="soiree-video" autoplay loop muted playsinline>
+                            <source src="./images/party.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                         <h1>White-Themed Summer Soirée</h1>
                         <p>A successful evening of fundraising, fashion, and philanthropy</p>
                     </div>
@@ -1017,38 +997,6 @@
                 });
             }
 
-            // Soirée Slideshow Functionality
-            const slides = document.querySelectorAll('.soiree-slide');
-            const dots = document.querySelectorAll('.slideshow-dot');
-            let currentSlide = 0;
-            
-            function showSlide(index) {
-                // Remove active class from all slides and dots
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                // Add active class to current slide and dot
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            // Auto-advance slideshow every 4 seconds
-            if (slides.length > 0) {
-                setInterval(nextSlide, 4000);
-                
-                // Add click functionality to dots
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        currentSlide = index;
-                        showSlide(currentSlide);
-                    });
-                });
-            }
         });
     </script>
 </body>

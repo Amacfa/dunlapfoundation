@@ -4194,6 +4194,27 @@ footer {
   .soiree-img { min-height: 400px; }
   .soiree-img h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
   .soiree-img p { font-size: clamp(1rem, 2.5vw, 1.2rem); }
+  
+  /* Fix slideshow on mobile */
+  .soiree-slideshow {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .soiree-slide {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .soiree-slide:not(.active) {
+    display: none !important;
+  }
 
   .header-logo-img { height: 160px; }
 
@@ -4283,6 +4304,28 @@ footer {
 
   .soiree-img h1 { font-size: clamp(2rem, 6vw, 2.7rem); }
   .soiree-img p { font-size: clamp(0.9rem, 3vw, 1.1rem); }
+  
+  /* Force slideshow behavior on small mobile */
+  .soiree-slideshow {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .soiree-slide {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .soiree-slide:not(.active) {
+    display: none !important;
+  }
 
   .header-logo-img { height: 140px; }
 
@@ -4408,6 +4451,28 @@ footer {
 
   .soiree-img { min-height: 350px; padding: 2rem; }
   .soiree-date { font-size: 1rem; padding: 0.8rem 1.2rem; top: 1rem; right: 1rem;}
+  
+  /* Ensure slideshow works on very small screens */
+  .soiree-slideshow {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .soiree-slide {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .soiree-slide:not(.active) {
+    display: none !important;
+  }
 
   .header-logo-img { height: 120px; }
 
