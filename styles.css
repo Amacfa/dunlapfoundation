@@ -4386,6 +4386,24 @@ footer {
     width: 45px;
     height: 45px;
   }
+
+  /* Fix gap between events calendar and partners section on mobile */
+  .events-section {
+    padding-bottom: 2rem;
+  }
+
+  .events-calendar {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  .events-calendar .event-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .partners-section {
+    padding-top: 2rem;
+  }
 }
 
 @media (max-width: 576px) {
