@@ -365,11 +365,11 @@ main { /* Added main tag for semantic structure */
 }
 
 .section.quote-section {
-  padding: clamp(1.5rem, 3vh, 2.5rem) 0;
+  padding: clamp(1rem, 2vh, 1.5rem) 0;
 }
 
 .quote-section + .scholarship-section {
-  padding-top: clamp(2.5rem, 5vh, 3.5rem);
+  padding-top: clamp(1rem, 2vh, 1.5rem);
 }
 
 .section-title-container {
@@ -614,11 +614,14 @@ main { /* Added main tag for semantic structure */
   background-size: 200% 100%;
   background-image: linear-gradient(
     135deg,
-    var(--royal-blue) 0%,
-    var(--royal-blue-light) 50%,
-    #5a7ef0 100%
+    rgba(52, 84, 209, 0.85) 0%,
+    rgba(78, 107, 230, 0.85) 50%,
+    rgba(90, 126, 240, 0.85) 100%
   );
   background-position: 0% 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   animation: prismShimmer 12s ease-in-out infinite;
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow var(--ease-fast), transform var(--ease-fast);
   z-index: 1;
@@ -681,11 +684,32 @@ main { /* Added main tag for semantic structure */
 }
 
 /* Button variants with enhanced animations */
+.btn-alt {
+  background-image: linear-gradient(
+    135deg,
+    rgba(211, 173, 105, 0.85) 0%,
+    rgba(224, 199, 154, 0.85) 50%,
+    rgba(232, 212, 160, 0.85) 100%
+  );
+  background-position: 0% 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
 .btn-alt::before {
-  background: linear-gradient(135deg, var(--soft-pink), var(--soft-pink-light));
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
   transform: scaleX(0);
   transform-origin: right;
   transition: transform var(--ease-gentle);
+}
+
+.btn-alt:hover {
+  box-shadow:
+    0 15px 60px rgba(211, 173, 105, 0.35),
+    0 5px 20px rgba(224, 199, 154, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background-position: 100% 50%;
 }
 
 .btn-alt:hover::before {
@@ -855,11 +879,19 @@ main { /* Added main tag for semantic structure */
 header {
   position: fixed;
   width: 100%;
-  top: 0;
+  top: 52px; /* Account for donation banner */
   left: 0;
   z-index: 1000;
   transition: all var(--ease-med);
   padding: 1.5rem 0;
+}
+
+/* When donation banner is hidden or scroll-hidden */
+.donation-banner.hidden ~ header,
+.donation-banner.scroll-hidden ~ header,
+body:has(.donation-banner.hidden) header,
+body:has(.donation-banner.scroll-hidden) header {
+  top: 0;
 }
 
 header.scrolled {
@@ -1188,9 +1220,17 @@ header.scrolled .mobile-toggle span {
   position: relative;
   overflow: hidden;
   margin-top: 0; /* Remove any default margin */
-  padding-top: 7rem; /* Account for fixed header height */
+  padding-top: calc(7rem + 52px); /* Account for fixed header height + donation banner */
   box-sizing: border-box; /* Include padding in height calculation */
   z-index: 0;
+}
+
+/* Adjust when banner is closed or scroll-hidden */
+.donation-banner.hidden ~ .hero,
+.donation-banner.scroll-hidden ~ .hero,
+body:has(.donation-banner.hidden) .hero,
+body:has(.donation-banner.scroll-hidden) .hero {
+  padding-top: 7rem;
 }
 
 .hero-video {
@@ -5076,5 +5116,264 @@ footer {
     filter: none !important;
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* ========== Sticky Donation Banner ========== */
+.donation-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background:
+    linear-gradient(135deg,
+      rgba(52, 84, 209, 0.97) 0%,
+      rgba(78, 107, 230, 0.95) 50%,
+      rgba(90, 126, 240, 0.97) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(52, 84, 209, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+  animation: slideDown 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmerBanner 8s ease-in-out infinite;
+}
+
+@keyframes shimmerBanner {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.donation-banner.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.donation-banner.scroll-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.donation-banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.donation-banner-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.donation-banner-icon {
+  font-size: 1.4rem;
+  color: #ff6b9d;
+  animation: pulseGlowIcon 3s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(255, 107, 157, 0.4));
+}
+
+@keyframes pulseGlowIcon {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.5));
+  }
+}
+
+.donation-banner-message {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.paypal-logo {
+  height: 27px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.donation-banner-text:hover .paypal-logo {
+  opacity: 1;
+}
+
+.donation-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  color: var(--royal-blue);
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-banner-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.5s ease;
+}
+
+.donation-banner-btn:hover::before {
+  left: 100%;
+}
+
+.donation-banner-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(52, 84, 209, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.donation-banner-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.donation-banner-close svg {
+  color: white;
+  width: 18px;
+  height: 18px;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.donation-banner-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: rotate(90deg) scale(1.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.donation-banner-close:active {
+  transform: rotate(90deg) scale(0.98);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .donation-banner-content {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .donation-banner-text {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .donation-banner-message {
+    font-size: 0.875rem;
+  }
+
+  .paypal-logo {
+    height: 22px;
+  }
+
+  .donation-banner-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .donation-banner-close {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .donation-banner-content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .donation-banner-text {
+    flex: 1;
+    justify-content: center;
   }
 }
