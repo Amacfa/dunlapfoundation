@@ -611,7 +611,16 @@ main { /* Added main tag for semantic structure */
   overflow: hidden;
   --mx: 50%;
   --my: 50%;
-  transition: all var(--ease-med), box-shadow var(--ease-fast), transform var(--ease-fast);
+  background-size: 200% 100%;
+  background-image: linear-gradient(
+    135deg,
+    var(--royal-blue) 0%,
+    var(--royal-blue-light) 50%,
+    #5a7ef0 100%
+  );
+  background-position: 0% 50%;
+  animation: prismShimmer 12s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow var(--ease-fast), transform var(--ease-fast);
   z-index: 1;
   isolation: isolate; /* New stacking context for ::before */
 }
@@ -644,8 +653,13 @@ main { /* Added main tag for semantic structure */
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-elegant);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 15px 60px rgba(52, 84, 209, 0.35),
+    0 5px 20px rgba(78, 107, 230, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  animation-play-state: paused;
+  background-position: 100% 50%;
 }
 
 .btn:active {
@@ -1187,8 +1201,8 @@ header.scrolled .mobile-toggle span {
   object-fit: cover;
   transform: none;
   z-index: 1; /* Above fallback */
-  filter: brightness(0.4) saturate(0.8) contrast(1.1);
-  transition: filter 1.5s var(--ease-gentle);
+  filter: brightness(0.38) saturate(0.85) contrast(1.12) hue-rotate(5deg);
+  transition: filter 1.8s cubic-bezier(0.19, 1, 0.22, 1);
   will-change: transform, filter;
 }
 
@@ -1210,7 +1224,7 @@ header.scrolled .mobile-toggle span {
 }
 
 .hero:hover .hero-video {
-  filter: brightness(0.45) saturate(0.85) contrast(1.15);
+  filter: brightness(0.42) saturate(0.9) contrast(1.15) hue-rotate(3deg);
 }
 
 .hero-overlay {
@@ -1234,6 +1248,94 @@ header.scrolled .mobile-toggle span {
 
 .hero:hover .hero-overlay {
   opacity: 0.9;
+}
+
+/* Cool sophisticated tint with royal blue and silver */
+.hero-tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(52, 84, 209, 0.28), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(100, 120, 200, 0.18), transparent 55%),
+    linear-gradient(180deg,
+      rgba(52, 84, 209, 0.12) 0%,
+      rgba(180, 190, 220, 0.08) 50%,
+      rgba(52, 84, 209, 0.15) 100%);
+  transition: opacity 2s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: opacity;
+  animation: coolTintShift 15s ease-in-out infinite alternate;
+}
+
+.hero.video-playing .hero-tint {
+  opacity: 1;
+}
+
+@keyframes coolTintShift {
+  0% {
+    background:
+      radial-gradient(circle at 30% 25%, rgba(52, 84, 209, 0.28), transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(100, 120, 200, 0.18), transparent 55%),
+      linear-gradient(180deg,
+        rgba(52, 84, 209, 0.12) 0%,
+        rgba(180, 190, 220, 0.08) 50%,
+        rgba(52, 84, 209, 0.15) 100%);
+  }
+  50% {
+    background:
+      radial-gradient(circle at 35% 30%, rgba(78, 107, 230, 0.25), transparent 52%),
+      radial-gradient(circle at 65% 55%, rgba(150, 160, 210, 0.15), transparent 57%),
+      linear-gradient(180deg,
+        rgba(78, 107, 230, 0.1) 0%,
+        rgba(52, 84, 209, 0.09) 50%,
+        rgba(100, 120, 200, 0.12) 100%);
+  }
+  100% {
+    background:
+      radial-gradient(circle at 28% 22%, rgba(100, 120, 200, 0.22), transparent 48%),
+      radial-gradient(circle at 72% 63%, rgba(52, 84, 209, 0.2), transparent 53%),
+      linear-gradient(180deg,
+        rgba(180, 190, 220, 0.11) 0%,
+        rgba(78, 107, 230, 0.07) 50%,
+        rgba(52, 84, 209, 0.13) 100%);
+  }
+}
+
+/* Silver light scatter for depth */
+.hero-light-scatter {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(180, 190, 220, 0.12), transparent 40%),
+    radial-gradient(circle at 50% 85%, rgba(100, 120, 200, 0.06), transparent 38%);
+  mix-blend-mode: screen;
+  filter: blur(50px);
+  transition: opacity 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+  animation: lightDrift 18s ease-in-out infinite;
+}
+
+.hero.video-playing .hero-light-scatter {
+  opacity: 0.75;
+}
+
+@keyframes lightDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-2%, 1.5%) scale(1.04); }
+  50% { transform: translate(1.5%, -1.5%) scale(0.98); }
+  75% { transform: translate(-1.5%, 2%) scale(1.02); }
 }
 
 .hero-decorative-element {
@@ -4112,6 +4214,42 @@ footer {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
+  }
+}
+
+/* Luxury reveal with blur and scale */
+@keyframes luxuryReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.97);
+    filter: blur(12px) brightness(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    filter: blur(3px) brightness(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* Elegant floating motion */
+@keyframes elegantFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Gradient shimmer effect */
+@keyframes prismShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.08) saturate(1.15);
   }
 }
 

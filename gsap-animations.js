@@ -132,22 +132,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
 
-        const heroTargets = ".hero-subtitle, .hero-title, .hero-description, .hero-buttons .btn";
-        gsap.set(heroTargets, { opacity: 0, y: 24 });
+        const heroTargets = ".hero-subtitle, .hero-title, .hero-description";
+        gsap.set(heroTargets, { opacity: 0, y: 30, filter: "blur(10px)" });
+        gsap.set(".hero-buttons .btn", { opacity: 0, y: 24, scale: 0.96, filter: "blur(8px)" });
         gsap.set(".hero-scroll", { opacity: 0, y: 12 });
 
         if (reduceMotion) {
-            gsap.set(heroTargets, { opacity: 1, y: 0 });
+            gsap.set(heroTargets, { opacity: 1, y: 0, filter: "blur(0px)" });
+            gsap.set(".hero-buttons .btn", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" });
             gsap.set(".hero-scroll", { opacity: 1, y: 0 });
             return;
         }
 
         const heroTl = gsap.timeline({ paused: true });
         heroTl
-            .to(".hero-subtitle", { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" })
-            .to(".hero-title", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, "-=0.35")
-            .to(".hero-description", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.55")
-            .to(".hero-buttons .btn", { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.12 }, "-=0.5")
+            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" })
+            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power3.out" }, "-=0.5")
+            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out" }, "-=0.7")
+            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.8, ease: "power3.out", stagger: 0.15 }, "-=0.6")
             .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
 
         const startHero = () => heroTl.play(0);
@@ -629,5 +631,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ========== Glass Card Luxury Reveals ==========
+    function initCardReveals() {
+        if (!hasGsap || reduceMotion) return;
+
+        gsap.utils.toArray('.glass-card, .scholarship-card, .donation-card').forEach((card, i) => {
+            gsap.fromTo(card,
+                {
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.97,
+                    filter: "blur(12px) brightness(0.8)"
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    filter: "blur(0) brightness(1)",
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    }
+
+    initCardReveals();
 
 }); // End DOMContentLoaded
