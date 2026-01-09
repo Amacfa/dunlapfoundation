@@ -1414,8 +1414,9 @@ body.banner-collapsed .hero {
 }
 
 .hero-title .text-gradient {
-  background-size: 300% 100%; /* For shimmer effect */
-  animation: shimmer 14s ease-in-out infinite;
+  background-size: 240% 100%; /* For shimmer effect */
+  animation: heroShimmer 18s ease-in-out infinite;
+  will-change: background-position, filter;
 }
 
 .hero-description {
@@ -4362,6 +4363,17 @@ footer {
   }
 }
 
+@keyframes heroShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.07) saturate(1.08);
+  }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -5433,12 +5445,15 @@ footer {
 
   .donation-banner-text {
     gap: 0.4rem;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .donation-banner-message {
     font-size: 0.75rem;
-    display: none; /* Hide on very small screens */
+    display: inline;
+    white-space: normal;
+    line-height: 1.2;
   }
 
   .paypal-logo {
