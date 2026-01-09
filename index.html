@@ -16,6 +16,7 @@
     
     <title>Evelyn Dunlap Foundation | Nourishing Lives, Empowering Minds</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
@@ -92,6 +93,9 @@
             <p class="loader-text">Loading...</p>
         </div>
     </div>
+    <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress-bar"></span>
+    </div>
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -141,11 +145,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <!-- Hero Background Video or Image -->
-        <video class="hero-video" autoplay loop muted playsinline>
+        <video class="hero-video" autoplay loop muted playsinline preload="metadata" poster="./images/logo.png" webkit-playsinline>
             <source src="./images/v-2.mp4" type="video/mp4">
-            <!-- Add fallback image if video doesn't load -->
-            <img src="./images/hero-bg.jpg" alt="Foundation hero background" class="hero-fallback-img">
         </video>
+        <div class="hero-fallback" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
         
         <!-- Decorative Elements -->
@@ -173,7 +176,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="hero-scroll">
             <div class="scroll-text">Scroll Down</div>
             <div class="scroll-icon">
@@ -214,7 +217,7 @@
             </div>
             
             <!-- Certificate of Incorporation -->
-            <div class="incorporation-info" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="incorporation-info hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05);">
                 <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem; text-align: center;">Official Incorporation</h3>
                 <div style="text-align: center; margin-bottom: 1.5rem;">
                     <div style="background: linear-gradient(135deg, rgba(52, 84, 209, 0.1), rgba(229, 169, 188, 0.1)); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(52, 84, 209, 0.2);">
@@ -312,17 +315,17 @@
                 <p class="section-description">Our scholarship program supports deserving students in their educational journey, providing financial assistance and mentorship to help them achieve their academic goals.</p>
             </div>
             
-            <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 3rem; text-align: center;">
+            <div class="glass-card hdr-pop" style="max-width: 800px; margin: 0 auto; padding: 3rem; text-align: center;">
                 <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem;">The Evelyn Dunlap Foundation Scholarship</h3>
                 
                 <p style="margin-bottom: 2rem;">We're committed to empowering the next generation of leaders through our annual scholarship program. Awards range from $5,000 to $10,000 for students demonstrating academic excellence, leadership potential, and community engagement.</p>
                 
                 <div class="key-dates-grid" style="margin-bottom: 2.5rem;">
-                    <div class="key-date-card">
+                    <div class="key-date-card hdr-pop">
                         <div class="key-date-title">Applications Open</div>
                         <div class="key-date-value">December 2025</div>
                     </div>
-                    <div class="key-date-card">
+                    <div class="key-date-card hdr-pop">
                         <div class="key-date-title">Applications Close</div>
                         <div class="key-date-value">February 2026</div>
                     </div>
@@ -442,7 +445,7 @@
                         transform: scale(1.1);
                     }
                 </style>
-                <div class="donation-online" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
+                <div class="donation-online hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
                     <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate Online via PayPal</h4>
                     <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Make a secure online donation using PayPal. You can use your PayPal account or any major credit/debit card.</p>
 
@@ -466,7 +469,7 @@
                 </div>
 
                 <!-- B. Quick Facts -->
-                <div class="donation-quick-facts" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05);">
+                <div class="donation-quick-facts hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05);">
                     <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem; text-align: center;">Foundation Information</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                         <div>
@@ -482,7 +485,7 @@
 
                 <!-- C. Donation Instructions -->
                 <div class="donation-instructions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2.5rem;">
-                    <div class="daf-instructions" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div class="daf-instructions hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">DAF (Donor-Advised Fund) Grant</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 0.8rem;">• In your DAF, search "Evelyn Dunlap Foundation" or paste EIN <strong>39-4239693</strong></li>
@@ -492,7 +495,7 @@
                         </ul>
                     </div>
                     
-                    <div class="check-instructions" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div class="check-instructions hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate by Check (Mail)</h4>
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="margin-bottom: 0.8rem;">• Payable to: <strong>Evelyn Dunlap Foundation</strong></li>
@@ -503,7 +506,7 @@
                 </div>
 
                 <!-- D. Receipts Note -->
-                <div class="donation-receipts-note" style="background: rgba(255, 255, 255, 0.02); border-radius: 8px; padding: 1.5rem; margin-bottom: 2.5rem;">
+                <div class="donation-receipts-note hdr-pop" style="background: rgba(255, 255, 255, 0.02); border-radius: 8px; padding: 1.5rem; margin-bottom: 2.5rem;">
                     <p style="margin: 0; font-size: 0.9rem; color: var(--text-tertiary); line-height: 1.6;">
                         <strong>Receipts/Acknowledgment:</strong> DAF donors receive tax receipts from their sponsoring organization. For check donations, we'll email/mail an acknowledgment upon deposit. Questions: <strong>(310) 924-9557</strong>.
                     </p>
@@ -552,7 +555,7 @@
                 <div class="soiree-event">
                     <div class="soiree-date">August 23, 2025 - COMPLETED</div>
                     <div class="soiree-img">
-                        <video class="soiree-video" autoplay loop muted playsinline>
+                        <video class="soiree-video" autoplay loop muted playsinline preload="metadata" poster="./images/logo.png" webkit-playsinline>
                             <source src="./images/party.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -581,7 +584,7 @@
             <div class="events-calendar">
                 <h3 class="calendar-title">Calendar of Events</h3>
                 
-                <div class="event-card">
+                <div class="event-card hdr-pop">
                     <div class="event-date">
                         <div class="event-day">23</div>
                         <div class="event-month">AUG</div>
@@ -597,7 +600,7 @@
                     </div>
                 </div>
                 
-                <div class="event-card">
+                <div class="event-card hdr-pop">
                     <div class="event-date">
                         <div class="event-day">03</div>
                         <div class="event-month">JAN</div>
@@ -631,7 +634,7 @@
             
             <div class="partners-container">
                 <div class="partners-grid">
-                    <div class="partner-card">
+                    <div class="partner-card hdr-pop">
                         <div class="partner-img-container">
                             <img src="./images/Partner.png" alt="University Partner" class="partner-img" loading="lazy">
                             <div class="partner-img-overlay"></div>
@@ -643,7 +646,7 @@
                         </div>
                     </div>
                     
-                    <div class="partner-card">
+                    <div class="partner-card hdr-pop">
                         <div class="partner-img-container">
                             <img src="./images/HBCU.jpeg" alt="HBCU Partner" class="partner-img" loading="lazy">
                             <div class="partner-img-overlay"></div>
@@ -655,7 +658,7 @@
                         </div>
                     </div>
                     
-                    <div class="partner-card">
+                    <div class="partner-card hdr-pop">
                         <div class="partner-img-container">
                             <img src="./images/CleanWaterInit.png" alt="Clean Water Initiative" class="partner-img" loading="lazy">
                             <div class="partner-img-overlay"></div>
@@ -667,7 +670,7 @@
                         </div>
                     </div>
                     
-                    <div class="partner-card">
+                    <div class="partner-card hdr-pop">
                         <div class="partner-img-container">
                             <img src="./images/SecondHarvestFood.webp" alt="Second Harvest Food Bank" class="partner-img" loading="lazy">
                             <div class="partner-img-overlay"></div>
@@ -699,7 +702,7 @@
             <div class="team-container">
                 <div class="team-grid">
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/JP.png" alt="JonPierre Carlo Dunlap" class="member-img">
                         </div>
                         <h3 class="member-name">JonPierre Carlo Dunlap</h3>
@@ -708,7 +711,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/b-b.png" alt="Sohail Saghezchi" class="member-img">
                         </div>
                         <h3 class="member-name">Dr. Sohail Saghezchi</h3>
@@ -717,7 +720,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/b-c.png" alt="Eunice Allen" class="member-img">
                         </div>
                         <h3 class="member-name">Eunice Allen</h3>
@@ -726,7 +729,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/samira.jpg" alt="Samira Naraghi" class="member-img">
                         </div>
                         <h3 class="member-name">Samira Naraghi</h3>
@@ -735,7 +738,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/joy.jpeg" alt="Joy Johnson" class="member-img">
                         </div>
                         <h3 class="member-name">Joy Johnson</h3>
@@ -744,7 +747,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/Henry.jpeg" alt="Dr. Henry A. Gregory, III" class="member-img">
                         </div>
                         <h3 class="member-name">Dr. Henry A. Gregory, III</h3>
@@ -753,7 +756,7 @@
                     </div>
                     
                     <div class="team-member">
-                        <div class="member-img-container">
+                        <div class="member-img-container hdr-pop">
                             <img src="./images/Amir.jpeg" alt="Amir Aliabadi" class="member-img">
                         </div>
                         <h3 class="member-name">Amir Aliabadi</h3>
@@ -960,6 +963,10 @@
         gtag('config', 'G-XXXXXXXXXX');
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="gsap-animations.js"></script>
+
     <script>
         // Page loader
         window.addEventListener('load', function() {
@@ -969,8 +976,13 @@
                     pageLoader.classList.add('fade-out');
                     setTimeout(() => {
                         pageLoader.style.display = 'none';
+                        document.body.classList.add('is-loaded');
+                        document.dispatchEvent(new CustomEvent('page:ready'));
                     }, 500);
                 }, 300); // Small delay to ensure smooth transition
+            } else {
+                document.body.classList.add('is-loaded');
+                document.dispatchEvent(new CustomEvent('page:ready'));
             }
         });
         
@@ -1022,7 +1034,14 @@
             });
 
             // Animation on scroll
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const animateOnScroll = (elements, className) => {
+                if (reduceMotion) {
+                    elements.forEach(el => {
+                        if (el) el.classList.add(className);
+                    });
+                    return;
+                }
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
