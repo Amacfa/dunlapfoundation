@@ -133,9 +133,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!hero) return;
 
         const heroTargets = ".hero-subtitle, .hero-title, .hero-description";
-        gsap.set(heroTargets, { opacity: 0, y: 30, filter: "blur(10px)" });
-        gsap.set(".hero-buttons .btn", { opacity: 0, y: 24, scale: 0.96, filter: "blur(8px)" });
-        gsap.set(".hero-scroll", { opacity: 0, y: 12 });
+        gsap.set(heroTargets, { opacity: 0, y: 22, filter: "blur(8px)" });
+        gsap.set(".hero-title", { scale: 0.985, transformOrigin: "center center" });
+        gsap.set(".hero-buttons .btn", { opacity: 0, y: 18, scale: 0.98, filter: "blur(6px)" });
+        gsap.set(".hero-scroll", { opacity: 0, y: 10 });
 
         if (reduceMotion) {
             gsap.set(heroTargets, { opacity: 1, y: 0, filter: "blur(0px)" });
@@ -144,13 +145,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const heroTl = gsap.timeline({ paused: true });
+        const heroTl = gsap.timeline({
+            paused: true,
+            defaults: { ease: "power2.out" }
+        });
         heroTl
-            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" })
-            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power3.out" }, "-=0.5")
-            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out" }, "-=0.7")
-            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.8, ease: "power3.out", stagger: 0.15 }, "-=0.6")
-            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
+            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9 })
+            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.35 }, "-=0.55")
+            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1 }, "-=0.8")
+            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.95, stagger: 0.12 }, "-=0.75")
+            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" }, "-=0.4");
 
         const startHero = () => heroTl.play(0);
         if (document.body.classList.contains('is-loaded')) {
@@ -496,9 +500,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // --- Add specific reveals for elements not covered by helpers if needed ---
-    revealElement(".elegance-quote", ".elegance-quote", "top 90%");
 
     // --- Hero Scroll-Down Button Functionality ---
     const heroScrollBtn = document.querySelector('.hero-scroll');
