@@ -666,18 +666,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== Donation Banner Close Functionality ==========
     const donationBanner = document.getElementById('donationBanner');
     const closeBannerBtn = document.getElementById('closeDonationBanner');
+    const bannerBodyClass = 'banner-collapsed';
+
+    const updateBannerCollapsedState = () => {
+        if (!donationBanner) {
+            return;
+        }
+        const isCollapsed = donationBanner.classList.contains('hidden') ||
+            donationBanner.classList.contains('scroll-hidden');
+        document.body.classList.toggle(bannerBodyClass, isCollapsed);
+    };
 
     if (closeBannerBtn && donationBanner) {
         closeBannerBtn.addEventListener('click', () => {
             donationBanner.classList.add('hidden');
             // Store in localStorage so it stays closed
             localStorage.setItem('donationBannerClosed', 'true');
+            updateBannerCollapsedState();
         });
     }
 
     // Check if banner was previously closed
     if (donationBanner && localStorage.getItem('donationBannerClosed') === 'true') {
         donationBanner.classList.add('hidden');
+        updateBannerCollapsedState();
     }
 
     // ========== Smart Scroll Behavior for Donation Banner ==========
@@ -707,6 +719,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            updateBannerCollapsedState();
         }, false);
     }
 

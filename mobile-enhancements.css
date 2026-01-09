@@ -198,9 +198,150 @@ body {
   .hero-overlay {
     opacity: 0.88;
   }
+
+  /* iOS-specific donation banner fixes */
+  .donation-banner {
+    /* Force hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    /* Better backdrop filter for iOS */
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+
+    /* Ensure proper rendering */
+    will-change: transform;
+    -webkit-font-smoothing: antialiased;
+
+    /* Safe area handled via content padding */
+    top: 0;
+  }
+
+  .donation-banner-content {
+    /* Add safe area padding for notched devices */
+    padding-top: calc(0.85rem + env(safe-area-inset-top, 0));
+    padding-left: max(1rem, env(safe-area-inset-left, 1rem));
+    padding-right: max(1rem, env(safe-area-inset-right, 1rem));
+  }
+
+  /* Adjust header for iOS safe area when banner is visible */
+  header {
+    top: calc(52px + env(safe-area-inset-top, 0));
+  }
+
+  /* When banner is hidden */
+  .donation-banner.hidden ~ header,
+  .donation-banner.scroll-hidden ~ header {
+    top: env(safe-area-inset-top, 0);
+  }
+
+  body.banner-collapsed header {
+    top: env(safe-area-inset-top, 0);
+  }
+
+  .donation-banner-content {
+    /* Better text rendering on iOS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .donation-banner-text {
+    /* Prevent text from being too small on iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .donation-banner-btn {
+    /* Better tap target for iOS */
+    -webkit-tap-highlight-color: transparent;
+    /* Force hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  .donation-banner-close {
+    /* Better tap target for iOS */
+    -webkit-tap-highlight-color: transparent;
+    /* Force GPU rendering */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Fix for iOS backdrop-filter bug */
+  .donation-banner::before {
+    /* Ensure shimmer works on iOS */
+    -webkit-transform: translateX(-100%);
+    will-change: transform;
+  }
 }
 
-/* ---------- 14. Premium Smooth Scrolling ---------- */
+/* ---------- 14. Mobile Donation Banner Optimization ---------- */
+@media (max-width: 768px) {
+  /* Simplified layout for mobile */
+  .donation-banner {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Better contrast for mobile */
+  .donation-banner-message {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Ensure icon is visible */
+  .donation-banner-icon {
+    filter: drop-shadow(0 1px 4px rgba(255, 107, 157, 0.6));
+  }
+
+  /* Better button visibility */
+  .donation-banner-btn {
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      0 1px 3px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .donation-banner-content {
+    padding: 0.7rem 0.6rem;
+  }
+
+  .donation-banner-text {
+    gap: 0.35rem;
+  }
+
+  .donation-banner-icon {
+    font-size: 1.1rem;
+  }
+
+  .paypal-logo {
+    height: 16px;
+  }
+
+  .donation-banner-btn {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3px;
+  }
+
+  .donation-banner-close {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  .donation-banner-close svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ---------- 15. Premium Smooth Scrolling ---------- */
 /* Premium scroll experience for mobile */
 @media (max-width: 768px) {
   html {
