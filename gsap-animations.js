@@ -35,12 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
         video.defaultMuted = true;
         video.volume = 0;
         video.playsInline = true;
+        video.autoplay = true;
+        video.loop = true;
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('autoplay', '');
         video.setAttribute('loop', '');
         video.setAttribute('preload', 'auto');
+        video.load();
     }
 
     // --- Hero Video Reliability ---
@@ -60,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         const attemptPlay = () => {
-            if (reduceMotion) return;
             const playPromise = video.play();
             if (playPromise && typeof playPromise.then === 'function') {
                 playPromise.then(markPlaying).catch(markPaused);
@@ -74,10 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 350);
             }
         };
-
-        if (reduceMotion) {
-            return;
-        }
 
         video.addEventListener('playing', markPlaying);
         video.addEventListener('pause', markPaused);
@@ -95,10 +93,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         document.addEventListener('visibilitychange', retryOnShow);
         window.addEventListener('pageshow', retryOnShow);
+        document.addEventListener('page:ready', attemptPlay, { once: true });
     }
 
     function initAmbientVideoPlayback() {
-        if (reduceMotion) return;
         const videos = Array.from(document.querySelectorAll('.soiree-video'));
         if (!videos.length) return;
 
@@ -124,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.addEventListener('visibilitychange', retryAll);
         window.addEventListener('pageshow', retryAll);
+        document.addEventListener('page:ready', retryAll, { once: true });
     }
 
     // --- 1. Hero Section Animations ---
@@ -181,14 +180,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 .to(".hero-decorative-element", { opacity: 0.2, scale: 1.08 }, 0)
                 .to(".hero-scroll", { opacity: 0 }, 0.1);
         } else {
-            gsap.to(".hero-overlay", {
-                opacity: 0.98,
+            const mobileHeroTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: hero,
                     start: "top top",
                     end: "bottom top",
                     scrub: true
                 }
+            });
+
+            mobileHeroTl
+                .to(".hero-video", { scale: 1.04, transformOrigin: "center center" }, 0)
+                .to(".hero-overlay", { opacity: 0.98 }, 0)
+                .to(".hero-content", { y: -18, opacity: 0.85 }, 0)
+                .to(".hero-decorative-element", { opacity: 0.25, scale: 1.04 }, 0)
+                .to(".hero-scroll", { opacity: 0 }, 0.1);
+
+            gsap.to(".hero-decorative-element.blue-glow", {
+                y: -16,
+                x: 10,
+                duration: 10,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to(".hero-decorative-element.pink-glow", {
+                y: 14,
+                x: -8,
+                duration: 12,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1
             });
         }
     }

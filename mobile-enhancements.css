@@ -18,7 +18,7 @@
 /* ---------- 3. Header & navigation scale‑down --------------------- */
 @media (max-width: 768px) {
   header { padding: 0.75rem 0; }
-  .header-logo-img { height: 96px; }
+  .header-logo-img { height: 92px; }
   .nav-list { gap: 1.25rem; }
 }
 
@@ -57,7 +57,6 @@ button,
 /* ---------- 8. Respect user motion & accessibility preferences ------ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .hero-video { display: none !important; }
   .hero { background: var(--dark-bg); }
 }
 
@@ -104,6 +103,18 @@ body {
 
 /* ---------- 12. iOS safe-area adjustments ---------- */
 @supports (-webkit-touch-callout: none) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mobile-nav {
+    -webkit-overflow-scrolling: touch;
+  }
+
   .hero-scroll {
     bottom: calc(2rem + env(safe-area-inset-bottom));
   }
@@ -115,5 +126,17 @@ body {
   .mobile-nav {
     height: 100svh;
     padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+  }
+
+  .hero-video,
+  .soiree-video {
+    filter: none !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .hero-overlay {
+    opacity: 0.88;
   }
 }

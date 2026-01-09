@@ -365,7 +365,11 @@ main { /* Added main tag for semantic structure */
 }
 
 .section.quote-section {
-  padding: clamp(2rem, 4vh, 3rem) 0;
+  padding: clamp(1.5rem, 3vh, 2.5rem) 0;
+}
+
+.quote-section + .scholarship-section {
+  padding-top: clamp(2.5rem, 5vh, 3.5rem);
 }
 
 .section-title-container {
@@ -903,7 +907,7 @@ header.scrolled {
 }
 
 .header-logo-img {
-  height: 216px; /* Default height */
+  height: 171px; /* Default height */
   width: auto;
   display: block;
   transition: filter var(--ease-fast);
@@ -4303,7 +4307,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 192px; }
+  .header-logo-img { height: 152px; }
 
   .section {
     padding: clamp(3rem, 5vh, 4rem) 0;
@@ -4415,7 +4419,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 168px; }
+  .header-logo-img { height: 133px; }
 
   .date-label { width: 120px; } /* If you have such a class */
   .date-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; } /* If you have such a class */
@@ -4563,7 +4567,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 144px; }
+  .header-logo-img { height: 114px; }
 
   .mobile-nav { max-width: 280px; }
 
@@ -4617,7 +4621,7 @@ footer {
   }
   
   .header-logo-img {
-    height: 240px;
+    height: 190px;
   }
   
   h1 { font-size: clamp(3rem, 8vw, 4.5rem); }
@@ -4733,7 +4737,6 @@ footer {
     text-align: center;
 }
   .hero-video, .soiree-video {
-    display: none !important;
     object-fit: cover; /* Ensure proper video fitting */
     filter: brightness(0.35); /* Darkened for better text visibility */
   }
