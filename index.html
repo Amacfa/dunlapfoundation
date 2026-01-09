@@ -396,6 +396,80 @@
                 </div>
 
                 <!-- D. Online Donation via PayPal -->
+                <style>
+                    /* Elegant Donate Button Animations */
+                    @keyframes pulseGlow {
+                        0%, 100% {
+                            box-shadow: 0 0 20px rgba(0, 112, 186, 0.4),
+                                        0 0 40px rgba(0, 112, 186, 0.2),
+                                        0 0 60px rgba(0, 112, 186, 0.1),
+                                        0 8px 16px rgba(0, 0, 0, 0.3);
+                        }
+                        50% {
+                            box-shadow: 0 0 30px rgba(0, 112, 186, 0.6),
+                                        0 0 60px rgba(0, 112, 186, 0.3),
+                                        0 0 90px rgba(0, 112, 186, 0.15),
+                                        0 12px 24px rgba(0, 0, 0, 0.4);
+                        }
+                    }
+
+                    @keyframes shimmer {
+                        0% {
+                            left: -100%;
+                        }
+                        100% {
+                            left: 100%;
+                        }
+                    }
+
+                    @keyframes floatButton {
+                        0%, 100% {
+                            transform: translateY(0px);
+                        }
+                        50% {
+                            transform: translateY(-5px);
+                        }
+                    }
+
+                    .paypal-button {
+                        position: relative;
+                        animation: pulseGlow 3s ease-in-out infinite, floatButton 4s ease-in-out infinite;
+                        overflow: hidden;
+                    }
+
+                    .paypal-button::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(90deg,
+                            transparent,
+                            rgba(255, 255, 255, 0.3),
+                            transparent);
+                        animation: shimmer 3s infinite;
+                        z-index: 1;
+                    }
+
+                    .paypal-button:hover {
+                        animation: pulseGlow 1.5s ease-in-out infinite, floatButton 2s ease-in-out infinite;
+                        box-shadow: 0 0 40px rgba(0, 112, 186, 0.8),
+                                    0 0 80px rgba(0, 112, 186, 0.4),
+                                    0 0 120px rgba(0, 112, 186, 0.2),
+                                    0 15px 30px rgba(0, 0, 0, 0.5) !important;
+                    }
+
+                    .paypal-button:hover::before {
+                        animation: shimmer 1.5s infinite;
+                    }
+
+                    .paypal-button i,
+                    .paypal-button span {
+                        position: relative;
+                        z-index: 2;
+                    }
+                </style>
                 <div class="donation-online" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
                     <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate Online via PayPal</h4>
                     <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Make a secure online donation using PayPal. You can use your PayPal account or any major credit/debit card.</p>
@@ -410,6 +484,12 @@
                             </button>
                         </form>
                     </div>
+
+                    <!-- Accepted Payment Methods -->
+                    <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+                        <img src="images/cc.png" alt="We accept Visa, Mastercard, American Express, and Discover" style="max-width: 200px; height: auto; opacity: 0.8; transition: opacity 0.3s ease;">
+                    </div>
+
                     <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 0.5rem;">Secure payment processing by PayPal. All donations are tax-deductible.</p>
                 </div>
 
