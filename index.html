@@ -400,14 +400,14 @@
                     <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate Online via PayPal</h4>
                     <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Make a secure online donation using PayPal. You can use your PayPal account or any major credit/debit card.</p>
 
-                    <!-- PayPal Donate Button - Coming Soon -->
+                    <!-- PayPal Donate Button -->
                     <div id="paypal-donate-button-container" style="display: flex; justify-content: center; margin-bottom: 1rem;">
-                        <span class="btn" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; font-size: 1.1rem; opacity: 0.5; cursor: not-allowed; pointer-events: none; filter: grayscale(100%);">
-                            <i class="fab fa-paypal" style="font-size: 1.4rem;"></i>
-                            <span>Donate with PayPal</span>
-                        </span>
+                        <form action="https://www.paypal.com/donate" method="post" target="_top">
+                            <input type="hidden" name="hosted_button_id" value="T57LNB6Y84J5W" />
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                        </form>
                     </div>
-                    <p style="font-size: 0.9rem; color: var(--soft-pink); margin: 0; font-weight: 500;">Coming Soon</p>
                     <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 0.5rem;">Secure payment processing by PayPal. All donations are tax-deductible.</p>
                 </div>
 
