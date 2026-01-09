@@ -241,5 +241,120 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Add specific reveals for elements not covered by helpers if needed ---
     revealElement(".elegance-quote", ".elegance-quote", "top 90%");
 
+    // --- Hero Scroll-Down Button Functionality ---
+    const heroScrollBtn = document.querySelector('.hero-scroll');
+    if (heroScrollBtn) {
+        heroScrollBtn.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+        // Add cursor pointer to make it clear it's clickable
+        heroScrollBtn.style.cursor = 'pointer';
+    }
+
+    // --- Pause Autoplay Videos When Offscreen (Performance) ---
+    const videos = document.querySelectorAll('video[autoplay]');
+    if (videos.length > 0) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(({ target, isIntersecting }) => {
+                if (isIntersecting) {
+                    target.play().catch(() => {});
+                } else {
+                    target.pause();
+                }
+            });
+        }, { threshold: 0.2 });
+
+        videos.forEach(video => videoObserver.observe(video));
+    }
+
+    // --- UNIFIED MOTION SYSTEM ---
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+
+                const el = entry.target;
+                el.classList.add('is-visible');
+
+                // Stagger immediate children if requested
+                if (el.hasAttribute('data-animate-stagger')) {
+                    const step = Number(el.dataset.stagger || 90);
+                    [...el.children].forEach((child, i) => {
+                        child.style.setProperty('--d', `${i * step}ms`);
+                    });
+                }
+
+                revealObserver.unobserve(el);
+            }
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+        document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+            revealObserver.observe(el);
+        });
+    } else {
+        // Skip animations for users who prefer reduced motion
+        document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+            el.classList.add('is-visible');
+        });
+    }
+
+    // --- 3D TILT + SPOTLIGHT EFFECT ---
+    const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (canTilt && !reduceMotion) {
+        document.querySelectorAll('.partner-card, .event-card, .glass-card').forEach(card => {
+            card.classList.add('tilt-card');
+
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width - 0.5;
+                const py = (e.clientY - r.top) / r.height - 0.5;
+
+                card.style.transform =
+                    `perspective(900px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-6px)`;
+
+                card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width * 100).toFixed(2)}%`);
+                card.style.setProperty('--my', `${((e.clientY - r.top) / r.height * 100).toFixed(2)}%`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    // --- NAV INDICATOR (Gliding Underline) ---
+    const nav = document.querySelector('.navbar');
+    const navList = document.querySelector('.nav-list');
+
+    if (nav && navList && !reduceMotion) {
+        // Create indicator element
+        const indicator = document.createElement('span');
+        indicator.className = 'nav-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        nav.appendChild(indicator);
+
+        function moveIndicator(link) {
+            const r = link.getBoundingClientRect();
+            const nr = nav.getBoundingClientRect();
+            indicator.style.width = `${r.width}px`;
+            indicator.style.transform = `translateX(${r.left - nr.left}px)`;
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', () => moveIndicator(link));
+            link.addEventListener('focus', () => moveIndicator(link));
+        });
+
+        // Hide indicator when leaving nav
+        nav.addEventListener('mouseleave', () => {
+            indicator.style.width = '0';
+        });
+    }
 
 }); // End DOMContentLoaded
