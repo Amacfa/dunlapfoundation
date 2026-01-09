@@ -364,6 +364,10 @@ main { /* Added main tag for semantic structure */
   z-index: 1;
 }
 
+.section.quote-section {
+  padding: clamp(2rem, 4vh, 3rem) 0;
+}
+
 .section-title-container {
   margin-bottom: clamp(2rem, 5vh, 3rem); /* Reduced margin */
   position: relative;
@@ -899,7 +903,7 @@ header.scrolled {
 }
 
 .header-logo-img {
-  height: 180px; /* Default height */
+  height: 216px; /* Default height */
   width: auto;
   display: block;
   transition: filter var(--ease-fast);
@@ -4299,7 +4303,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 160px; }
+  .header-logo-img { height: 192px; }
 
   .section {
     padding: clamp(3rem, 5vh, 4rem) 0;
@@ -4411,7 +4415,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 140px; }
+  .header-logo-img { height: 168px; }
 
   .date-label { width: 120px; } /* If you have such a class */
   .date-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; } /* If you have such a class */
@@ -4559,7 +4563,7 @@ footer {
     display: none !important;
   }
 
-  .header-logo-img { height: 120px; }
+  .header-logo-img { height: 144px; }
 
   .mobile-nav { max-width: 280px; }
 
@@ -4613,7 +4617,7 @@ footer {
   }
   
   .header-logo-img {
-    height: 200px;
+    height: 240px;
   }
   
   h1 { font-size: clamp(3rem, 8vw, 4.5rem); }

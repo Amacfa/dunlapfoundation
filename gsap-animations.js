@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('autoplay', '');
         video.setAttribute('loop', '');
+        video.setAttribute('preload', 'auto');
     }
 
     // --- Hero Video Reliability ---
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.setTimeout(() => {
                     if (video.paused) {
                         markPaused();
+                    } else {
+                        markPlaying();
                     }
                 }, 350);
             }
