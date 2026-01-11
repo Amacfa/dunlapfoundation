@@ -163,7 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('page:ready', startHero, { once: true });
         }
 
-        if (!isMobile) {
+        const shouldPinHero = hero.hasAttribute('data-hero-pin');
+
+        if (!isMobile && shouldPinHero) {
             const heroScrollTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: hero,
@@ -190,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .to(".hero-content", { yPercent: -10, opacity: 0.65 }, 0)
                 .to(".hero-decorative-element", { opacity: 0.2, scale: 1.08 }, 0)
                 .to(".hero-scroll", { opacity: 0 }, 0.1);
-        } else {
+        } else if (shouldPinHero) {
             const mobileHeroTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: hero,
@@ -805,6 +807,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const donationBanner = document.getElementById('donationBanner');
     const closeBannerBtn = document.getElementById('closeDonationBanner');
     const bannerBodyClass = 'banner-collapsed';
+
+    if (!donationBanner) {
+        document.body.classList.add(bannerBodyClass);
+    }
 
     const updateBannerCollapsedState = () => {
         if (!donationBanner) {
