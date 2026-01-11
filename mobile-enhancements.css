@@ -11,6 +11,13 @@
   min-height: 100dvh;
 }
 
+@supports (height: 100lvh) {
+  .hero {
+    /* Let hero bleed under iOS browser UI */
+    min-height: 100lvh;
+  }
+}
+
 /* ---------- 2. Mobile hero fallback (keep video, add background color) */
 @media (max-width: 768px) {
   .hero { background: var(--dark-bg); }
@@ -47,6 +54,7 @@
   header { padding: 0.75rem 0; }
   .header-logo-img { height: 92px; }
   .nav-list { gap: 1.25rem; }
+  header.scrolled { padding: 0.75rem 0; }
 }
 
 /* ---------- 4. Typography – readable sizes & tighter line‑height ---- */

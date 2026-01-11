@@ -927,7 +927,7 @@ header {
   top: 52px; /* Account for donation banner */
   left: 0;
   z-index: var(--z-header);
-  transition: all var(--ease-med);
+  transition: background-color var(--ease-med), box-shadow var(--ease-med), border-color var(--ease-med), backdrop-filter var(--ease-med);
   padding: 1.5rem 0;
 }
 
