@@ -588,9 +588,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroScrollBtn = document.querySelector('.hero-scroll');
     if (heroScrollBtn) {
         heroScrollBtn.addEventListener('click', () => {
+            const targetSelector = heroScrollBtn.getAttribute('data-scroll-target');
+            const target = targetSelector ? document.querySelector(targetSelector) : null;
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
+
             const aboutSection = document.querySelector('#about');
             if (aboutSection) {
                 aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
+
+            const heroSection = document.querySelector('.hero');
+            const nextSection = heroSection ? heroSection.nextElementSibling : null;
+            if (nextSection && nextSection.scrollIntoView) {
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
         // Add cursor pointer to make it clear it's clickable
