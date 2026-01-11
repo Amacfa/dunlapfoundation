@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Learn about Evelyn Dunlap (1927-2023), whose life of faith, strength, and unwavering love inspired the foundation that bears her name. Read her full biography.">
     <meta name="keywords" content="Evelyn Dunlap, Biography, Foundation, Faith, Service, Community, Single Mother, Church Leader, Philanthropy">
     <meta name="author" content="Evelyn Dunlap Foundation">
@@ -533,6 +533,7 @@
             const mobileToggle = document.getElementById('mobileToggle');
             const mobileNav = document.getElementById('mobileNav');
             const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
             
             mobileToggle.addEventListener('click', function() {
                 mobileNav.classList.toggle('active');
@@ -548,31 +549,30 @@
                 });
             });
 
-            // Header scroll effect
-            let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
+            // Scroll-driven UI updates (throttled for smoothness on mobile)
+            let scrollTicking = false;
+            const updateScrollState = () => {
+                const scrollY = window.scrollY || window.pageYOffset;
+                if (header) {
+                    header.classList.toggle('scrolled', scrollY > 50);
                 }
-                
-                lastScroll = currentScroll;
-            });
+                if (backToTop) {
+                    backToTop.classList.toggle('visible', scrollY > 600);
+                }
+                scrollTicking = false;
+            };
 
-            // Show/hide back to top button
-            const backToTop = document.getElementById('backToTop');
+            const onScroll = () => {
+                if (scrollTicking) return;
+                scrollTicking = true;
+                requestAnimationFrame(updateScrollState);
+            };
+
+            updateScrollState();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', updateScrollState);
+
             if (backToTop) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 600) {
-                        backToTop.classList.add('visible');
-                    } else {
-                        backToTop.classList.remove('visible');
-                    }
-                });
-
                 backToTop.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
