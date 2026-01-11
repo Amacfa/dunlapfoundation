@@ -231,6 +231,7 @@ body {
   }
 
   .hero-video,
+  .soiree-media,
   .soiree-video {
     filter: none !important;
     transform: translateZ(0);

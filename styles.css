@@ -2055,6 +2055,9 @@ body.banner-collapsed .hero {
     justify-content: center;
     gap: 1rem;
   }
+  .event-year {
+    margin-top: 0;
+  }
    .about-img-decoration{
     font-size:0.85rem;
     padding:0.5rem 1rem;
@@ -3300,6 +3303,12 @@ body.modal-open {
   overflow: hidden;
 }
 
+.soiree-img--lower {
+  justify-content: flex-end;
+  padding-bottom: clamp(2.5rem, 8vh, 5rem);
+}
+
+.soiree-media,
 .soiree-video {
   position: absolute;
   top: 50%;
@@ -3315,6 +3324,7 @@ body.modal-open {
   transition: filter 1.5s var(--ease-gentle);
 }
 
+.soiree-event:hover .soiree-media,
 .soiree-event:hover .soiree-video {
   filter: brightness(0.45) saturate(0.85) contrast(1.15);
 }
@@ -3440,6 +3450,25 @@ body.modal-open {
   text-align: center;
 }
 
+.events-calendar-chip-wrap {
+  display: flex;
+  justify-content: center;
+  margin: -1rem 0 2rem;
+}
+
+.events-calendar-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(229, 169, 188, 0.12);
+  border: 1px solid rgba(229, 169, 188, 0.25);
+  color: var(--text-secondary);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .event-card {
   display: flex;
   background-color: var(--dark-card);
@@ -3501,6 +3530,14 @@ body.modal-open {
   letter-spacing: 2px;
   margin-top: 0.5rem;
   font-weight: 500;
+}
+
+.event-year {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 .event-details {
@@ -4982,7 +5019,9 @@ footer {
     margin-top: 2rem;
     text-align: center;
 }
-  .hero-video, .soiree-video {
+  .hero-video,
+  .soiree-media,
+  .soiree-video {
     object-fit: cover; /* Ensure proper video fitting */
     filter: brightness(0.35); /* Darkened for better text visibility */
   }
