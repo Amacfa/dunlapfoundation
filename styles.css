@@ -3533,6 +3533,43 @@ body.modal-open {
   color: var(--text-secondary);
 }
 
+.event-thanks {
+  background: linear-gradient(135deg, rgba(52, 84, 209, 0.1), rgba(229, 169, 188, 0.08));
+  border: 1px solid rgba(52, 84, 209, 0.2);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.event-thanks-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--royal-blue-light);
+  font-weight: 600;
+}
+
+.event-thanks-list {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-secondary);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.event-thanks-list li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.event-thanks-list li::before {
+  content: "•";
+  color: var(--soft-pink);
+  line-height: 1.1;
+}
+
 /* ---------- PARTNERS SECTION ---------- */
 .partners-section {
   padding-top: clamp(2rem, 4vh, 3rem);
