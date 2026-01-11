@@ -819,32 +819,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== Smart Scroll Behavior for Donation Banner ==========
     if (donationBanner && localStorage.getItem('donationBannerClosed') !== 'true') {
         let lastScrollTop = 0;
-        let isScrolling;
         const scrollThreshold = 100; // Minimum scroll distance to trigger hide/show
+        let bannerTicking = false;
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const handleBannerScroll = () => {
+            if (bannerTicking) return;
+            bannerTicking = true;
+            requestAnimationFrame(() => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Clear timeout for scroll end detection
-            clearTimeout(isScrolling);
-
-            // Only react after scrolling past threshold
-            if (scrollTop > scrollThreshold) {
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling down - hide banner
-                    donationBanner.classList.add('scroll-hidden');
+                // Only react after scrolling past threshold
+                if (scrollTop > scrollThreshold) {
+                    if (scrollTop > lastScrollTop) {
+                        // Scrolling down - hide banner
+                        donationBanner.classList.add('scroll-hidden');
+                    } else {
+                        // Scrolling up - show banner
+                        donationBanner.classList.remove('scroll-hidden');
+                    }
                 } else {
-                    // Scrolling up - show banner
+                    // At top of page - always show banner
                     donationBanner.classList.remove('scroll-hidden');
                 }
-            } else {
-                // At top of page - always show banner
-                donationBanner.classList.remove('scroll-hidden');
-            }
 
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-            updateBannerCollapsedState();
-        }, false);
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                updateBannerCollapsedState();
+                bannerTicking = false;
+            });
+        };
+
+        window.addEventListener('scroll', handleBannerScroll, { passive: true });
     }
 
 }); // End DOMContentLoaded

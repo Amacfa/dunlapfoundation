@@ -4078,13 +4078,13 @@ body.modal-open {
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: var(--z-base);
-  filter: brightness(0.4) saturate(0.8) contrast(1.1);
+  filter: brightness(0.34) saturate(0.85) contrast(1.12);
   transition: filter 1.5s var(--ease-gentle);
 }
 
 .soiree-event:hover .soiree-media,
 .soiree-event:hover .soiree-video {
-  filter: brightness(0.45) saturate(0.85) contrast(1.15);
+  filter: brightness(0.4) saturate(0.88) contrast(1.15);
 }
 
 .soiree-img::before {
@@ -4095,18 +4095,18 @@ body.modal-open {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, 
-    rgba(10, 12, 21, 0.6) 0%, 
-    rgba(10, 12, 21, 0.4) 50%,
-    rgba(10, 12, 21, 0.7) 100%);
+    rgba(10, 12, 21, 0.72) 0%, 
+    rgba(10, 12, 21, 0.5) 50%,
+    rgba(10, 12, 21, 0.78) 100%);
   z-index: var(--z-content);
   transition: background 1.5s var(--ease-gentle);
 }
 
 .soiree-event:hover .soiree-img::before {
   background: linear-gradient(135deg, 
-    rgba(10, 12, 21, 0.5) 0%, 
-    rgba(10, 12, 21, 0.3) 50%,
-    rgba(10, 12, 21, 0.6) 100%);
+    rgba(10, 12, 21, 0.6) 0%, 
+    rgba(10, 12, 21, 0.42) 50%,
+    rgba(10, 12, 21, 0.68) 100%);
 }
 
 .soiree-img h1,
@@ -4990,12 +4990,18 @@ footer {
   justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  aspect-ratio: 1 / 1;
+  appearance: none;
+  -webkit-appearance: none;
   opacity: 0;
   transform: translateY(20px);
   transition: all var(--ease-med);
   box-shadow: var(--shadow-md);
   z-index: var(--z-floating-ui);
   border: none;
+  overflow: hidden;
 }
 
 .back-to-top.visible {
