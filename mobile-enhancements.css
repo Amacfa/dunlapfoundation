@@ -239,6 +239,21 @@ body {
     backface-visibility: hidden;
   }
 
+  .hero-aurora {
+    opacity: 0.4;
+    filter: blur(38px) saturate(1.15);
+  }
+
+  .hero-mesh {
+    opacity: 0.24;
+    filter: blur(44px) saturate(1.05);
+  }
+
+  .hero-title::before {
+    opacity: 0.32;
+    filter: blur(34px);
+  }
+
   .hero-overlay {
     opacity: 0.88;
   }
@@ -273,6 +288,22 @@ body {
     padding-top: calc(0.85rem + env(safe-area-inset-top, 0));
     padding-left: max(1rem, env(safe-area-inset-left, 1rem));
     padding-right: max(1rem, env(safe-area-inset-right, 1rem));
+  }
+
+  .section {
+    scroll-margin-top: calc(7rem + 52px + env(safe-area-inset-top, 0));
+  }
+
+  body.banner-collapsed .section {
+    scroll-margin-top: calc(7rem + env(safe-area-inset-top, 0));
+  }
+
+  #applicationForm {
+    scroll-margin-top: calc(7rem + 52px + env(safe-area-inset-top, 0));
+  }
+
+  body.banner-collapsed #applicationForm {
+    scroll-margin-top: calc(7rem + env(safe-area-inset-top, 0));
   }
 
   /* Adjust header for iOS safe area when banner is visible */
@@ -407,6 +438,14 @@ body {
 
   body {
     -webkit-overflow-scrolling: touch;
+  }
+
+  input,
+  select,
+  textarea,
+  .form-control,
+  .footer-newsletter-input {
+    font-size: 16px;
   }
 
   /* Momentum-based smooth scrolling */
