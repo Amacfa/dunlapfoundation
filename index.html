@@ -168,15 +168,15 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero-sticky">
     <section class="hero" id="home">
         <!-- Hero Background Video or Image -->
-        <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="./images/study.webp" webkit-playsinline data-hero-depth="0.03">
+        <video class="hero-video" autoplay loop muted playsinline preload="metadata" poster="./images/study.webp" webkit-playsinline data-hero-depth="0.03">
             <source src="./images/v-2.mp4" type="video/mp4">
         </video>
         <div class="hero-fallback" aria-hidden="true" data-hero-depth="0.015"></div>
         <div class="hero-aurora" aria-hidden="true" data-hero-depth="0.07"></div>
         <div class="hero-mesh" aria-hidden="true" data-hero-depth="0.05"></div>
+        <div class="hero-orbs" aria-hidden="true" data-hero-depth="0.06"></div>
         <div class="hero-overlay" data-hero-depth="0.02"></div>
         <div class="hero-tint" aria-hidden="true" data-hero-depth="0.04"></div>
         <div class="hero-light-scatter" aria-hidden="true" data-hero-depth="0.09"></div>
@@ -188,7 +188,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-subtitle">A Legacy of Elegance & Impact</div>
-                <h1 class="hero-title">Nourishing Lives, <span class="text-gradient">Empowering Minds</span></h1>
+                <h1 class="hero-title"><span class="hero-title-soft">Nourishing Lives,</span> <span class="text-gradient">Empowering Minds</span></h1>
                 <p class="hero-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
                 <div class="hero-buttons">
                     <a href="#donate" class="btn">
@@ -214,7 +214,6 @@
             </div>
         </div>
     </section>
-    </div>
 
     <!-- Tax-Exempt Status Banner -->
     <section class="tax-exempt-banner" style="background: linear-gradient(135deg, rgba(52, 84, 209, 0.15), rgba(229, 169, 188, 0.1)); padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
@@ -387,79 +386,12 @@
             </div>
             
             <div class="donation-container">
-                <!-- A. Online Donation via PayPal -->
-                <div class="donation-online hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
-                    <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate Online via PayPal</h4>
-                    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Make a secure online donation using PayPal. You can use your PayPal account or any major credit/debit card.</p>
-
-                    <!-- PayPal Donate Button -->
-                    <div id="paypal-donate-button-container" style="display: flex; justify-content: center; margin-bottom: 1rem;">
-                        <form action="https://www.paypal.com/donate" method="post" target="_top" style="width: 100%; max-width: 400px;">
-                            <input type="hidden" name="hosted_button_id" value="T57LNB6Y84J5W" />
-                            <button type="submit" class="payment-button paypal-button">
-                                <i class="fab fa-paypal" style="font-size: 1.4rem;"></i>
-                                <span>Donate with PayPal</span>
-                            </button>
-                        </form>
+                <div class="donation-impact donation-impact--hero hdr-pop">
+                    <div class="donation-impact-header">
+                        <h3 class="impact-title">Your Impact</h3>
+                        <p class="impact-description">See how your contributions have helped us make a difference in education and community development over the past year.</p>
                     </div>
-
-                    <!-- Accepted Payment Methods -->
-                    <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
-                        <img src="images/cc.png" alt="We accept Visa, Mastercard, American Express, and Discover" style="max-width: 200px; height: auto; opacity: 0.8; transition: opacity 0.3s ease;">
-                    </div>
-
-                    <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 0.5rem;">Secure payment processing by PayPal. All donations are tax-deductible.</p>
-                </div>
-
-                <!-- B. Quick Facts -->
-                <div class="donation-quick-facts hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.05);">
-                    <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem; text-align: center;">Foundation Information</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                        <div>
-                            <p style="margin: 0.5rem 0;"><strong>Legal name:</strong> Evelyn Dunlap Foundation</p>
-                            <p style="margin: 0.5rem 0;"><strong>EIN (Tax ID):</strong> 39-4239693</p>
-                        </div>
-                        <div>
-                            <p style="margin: 0.5rem 0;"><strong>Mailing address:</strong> 7315 Meadow Point Drive, Stone Mountain, GA 30087</p>
-                            <p style="margin: 0.5rem 0;"><strong>Contact:</strong> JonPierre Carlo Dunlap — (310) 924-9557</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- C. Donation Instructions -->
-                <div class="donation-instructions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2.5rem;">
-                    <div class="daf-instructions hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">DAF (Donor-Advised Fund) Grant</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.8rem;">• In your DAF, search "Evelyn Dunlap Foundation" or paste EIN <strong>39-4239693</strong></li>
-                            <li style="margin-bottom: 0.8rem;">• Address: <strong>7315 Meadow Point Drive, Stone Mountain, GA 30087</strong></li>
-                            <li style="margin-bottom: 0.8rem;">• Grant purpose (memo): <strong>General Fund</strong> or <strong>Scholarship Fund</strong></li>
-                            <li style="margin-bottom: 0.8rem;">• Primary contact: <strong>JonPierre Carlo Dunlap, (310) 924-9557</strong></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="check-instructions hdr-pop" style="background: var(--glass-card); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h4 style="color: var(--soft-pink); margin-bottom: 1rem;">Donate by Check (Mail)</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.8rem;">• Payable to: <strong>Evelyn Dunlap Foundation</strong></li>
-                            <li style="margin-bottom: 0.8rem;">• Memo: <strong>General Fund</strong> (or specify a program)</li>
-                            <li style="margin-bottom: 0.8rem;">• Mail to: <strong>7315 Meadow Point Drive, Stone Mountain, GA 30087</strong></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- D. Receipts Note -->
-                <div class="donation-receipts-note hdr-pop" style="background: rgba(255, 255, 255, 0.02); border-radius: 8px; padding: 1.5rem; margin-bottom: 2.5rem;">
-                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-tertiary); line-height: 1.6;">
-                        <strong>Receipts/Acknowledgment:</strong> DAF donors receive tax receipts from their sponsoring organization. For check donations, we'll email/mail an acknowledgment upon deposit. Questions: <strong>(310) 924-9557</strong>.
-                    </p>
-                </div>
-                
-                <div class="donation-impact">
-                    <h3 class="impact-title">Your Impact</h3>
-                    <p class="impact-description">See how your contributions have helped us make a difference in education and community development over the past year.</p>
-                    
-                    <div class="impact-stats">
+                    <div class="impact-stats impact-stats--inline">
                         <div class="impact-stat">
                             <div class="impact-number">4</div>
                             <div class="impact-text">Scholarships Awarded</div>
@@ -476,6 +408,102 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="donation-widget glass-card hdr-pop" data-donation-widget>
+                    <div class="donation-widget-header">
+                        <h3 class="donation-widget-title">Donate <span class="text-gradient">Now</span></h3>
+                        <p class="donation-widget-subtitle">Choose a payment method. You can confirm the final amount on PayPal.</p>
+                    </div>
+
+                    <div class="donation-flow">
+                        <div class="donation-step donation-step--method">
+                            <div class="donation-step-header">
+                                <span class="donation-step-label">Step 1</span>
+                                <h4 class="donation-step-title">Select a payment method</h4>
+                            </div>
+
+                            <div class="donation-tabs" data-donation-tabs>
+                                <div class="donation-tablist" role="tablist" aria-label="Donation payment methods" data-active="paypal">
+                                    <button type="button" class="donation-tab is-active" role="tab" aria-selected="true" aria-controls="donation-panel-paypal" id="donation-tab-paypal" data-tab="paypal">
+                                        <i class="fab fa-paypal"></i>
+                                        <span>PayPal / Card</span>
+                                    </button>
+                                    <button type="button" class="donation-tab" role="tab" aria-selected="false" aria-controls="donation-panel-daf" id="donation-tab-daf" data-tab="daf">
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                        <span>DAF Grant</span>
+                                    </button>
+                                    <button type="button" class="donation-tab" role="tab" aria-selected="false" aria-controls="donation-panel-check" id="donation-tab-check" data-tab="check">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>Mail Check</span>
+                                    </button>
+                                </div>
+
+                                <div class="donation-panels">
+                                    <div class="donation-panel is-active" role="tabpanel" id="donation-panel-paypal" aria-labelledby="donation-tab-paypal" data-panel="paypal">
+                                        <form action="https://www.paypal.com/donate" method="post" target="_top" class="donation-paypal-form">
+                                            <input type="hidden" name="hosted_button_id" value="T57LNB6Y84J5W" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <button type="submit" class="payment-button paypal-button">
+                                                <i class="fab fa-paypal" style="font-size: 1.4rem;"></i>
+                                                <span>Continue to PayPal</span>
+                                            </button>
+                                        </form>
+                                        <div class="donation-accepted">
+                                            <img src="images/cc.png" alt="We accept Visa, Mastercard, American Express, and Discover" loading="lazy">
+                                        </div>
+                                        <p class="donation-panel-note">All donations are tax-deductible. The final amount is confirmed on PayPal.</p>
+                                    </div>
+
+                                    <div class="donation-panel" role="tabpanel" id="donation-panel-daf" aria-labelledby="donation-tab-daf" data-panel="daf" hidden>
+                                        <ul class="donation-steps">
+                                            <li>Search “Evelyn Dunlap Foundation” or EIN <strong>39-4239693</strong></li>
+                                            <li>Grant purpose: <strong>General Fund</strong> or <strong>Scholarship Fund</strong></li>
+                                            <li>Need mailing details? See Foundation Information below.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="donation-panel" role="tabpanel" id="donation-panel-check" aria-labelledby="donation-tab-check" data-panel="check" hidden>
+                                        <ul class="donation-steps">
+                                            <li>Payable to: <strong>Evelyn Dunlap Foundation</strong></li>
+                                            <li>Memo: <strong>General Fund</strong> (or specify a program)</li>
+                                            <li>Mail to: <strong>7315 Meadow Point Drive, Stone Mountain, GA 30087</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <details class="donation-details glass-card">
+                    <summary>
+                        <span>Foundation Information</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </summary>
+                    <div class="donation-details-body">
+                        <dl class="donation-info-list">
+                            <div class="donation-info-item">
+                                <dt>Legal name</dt>
+                                <dd>Evelyn Dunlap Foundation</dd>
+                            </div>
+                            <div class="donation-info-item">
+                                <dt>EIN (Tax ID)</dt>
+                                <dd>39-4239693</dd>
+                            </div>
+                            <div class="donation-info-item">
+                                <dt>Mailing address</dt>
+                                <dd>7315 Meadow Point Drive, Stone Mountain, GA 30087</dd>
+                            </div>
+                            <div class="donation-info-item">
+                                <dt>Primary contact</dt>
+                                <dd>JonPierre Carlo Dunlap — (310) 924-9557</dd>
+                            </div>
+                        </dl>
+                        <div class="donation-note">
+                            <strong>Receipts/Acknowledgment:</strong> DAF donors receive tax receipts from their sponsoring organization. For check donations, we’ll email/mail an acknowledgment upon deposit. Questions: <strong>(310) 924-9557</strong>.
+                        </div>
+                    </div>
+                </details>
             </div>
         </div>
     </section>

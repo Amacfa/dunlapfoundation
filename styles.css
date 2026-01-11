@@ -420,6 +420,14 @@ main { /* Added main tag for semantic structure */
   margin-bottom: 0.5rem;
   z-index: var(--z-content);
   will-change: transform, opacity, clip-path;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
 }
 .form-popup-overlay {
     position: fixed;
@@ -1263,22 +1271,6 @@ header.scrolled .mobile-toggle span {
 
 
 /* ---------- HERO SECTION ---------- */
-.hero-sticky {
-  position: relative;
-}
-
-@media (min-width: 769px) {
-  .hero-sticky {
-    height: 180vh;
-  }
-
-  .hero-sticky .hero {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-  }
-}
-
 .hero {
   min-height: 100vh;
   display: flex;
@@ -1321,7 +1313,8 @@ body.banner-collapsed .hero {
   background:
     radial-gradient(circle at 25% 20%, rgba(52, 84, 209, 0.2), transparent 60%),
     radial-gradient(circle at 75% 70%, rgba(229, 169, 188, 0.18), transparent 65%),
-    linear-gradient(135deg, rgba(10, 12, 21, 0.9), rgba(10, 12, 21, 0.7));
+    linear-gradient(135deg, rgba(10, 12, 21, 0.9), rgba(10, 12, 21, 0.7)),
+    url("images/study.webp") center/cover no-repeat;
   opacity: 1;
   transition: opacity 0.6s var(--ease-med);
   pointer-events: none;
@@ -1371,6 +1364,29 @@ body.banner-collapsed .hero {
 
 .hero.video-playing .hero-mesh {
   opacity: 0.36;
+}
+
+.hero-orbs {
+  position: absolute;
+  inset: -10%;
+  z-index: var(--z-content);
+  opacity: 0.22;
+  pointer-events: none;
+  background:
+    radial-gradient(35% 35% at 18% 30%, rgba(255, 255, 255, 0.2), transparent 65%),
+    radial-gradient(28% 30% at 82% 22%, rgba(88, 118, 255, 0.22), transparent 70%),
+    radial-gradient(32% 34% at 70% 78%, rgba(229, 169, 188, 0.2), transparent 72%),
+    radial-gradient(22% 24% at 35% 70%, rgba(120, 200, 255, 0.16), transparent 68%);
+  mix-blend-mode: screen;
+  filter: blur(24px) saturate(1.05);
+  transform: translateZ(0);
+  transition: opacity 1.5s var(--ease-gentle);
+  animation: orbDrift 24s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hero.video-playing .hero-orbs {
+  opacity: 0.28;
 }
 
 .hero.video-playing .hero-fallback {
@@ -1473,6 +1489,12 @@ body.banner-collapsed .hero {
   100% { transform: translate3d(1%, 2%, 0) scale(1.02); }
 }
 
+@keyframes orbDrift {
+  0% { transform: translate3d(-1%, 1%, 0) scale(1); }
+  50% { transform: translate3d(1.5%, -1%, 0) scale(1.04); }
+  100% { transform: translate3d(-1%, 2%, 0) scale(1.02); }
+}
+
 @keyframes heroHalo {
   0% { transform: scale(1); opacity: 0.35; }
   50% { transform: scale(1.05); opacity: 0.55; }
@@ -1542,6 +1564,18 @@ body.banner-collapsed .hero {
   display: inline-block;
   z-index: var(--z-content);
   text-shadow: 0 12px 32px rgba(10, 12, 21, 0.55);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+
+.hero-title-soft {
+  font-weight: 500;
 }
 
 .hero-title::before {
@@ -1562,10 +1596,12 @@ body.banner-collapsed .hero {
   background-size: 240% 100%; /* For shimmer effect */
   animation: heroShimmer 18s ease-in-out infinite;
   will-change: background-position, filter;
+  font-weight: 600;
   text-shadow:
     0 0 18px rgba(88, 118, 255, 0.5),
     0 0 28px rgba(229, 169, 188, 0.35);
 }
+
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.25rem); /* Responsive font size */
@@ -2187,6 +2223,32 @@ body.banner-collapsed .hero {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
+  .donation-card {
+    padding: 1.75rem;
+  }
+  .donation-giving-header {
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .donation-info-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .donation-paypal-form {
+    max-width: 100%;
+  }
+  .donation-card-footnote {
+    text-align: left;
+  }
+  .donation-accepted {
+    justify-content: flex-start;
+  }
+  .donation-support-grid {
+    grid-template-columns: 1fr;
+  }
   .event-card {
     flex-direction: column;
   }
@@ -2772,6 +2834,553 @@ textarea.form-control {
   animation: zoom var(--ease-reveal) forwards;
 }
 
+.donation-impact.donation-impact--hero {
+  margin: 0 0 2rem;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(52, 84, 209, 0.12), rgba(20, 24, 42, 0.85));
+  border: 1px solid rgba(78, 107, 230, 0.18);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.donation-impact.donation-impact--hero::before {
+  display: none;
+}
+
+.donation-impact-header {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+}
+
+.donation-impact.donation-impact--hero .impact-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.donation-impact.donation-impact--hero .impact-description {
+  margin: 0;
+  text-align: left;
+}
+
+.donation-impact.donation-impact--hero .impact-stats {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.donation-impact.donation-impact--hero .impact-stat {
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.donation-impact.donation-impact--hero .impact-number::after {
+  left: 0;
+  transform: none;
+}
+
+.donation-impact.donation-impact--hero .impact-text {
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+}
+
+.donation-widget {
+  padding: 2rem;
+  border-radius: 16px;
+  display: grid;
+  gap: 1.75rem;
+  background: rgba(16, 20, 36, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-lg);
+}
+
+.donation-widget.glass-card:hover,
+.donation-details.glass-card:hover {
+  transform: translateY(-4px);
+  filter: none;
+}
+
+.donation-widget-header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.donation-widget-title {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--text-primary);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding-bottom: 0.35rem;
+  position: relative;
+}
+
+.donation-widget-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--royal-blue), var(--soft-pink));
+  opacity: 0.7;
+}
+
+.donation-widget-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.donation-flow {
+  display: grid;
+  gap: 2rem;
+}
+
+.donation-step {
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-step-header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.donation-step-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: var(--soft-pink);
+  font-weight: 600;
+}
+
+.donation-step-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+
+.donation-tabs {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-tablist {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 12px;
+  background: rgba(5, 7, 14, 0.4);
+  position: relative;
+  --tab-gap: 0.5rem;
+  --tab-padding: 0.4rem;
+  --tab-index: 0;
+}
+
+.donation-tablist::before {
+  content: '';
+  position: absolute;
+  top: var(--tab-padding);
+  left: var(--tab-padding);
+  width: calc((100% - (var(--tab-gap) * 2) - (var(--tab-padding) * 2)) / 3);
+  height: calc(100% - (var(--tab-padding) * 2));
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-light));
+  box-shadow: 0 10px 24px rgba(52, 84, 209, 0.25);
+  transform: translateX(calc(var(--tab-index) * (100% + var(--tab-gap))));
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.donation-tablist[data-active="paypal"] {
+  --tab-index: 0;
+}
+
+.donation-tablist[data-active="daf"] {
+  --tab-index: 1;
+}
+
+.donation-tablist[data-active="check"] {
+  --tab-index: 2;
+}
+
+.donation-tab {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  padding: 0.75rem 0.6rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: color var(--ease-fast), background var(--ease-med), transform var(--ease-fast);
+  position: relative;
+  z-index: 1;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.donation-tab i {
+  font-size: 1rem;
+}
+
+.donation-tab.is-active {
+  color: #fff;
+  transform: translateY(-1px);
+  text-shadow: 0 4px 12px rgba(10, 12, 21, 0.35);
+}
+
+.donation-panels {
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-panel {
+  display: grid;
+  gap: 0.8rem;
+  text-align: center;
+  align-items: center;
+}
+
+.donation-panel.is-active {
+  animation: donationPanelSlide 0.45s ease;
+}
+
+.donation-panel[hidden] {
+  display: none;
+}
+
+@keyframes donationPanelSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.donation-panel-note {
+  margin: 0 auto;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 420px;
+}
+
+.donation-panel .donation-paypal-form {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.donation-panel .donation-accepted {
+  justify-content: center;
+}
+
+.donation-panel .donation-steps {
+  width: min(420px, 100%);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.donation-details {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(18, 22, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.donation-details summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.donation-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.donation-details summary i {
+  transition: transform var(--ease-med);
+}
+
+.donation-details[open] summary i {
+  transform: rotate(180deg);
+}
+
+.donation-details-body {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  align-items: start;
+}
+
+.donation-card {
+  background: var(--glass-card);
+  border-radius: 14px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.donation-card--primary {
+  background: linear-gradient(135deg, rgba(52, 84, 209, 0.22), rgba(20, 24, 42, 0.7));
+  border-color: rgba(78, 107, 230, 0.35);
+  box-shadow: var(--shadow-elegant);
+}
+
+.donation-card--info {
+  background: rgba(20, 24, 42, 0.65);
+}
+
+.donation-card-header {
+  margin-bottom: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.donation-card-body {
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-action {
+  display: grid;
+  gap: 0.85rem;
+  align-items: center;
+  justify-items: start;
+}
+
+.donation-card .payment-button-container {
+  margin-top: 0;
+  padding-top: 0;
+  justify-content: flex-start;
+}
+
+@media (min-width: 900px) {
+  .donation-action {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .donation-action .donation-accepted {
+    justify-content: flex-end;
+  }
+}
+
+.donation-card-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--soft-pink);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(229, 169, 188, 0.12);
+  border: 1px solid rgba(229, 169, 188, 0.25);
+}
+
+.donation-card-title {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+}
+
+.donation-card-description {
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.donation-paypal-form {
+  width: 100%;
+  max-width: 360px;
+  margin: 0;
+}
+
+.donation-accepted {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+}
+
+.donation-accepted img {
+  max-width: 200px;
+  height: auto;
+  opacity: 0.85;
+}
+
+.donation-card-footnote {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-top: 0.25rem;
+  text-align: left;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.donation-info-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+}
+
+.donation-info-item {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.donation-info-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.donation-info-item dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.donation-info-item dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.donation-note {
+  margin-top: 0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--separator);
+  border-left: 2px solid rgba(229, 169, 188, 0.45);
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.donation-giving {
+  margin-bottom: 2.5rem;
+}
+
+.donation-giving-header {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 0 1.5rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.donation-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+
+.donation-support-grid .donation-card {
+  padding: 1.75rem;
+  gap: 1rem;
+}
+
+.donation-support-grid .donation-card-title {
+  font-size: 1.25rem;
+}
+
+.donation-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+  color: var(--text-secondary);
+  counter-reset: donation-step;
+}
+
+.donation-steps li {
+  position: relative;
+  padding-left: 2rem;
+  counter-increment: donation-step;
+  line-height: 1.55;
+}
+
+.donation-steps li::before {
+  content: counter(donation-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(52, 84, 209, 0.22);
+  border: 1px solid rgba(78, 107, 230, 0.4);
+}
+
+.donation-steps strong {
+  color: var(--text-primary);
+}
+
 .donation-intro {
   text-align: center;
   max-width: 700px;
@@ -2849,9 +3458,11 @@ textarea.form-control {
 }
 
 .payment-button-container {
-  margin-top: auto;
+  margin-top: 1.5rem;
   width: 100%;
-  padding-top: 1rem;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
   opacity: 0;
 }
 
@@ -4367,8 +4978,8 @@ footer {
 /* ---------- BACK TO TOP BUTTON ---------- */
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: calc(2rem + env(safe-area-inset-bottom, 0));
+  right: calc(2rem + env(safe-area-inset-right, 0));
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -5147,6 +5758,12 @@ footer {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .donation-tablist::before {
+    transition: none !important;
+  }
+  .donation-panel.is-active {
+    animation: none !important;
+  }
   .modal-content,
   .modal-title,
   .modal-close,
@@ -5178,6 +5795,11 @@ footer {
   .hero-mesh {
     animation: none !important;
     opacity: 0.25;
+  }
+
+  .hero-orbs {
+    animation: none !important;
+    opacity: 0.2;
   }
 
   .hero-title::before {

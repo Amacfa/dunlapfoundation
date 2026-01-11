@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         video.setAttribute('webkit-playsinline', '');
         video.setAttribute('autoplay', '');
         video.setAttribute('loop', '');
-        video.setAttribute('preload', 'auto');
+        video.setAttribute('preload', 'metadata');
         video.load();
     }
 
@@ -132,14 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
 
-        const heroTargets = ".hero-subtitle, .hero-title, .hero-description";
-        gsap.set(heroTargets, { opacity: 0, y: 22, filter: "blur(8px)" });
-        gsap.set(".hero-title", { scale: 0.985, transformOrigin: "center center" });
-        gsap.set(".hero-buttons .btn", { opacity: 0, y: 18, scale: 0.98, filter: "blur(6px)" });
-        gsap.set(".hero-scroll", { opacity: 0, y: 10 });
+        gsap.set(".hero-subtitle", { opacity: 0, y: 28, filter: "blur(10px)" });
+        gsap.set(".hero-title", { opacity: 0, y: 34, scale: 0.97, filter: "blur(12px)", transformOrigin: "center center" });
+        gsap.set(".hero-description", { opacity: 0, y: 26, filter: "blur(8px)" });
+        gsap.set(".hero-buttons .btn", { opacity: 0, y: 22, scale: 0.97, filter: "blur(6px)" });
+        gsap.set(".hero-scroll", { opacity: 0, y: 12 });
 
         if (reduceMotion) {
-            gsap.set(heroTargets, { opacity: 1, y: 0, filter: "blur(0px)" });
+            gsap.set(".hero-subtitle, .hero-title, .hero-description", { opacity: 1, y: 0, filter: "blur(0px)" });
             gsap.set(".hero-buttons .btn", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" });
             gsap.set(".hero-scroll", { opacity: 1, y: 0 });
             return;
@@ -147,14 +147,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const heroTl = gsap.timeline({
             paused: true,
-            defaults: { ease: "power2.out" }
+            defaults: { ease: "power3.out" }
         });
         heroTl
-            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9 })
-            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.35 }, "-=0.55")
-            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1 }, "-=0.8")
-            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 0.95, stagger: 0.12 }, "-=0.75")
-            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" }, "-=0.4");
+            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.95 })
+            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.55 }, "-=0.5")
+            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.15 }, "-=0.75")
+            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.05, stagger: 0.12 }, "-=0.8")
+            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.85, ease: "power2.out" }, "-=0.45");
 
         const startHero = () => heroTl.play(0);
         if (document.body.classList.contains('is-loaded')) {
@@ -182,6 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     transformOrigin: "center center"
                 }, 0)
                 .to(".hero-overlay", { opacity: 0.98 }, 0)
+                .to(".hero-aurora", { yPercent: -8, scale: 1.06, opacity: 0.6 }, 0)
+                .to(".hero-mesh", { yPercent: -6, scale: 1.04, opacity: 0.45 }, 0)
+                .to(".hero-orbs", { yPercent: -5, scale: 1.03, opacity: 0.32 }, 0)
+                .to(".hero-tint", { yPercent: -4 }, 0)
+                .to(".hero-light-scatter", { yPercent: -6, scale: 1.05 }, 0)
                 .to(".hero-content", { yPercent: -10, opacity: 0.65 }, 0)
                 .to(".hero-decorative-element", { opacity: 0.2, scale: 1.08 }, 0)
                 .to(".hero-scroll", { opacity: 0 }, 0.1);
@@ -190,14 +195,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollTrigger: {
                     trigger: hero,
                     start: "top top",
-                    end: "bottom top",
-                    scrub: true
+                    end: "+=80%",
+                    scrub: true,
+                    pin: true,
+                    anticipatePin: 1
                 }
             });
 
             mobileHeroTl
                 .to(".hero-video", { scale: 1.04, transformOrigin: "center center" }, 0)
                 .to(".hero-overlay", { opacity: 0.98 }, 0)
+                .to(".hero-aurora", { yPercent: -4, scale: 1.03, opacity: 0.55 }, 0)
+                .to(".hero-mesh", { yPercent: -3, scale: 1.02, opacity: 0.4 }, 0)
+                .to(".hero-orbs", { yPercent: -3, scale: 1.02, opacity: 0.28 }, 0)
+                .to(".hero-light-scatter", { yPercent: -4, scale: 1.03 }, 0)
                 .to(".hero-content", { y: -18, opacity: 0.85 }, 0)
                 .to(".hero-decorative-element", { opacity: 0.25, scale: 1.04 }, 0)
                 .to(".hero-scroll", { opacity: 0 }, 0.1);
@@ -221,6 +232,51 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // --- 1b. Hero Depth Parallax (Pointer) ---
+    function initHeroParallax() {
+        if (!hasGsap || reduceMotion || !canHover) return;
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        const layers = Array.from(hero.querySelectorAll('[data-hero-depth]'));
+        if (!layers.length) return;
+
+        const maxShift = 60;
+        const movers = layers.map((layer) => {
+            const depth = parseFloat(layer.getAttribute('data-hero-depth')) || 0.05;
+            return {
+                depth,
+                setX: gsap.quickTo(layer, "x", { duration: 1.4, ease: "power3.out" }),
+                setY: gsap.quickTo(layer, "y", { duration: 1.4, ease: "power3.out" })
+            };
+        });
+
+        let rect = hero.getBoundingClientRect();
+        const updateRect = () => { rect = hero.getBoundingClientRect(); };
+
+        const handleMove = (event) => {
+            if (!rect.width || !rect.height) return;
+            const relX = (event.clientX - rect.left) / rect.width - 0.5;
+            const relY = (event.clientY - rect.top) / rect.height - 0.5;
+            movers.forEach(({ depth, setX, setY }) => {
+                setX(relX * maxShift * depth);
+                setY(relY * maxShift * depth);
+            });
+        };
+
+        const reset = () => {
+            movers.forEach(({ setX, setY }) => {
+                setX(0);
+                setY(0);
+            });
+        };
+
+        hero.addEventListener('mouseenter', updateRect);
+        hero.addEventListener('mousemove', handleMove);
+        hero.addEventListener('mouseleave', reset);
+        window.addEventListener('resize', updateRect);
+    }
  
     // --- 2. About Section Animations ---
     // Reserved for future section-specific motion if needed.
@@ -228,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
      // --- 3. Generic Section Title Reveal ---
      function initSectionHeaders() {
          if (!hasGsap || reduceMotion) return;
+         const canClip = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('clip-path: inset(0 0 0 0)');
          gsap.utils.toArray('.section-title-container').forEach(container => {
              const subtitle = container.querySelector('.section-subtitle');
              const title = container.querySelector('.section-title');
@@ -246,7 +303,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
              // Initial hidden states handled implicitly by .from()
              if (subtitle) tl.from(subtitle, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
-             if (title) tl.from(title, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, "-=0.3");
+             if (title && canClip) {
+                 tl.fromTo(title,
+                     { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" },
+                     { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: 'power3.out' },
+                     "-=0.3"
+                 );
+             } else if (title) {
+                 tl.from(title, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, "-=0.3");
+             }
              if (decoration) tl.from(decoration, { scaleX: 0, duration: 0.7, ease: 'power3.out' }, "-=0.4");
              if (description) tl.from(description, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, "-=0.5");
          });
@@ -309,9 +374,9 @@ document.addEventListener('DOMContentLoaded', function() {
          */
      }
 
-     // --- 6. Impact Counters ---
-     function initImpactCounters() {
-         if (!hasGsap) return;
+    // --- 6. Impact Counters ---
+    function initImpactCounters() {
+        if (!hasGsap) return;
 
          const counters = document.querySelectorAll('.impact-number');
          if (!counters.length) return;
@@ -407,7 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
              const doc = document.documentElement;
              const total = doc.scrollHeight - window.innerHeight;
              const progress = total > 0 ? (window.scrollY / total) : 0;
-             bar.style.width = `${Math.min(100, Math.max(0, progress * 100))}%`;
+             const clamped = Math.min(1, Math.max(0, progress));
+             bar.style.transform = `scaleX(${clamped})`;
          };
 
          let ticking = false;
@@ -472,13 +538,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
          if (sections[0]) {
              setActive(sections[0].id);
-         }
-     }
+        }
+    }
+
+    // --- 7. Pause Off-Screen Decorative Blobs ---
+    function initDecorativePause() {
+        if (!('IntersectionObserver' in window)) return;
+        const blobs = document.querySelectorAll('.decorative-element');
+        if (!blobs.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle('is-paused', !entry.isIntersecting);
+            });
+        }, { rootMargin: '200px 0px', threshold: 0.01 });
+
+        blobs.forEach((blob) => observer.observe(blob));
+    }
 
     // --- Run Initializations ---
     initHeroVideoPlayback();
     initAmbientVideoPlayback();
     initHeroAnimations();
+    initHeroParallax();
     initSectionHeaders(); // Apply standard reveal to all section headers
 
     // Apply grid animations to specific sections
@@ -490,6 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Apply parallax glows
     initGlobalAnimations();
     initImpactCounters();
+    initDecorativePause();
     initButtonSpotlight();
     initScrollProgress();
     initScrollSpy();
@@ -663,6 +746,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initCardReveals();
+
+    // ========== Donation Widget (Amounts + Tabs) ==========
+    function initDonationWidgets() {
+        const widgets = document.querySelectorAll('[data-donation-widget]');
+        if (!widgets.length) return;
+
+        widgets.forEach(widget => {
+            const tabs = Array.from(widget.querySelectorAll('.donation-tab[data-tab]'));
+            const panels = Array.from(widget.querySelectorAll('.donation-panel[data-panel]'));
+            const tablist = widget.querySelector('.donation-tablist');
+
+            const activateTab = (tabId) => {
+                if (tablist) {
+                    tablist.dataset.active = tabId;
+                }
+                tabs.forEach(tab => {
+                    const isActive = tab.dataset.tab === tabId;
+                    tab.classList.toggle('is-active', isActive);
+                    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                panels.forEach(panel => {
+                    const isActive = panel.dataset.panel === tabId;
+                    panel.classList.toggle('is-active', isActive);
+                    panel.hidden = !isActive;
+                });
+            };
+
+            const initialTab = tabs.find(tab => tab.classList.contains('is-active')) || tabs[0];
+            if (initialTab) {
+                activateTab(initialTab.dataset.tab);
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+            });
+        });
+    }
+
+    initDonationWidgets();
 
     // ========== Donation Banner Close Functionality ==========
     const donationBanner = document.getElementById('donationBanner');
