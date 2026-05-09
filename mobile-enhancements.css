@@ -51,10 +51,11 @@
 
 /* ---------- 3. Header & navigation scale‑down --------------------- */
 @media (max-width: 768px) {
-  header { padding: 0.75rem 0; }
-  .header-logo-img { height: 92px; }
-  .nav-list { gap: 1.25rem; }
-  header.scrolled { padding: 0.75rem 0; }
+  header { padding: 0.7rem 0; }
+  .header-logo-img { height: 78px; }
+  header.scrolled .header-logo-img { height: 60px; }
+  .nav-list { gap: 1.1rem; }
+  header.scrolled { padding: 0.55rem 0; }
 }
 
 /* ---------- 4. Typography – readable sizes & tighter line‑height ---- */
@@ -76,32 +77,16 @@
   }
 }
 
-/* ---------- 4b. Quote legibility on mobile ------------------------- */
+/* ---------- 4b. Quote spacing on mobile ------------------------- */
 @media (max-width: 768px) {
   .section.quote-section {
     padding: clamp(1.5rem, 4vh, 2.5rem) 0;
   }
 
   .elegance-quote {
-    color: #f8f9ff;
-    background: linear-gradient(
-      135deg,
-      rgba(10, 12, 21, 0.88),
-      rgba(20, 24, 42, 0.82)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 14px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    line-height: 1.75;
-    font-weight: 500;
-    font-size: clamp(1.05rem, 4.2vw, 1.35rem);
-    padding: 1.75rem 1.4rem;
-  }
-
-  .elegance-quote::before,
-  .elegance-quote::after {
-    opacity: 0.12;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    padding: 2.5rem 1.4rem 2rem;
+    line-height: 1.55;
   }
 }
 
@@ -126,7 +111,12 @@ button,
 
 /* ---------- 7. Disable heavy parallax on mobile -------------------- */
 @media (max-width: 768px) {
-  .decorative-element { transform: none !important; filter: blur(45px); }
+  .decorative-element {
+    transform: none !important;
+    filter: blur(24px);
+    opacity: 0.055;
+    animation: none !important;
+  }
 }
 
 /* ---------- 8. Respect user motion & accessibility preferences ------ */
@@ -270,23 +260,22 @@ body {
   }
 
   .hero-aurora {
-    opacity: 0.4;
-    filter: blur(38px) saturate(1.15);
+    opacity: 0.22;
+    filter: blur(28px) saturate(1.08);
   }
 
   .hero-mesh {
-    opacity: 0.24;
-    filter: blur(44px) saturate(1.05);
+    display: none;
   }
 
   .hero-orbs {
-    opacity: 0.18;
-    filter: blur(28px) saturate(1.02);
+    opacity: 0.12;
+    filter: blur(20px) saturate(1.02);
   }
 
   .hero-title::before {
-    opacity: 0.32;
-    filter: blur(34px);
+    opacity: 0.22;
+    filter: blur(24px);
   }
 
   .donation-card {
@@ -412,8 +401,6 @@ body {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 
-    /* Ensure proper rendering */
-    will-change: transform;
     -webkit-font-smoothing: antialiased;
 
     /* Safe area handled via content padding */
@@ -485,11 +472,8 @@ body {
     -webkit-transform: translateZ(0);
   }
 
-  /* Fix for iOS backdrop-filter bug */
   .donation-banner::before {
-    /* Ensure shimmer works on iOS */
     -webkit-transform: translateX(-100%);
-    will-change: transform;
   }
 
   .btn:not(.btn-alt):not(.btn-gold) {
@@ -566,6 +550,107 @@ body {
   }
 }
 
+/* ============================================================
+   FINAL MOBILE RESTRAINT OVERRIDES
+   Keep this file aligned with the final editorial pass in styles.css.
+   ============================================================ */
+
+.mobile-nav {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+  right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.mobile-nav.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  right: 0 !important;
+}
+
+section header,
+.section header,
+.scholarship-headline,
+.impact-monument-header {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (max-width: 768px) {
+  .hero-tint,
+  .hero-light-scatter {
+    display: none !important;
+  }
+
+  .hero-overlay {
+    opacity: 0.86;
+  }
+
+  .hero-video {
+    filter: brightness(0.42) saturate(0.82) contrast(1.08) !important;
+    object-position: center center;
+  }
+
+  .soiree-media,
+  .soiree-video,
+  .soiree-img.reveal-mask > .soiree-media {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    transform: none !important;
+    -webkit-transform: none !important;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.72) saturate(0.92) contrast(1.04) !important;
+    opacity: 1;
+  }
+
+  .soiree-date::before,
+  .btn::after {
+    display: none !important;
+  }
+
+  .btn:active,
+  .payment-button:active,
+  .rsvp-button:active,
+  .application-btn:active {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1) inset,
+      0 8px 22px rgba(52, 84, 209, 0.18);
+  }
+
+  .card:active,
+  .glass-card:active,
+  .partner-card:active,
+  .event-card:active,
+  .donation-method:active,
+  .scholarship-card:active {
+    transform: none;
+    filter: none;
+  }
+}
+
 /* ---------- 15. Premium Smooth Scrolling ---------- */
 /* Premium scroll experience for mobile */
 @media (max-width: 768px) {
@@ -585,19 +670,739 @@ body {
     font-size: 16px;
   }
 
-  /* Momentum-based smooth scrolling */
-  .section {
-    scroll-snap-align: start;
-  }
-
-  /* Elegant fade on scroll for hero */
   .hero-content {
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   }
 
-  /* Enhanced text gradient animation */
   .text-gradient {
-    background-size: 200% 100%;
-    animation: shimmer 8s linear infinite;
+    background-size: 100% 100%;
+    animation: none !important;
+  }
+}
+
+/* ---------- 16. Final mobile editorial guardrails ---------- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.45rem, 11vw, 4rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.03em !important;
+    text-shadow: 0 5px 14px rgba(6, 8, 16, 0.36) !important;
+  }
+
+  .hero-title::before {
+    opacity: 0.06 !important;
+    filter: blur(16px) !important;
+  }
+
+  .hero-subtitle {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .reveal-mask > img,
+  .reveal-mask > video,
+  .reveal-mask.is-revealed > img,
+  .reveal-mask.is-revealed > video {
+    opacity: 1 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    transition: none !important;
+  }
+
+  .about-editorial .about-text {
+    order: 1;
+  }
+
+  .about-editorial .about-image {
+    order: 2;
+  }
+
+  .impact-monument-num {
+    background: linear-gradient(120deg, #e8dce2 0%, #d3a0b3 58%, #8794c4 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+  }
+
+  .back-to-top {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+    font-size: 0.78rem !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.14) inset,
+      0 10px 24px rgba(20, 30, 70, 0.32) !important;
+  }
+}
+
+/* ---------- 17. Stable drawer overlay fallback ---------- */
+html.drawer-open,
+body.drawer-open {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.mobile-nav {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  right: auto !important;
+  left: 0 !important;
+  z-index: var(--z-mobile-nav) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 2rem calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
+  background:
+    radial-gradient(80% 55% at 50% 0%, rgba(78, 107, 230, 0.14), transparent 70%),
+    radial-gradient(70% 50% at 50% 100%, rgba(229, 169, 188, 0.12), transparent 72%),
+    rgba(6, 8, 16, 0.985) !important;
+  backdrop-filter: blur(16px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.1) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: none !important;
+  transition: opacity 220ms ease, visibility 220ms ease !important;
+  box-shadow: none !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  isolation: isolate;
+}
+
+.mobile-nav::before,
+.mobile-nav::after {
+  display: none !important;
+}
+
+.mobile-nav.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
+
+.mobile-nav-list {
+  position: relative;
+  z-index: 1;
+  display: grid !important;
+  gap: clamp(0.55rem, 2.2vh, 1rem) !important;
+  width: min(100%, 340px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.mobile-nav-list li {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.mobile-nav-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  padding: 0.22rem 0 !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: clamp(1.65rem, 7vw, 2.25rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.015em !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: none !important;
+}
+
+.mobile-toggle {
+  z-index: var(--z-mobile-toggle) !important;
+}
+
+.mobile-toggle span {
+  left: 50% !important;
+  width: 24px !important;
+  height: 2px !important;
+  transform-origin: center center !important;
+}
+
+.mobile-toggle span:nth-child(1) {
+  top: 15px !important;
+  transform: translateX(-50%) !important;
+}
+
+.mobile-toggle span:nth-child(2) {
+  top: 22px !important;
+  transform: translateX(-50%) !important;
+}
+
+.mobile-toggle span:nth-child(3) {
+  top: 29px !important;
+  width: 18px !important;
+  transform: translateX(-50%) !important;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+  top: 22px !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0 !important;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+  top: 22px !important;
+  width: 24px !important;
+  transform: translateX(-50%) rotate(-45deg) !important;
+}
+
+/* ---------- 18. Drawer state hardening ----------
+   The drawer can be opened from multiple pages/scripts. Tie the visual
+   state to the body/html lock and ARIA state as well as the active class
+   so a transient class mismatch cannot leave site text visible behind it.
+*/
+body.drawer-open .mobile-nav,
+html.drawer-open .mobile-nav,
+.mobile-nav[aria-hidden="false"],
+.mobile-nav.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  background-color: rgba(6, 8, 16, 0.985) !important;
+}
+
+body.drawer-open .mobile-nav::before,
+html.drawer-open .mobile-nav::before,
+.mobile-nav[aria-hidden="false"]::before,
+.mobile-nav.active::before {
+  content: '' !important;
+  display: block !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(80% 55% at 50% 0%, rgba(78, 107, 230, 0.14), transparent 70%),
+    radial-gradient(70% 50% at 50% 100%, rgba(229, 169, 188, 0.12), transparent 72%),
+    rgba(6, 8, 16, 0.985) !important;
+  backdrop-filter: blur(16px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.1) !important;
+}
+
+body.drawer-open .mobile-nav-list,
+html.drawer-open .mobile-nav-list,
+.mobile-nav[aria-hidden="false"] .mobile-nav-list {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(1),
+html.drawer-open .mobile-toggle span:nth-child(1),
+.mobile-toggle[aria-expanded="true"] span:nth-child(1),
+.mobile-toggle.active span:nth-child(1) {
+  top: 22px !important;
+  width: 24px !important;
+  opacity: 1 !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(2),
+html.drawer-open .mobile-toggle span:nth-child(2),
+.mobile-toggle[aria-expanded="true"] span:nth-child(2),
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0 !important;
+  transform: translateX(-50%) scaleX(0) !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(3),
+html.drawer-open .mobile-toggle span:nth-child(3),
+.mobile-toggle[aria-expanded="true"] span:nth-child(3),
+.mobile-toggle.active span:nth-child(3) {
+  top: 22px !important;
+  width: 24px !important;
+  opacity: 1 !important;
+  transform: translateX(-50%) rotate(-45deg) !important;
+}
+
+/* ============================================================
+   19. Editorial Drawer Experience
+   Calm, distinctive, and transform-only for smooth mobile motion.
+   ============================================================ */
+
+.mobile-toggle {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  background: rgba(8, 11, 22, 0.34) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 12px 28px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(8px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(1.08) !important;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.mobile-toggle span {
+  display: block !important;
+  left: 50% !important;
+  width: 20px !important;
+  height: 1.5px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform-origin: center center !important;
+  transition:
+    top 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 160ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.mobile-toggle span:nth-child(1) {
+  top: 16px !important;
+  transform: translateX(-50%) !important;
+}
+
+.mobile-toggle span:nth-child(2) {
+  top: 22px !important;
+  transform: translateX(-50%) !important;
+}
+
+.mobile-toggle span:nth-child(3) {
+  top: 28px !important;
+  width: 14px !important;
+  transform: translateX(calc(-50% + 3px)) !important;
+}
+
+body.drawer-open .mobile-toggle,
+html.drawer-open .mobile-toggle,
+.mobile-toggle[aria-expanded="true"],
+.mobile-toggle.active {
+  z-index: 2201 !important;
+  border-color: rgba(229, 169, 188, 0.28) !important;
+  background: rgba(17, 16, 27, 0.68) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 0 0 1px rgba(229, 169, 188, 0.07),
+    0 18px 40px rgba(0, 0, 0, 0.28) !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(1),
+html.drawer-open .mobile-toggle span:nth-child(1),
+.mobile-toggle[aria-expanded="true"] span:nth-child(1),
+.mobile-toggle.active span:nth-child(1) {
+  top: 22px !important;
+  width: 20px !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(2),
+html.drawer-open .mobile-toggle span:nth-child(2),
+.mobile-toggle[aria-expanded="true"] span:nth-child(2),
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0 !important;
+  transform: translateX(-50%) scaleX(0) !important;
+}
+
+body.drawer-open .mobile-toggle span:nth-child(3),
+html.drawer-open .mobile-toggle span:nth-child(3),
+.mobile-toggle[aria-expanded="true"] span:nth-child(3),
+.mobile-toggle.active span:nth-child(3) {
+  top: 22px !important;
+  width: 20px !important;
+  transform: translateX(-50%) rotate(-45deg) !important;
+}
+
+.mobile-nav {
+  --drawer-ink: #060811;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2200 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  display: grid !important;
+  place-items: center !important;
+  padding:
+    calc(5.8rem + env(safe-area-inset-top, 0px))
+    clamp(1.35rem, 6vw, 2.4rem)
+    calc(1.65rem + env(safe-area-inset-bottom, 0px)) !important;
+  background: var(--drawer-ink) !important;
+  color: var(--text-primary) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  transform: none !important;
+  contain: layout paint style;
+  transition:
+    opacity 240ms ease,
+    visibility 240ms ease !important;
+}
+
+body.drawer-open .logo,
+html.drawer-open .logo,
+header:has(.mobile-nav.active) .logo,
+header:has(.mobile-nav[aria-hidden="false"]) .logo,
+body.drawer-open .scroll-progress,
+html.drawer-open .scroll-progress {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.mobile-nav::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(95% 58% at 52% -10%, rgba(78, 107, 230, 0.18), transparent 68%),
+    radial-gradient(70% 50% at 50% 110%, rgba(229, 169, 188, 0.14), transparent 74%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 30%),
+    var(--drawer-ink) !important;
+  opacity: 0 !important;
+  transform: scale(1.035) !important;
+  transition:
+    opacity 360ms ease,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.mobile-nav::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: calc(6rem + env(safe-area-inset-top, 0px)) !important;
+  bottom: calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
+  left: clamp(1.35rem, 6vw, 2.4rem) !important;
+  width: 1px !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(229, 169, 188, 0.35) 18%,
+    rgba(255, 255, 255, 0.08) 52%,
+    transparent
+  ) !important;
+  opacity: 0 !important;
+  transform: scaleY(0.72) !important;
+  transform-origin: top center !important;
+  transition:
+    opacity 420ms ease,
+    transform 640ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+body.drawer-open .mobile-nav,
+html.drawer-open .mobile-nav,
+.mobile-nav[aria-hidden="false"],
+.mobile-nav.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.drawer-open .mobile-nav::before,
+html.drawer-open .mobile-nav::before,
+.mobile-nav[aria-hidden="false"]::before,
+.mobile-nav.active::before {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+body.drawer-open .mobile-nav::after,
+html.drawer-open .mobile-nav::after,
+.mobile-nav[aria-hidden="false"]::after,
+.mobile-nav.active::after {
+  opacity: 1 !important;
+  transform: scaleY(1) !important;
+}
+
+.mobile-nav-shell {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 365px);
+  max-height: calc(100dvh - 8.4rem);
+  display: grid;
+  gap: clamp(0.8rem, 2vh, 1.15rem);
+  margin: 0 auto;
+  padding-left: clamp(1rem, 5vw, 1.65rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 260ms ease,
+    transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-nav-shell::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+body.drawer-open .mobile-nav-shell,
+html.drawer-open .mobile-nav-shell,
+.mobile-nav[aria-hidden="false"] .mobile-nav-shell,
+.mobile-nav.active .mobile-nav-shell {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-nav-kicker,
+.mobile-nav-footnote {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(229, 169, 188, 0.72);
+}
+
+.mobile-nav-kicker {
+  padding-bottom: 0.55rem;
+}
+
+.mobile-nav-footnote {
+  color: rgba(255, 255, 255, 0.36);
+  letter-spacing: 0.16em;
+  padding-top: 0.35rem;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.mobile-nav-footnote::before,
+.mobile-nav-footnote::after {
+  content: none !important;
+  display: none !important;
+}
+
+.mobile-nav-list {
+  counter-reset: drawer-item !important;
+  display: grid !important;
+  gap: clamp(0.18rem, 1vh, 0.42rem) !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  text-align: left !important;
+}
+
+.mobile-nav-list li {
+  counter-increment: drawer-item;
+  opacity: 0 !important;
+  transform: translate3d(0, 12px, 0) !important;
+  transition:
+    opacity 300ms ease,
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.mobile-nav.active .mobile-nav-list li,
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li,
+body.drawer-open .mobile-nav-list li,
+html.drawer-open .mobile-nav-list li {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.mobile-nav.active .mobile-nav-list li:nth-child(1),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(1) { transition-delay: 70ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(2),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(2) { transition-delay: 105ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(3),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(3) { transition-delay: 140ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(4),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(4) { transition-delay: 175ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(5),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(5) { transition-delay: 210ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(6),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(6) { transition-delay: 245ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(7),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(7) { transition-delay: 280ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(8),
+.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(8) { transition-delay: 315ms !important; }
+
+.mobile-nav-link {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 2.2rem minmax(0, 1fr) 2rem !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: clamp(2.35rem, 6.2vh, 3.25rem) !important;
+  padding: 0 !important;
+  color: rgba(246, 241, 244, 0.9) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: clamp(1.8rem, 7.8vw, 2.45rem) !important;
+  font-weight: 500 !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.026em !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  text-shadow: none !important;
+  transition:
+    color 180ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.mobile-nav-link::before {
+  content: counter(drawer-item, decimal-leading-zero) !important;
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+  position: static !important;
+  opacity: 1 !important;
+  background: none !important;
+  color: rgba(229, 169, 188, 0.46) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.54rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.14em !important;
+  transform: none !important;
+}
+
+.mobile-nav-link::after {
+  content: '' !important;
+  display: block !important;
+  position: static !important;
+  width: 1.35rem !important;
+  height: 1px !important;
+  margin-left: auto !important;
+  background: linear-gradient(90deg, rgba(229, 169, 188, 0.8), transparent) !important;
+  opacity: 0 !important;
+  transform: scaleX(0.45) !important;
+  transform-origin: left center !important;
+  transition:
+    opacity 180ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible,
+.mobile-nav-link.active {
+  color: #fff !important;
+  transform: none !important;
+  outline: none !important;
+}
+
+.mobile-nav-link:hover::after,
+.mobile-nav-link:focus-visible::after,
+.mobile-nav-link.active::after {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+.mobile-nav-donate {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  margin-top: 0.2rem;
+  padding: 0.76rem 1.25rem 0.72rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(229, 169, 188, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 280ms ease 340ms,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1) 340ms,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.mobile-nav-donate::after {
+  content: '→';
+  font-size: 0.9rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.mobile-nav.active .mobile-nav-donate,
+.mobile-nav[aria-hidden="false"] .mobile-nav-donate,
+body.drawer-open .mobile-nav-donate,
+html.drawer-open .mobile-nav-donate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-nav-donate:hover,
+.mobile-nav-donate:focus-visible {
+  border-color: rgba(229, 169, 188, 0.42);
+  background: rgba(255, 255, 255, 0.075);
+  outline: none;
+}
+
+@media (max-height: 720px) {
+  .mobile-nav {
+    padding-top: calc(4.9rem + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .mobile-nav-shell {
+    gap: 0.55rem;
+    max-height: calc(100dvh - 6.4rem);
+  }
+
+  .mobile-nav-link {
+    min-height: 2.05rem !important;
+    font-size: clamp(1.55rem, 7vw, 2rem) !important;
+  }
+
+  .mobile-nav-kicker,
+  .mobile-nav-footnote {
+    font-size: 0.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav,
+  .mobile-nav::before,
+  .mobile-nav::after,
+  .mobile-nav-shell,
+  .mobile-nav-list li,
+  .mobile-nav-link,
+  .mobile-nav-link::after,
+  .mobile-nav-donate,
+  .mobile-toggle,
+  .mobile-toggle span {
+    transition: none !important;
+  }
+
+  .mobile-nav-shell,
+  .mobile-nav-list li,
+  .mobile-nav-donate {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

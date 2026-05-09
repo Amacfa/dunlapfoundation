@@ -11,14 +11,21 @@
     <meta property="og:title" content="Scholarship Application | Evelyn Dunlap Foundation">
     <meta property="og:description" content="Apply for the Evelyn Dunlap Foundation Scholarship to support your higher education goals.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.evelyndunlapfoundation.org/scholarship-application">
+    <meta property="og:url" content="https://www.evelyndunlapfoundation.org/scholarship-application.html">
     <meta property="og:image" content="https://www.evelyndunlapfoundation.org/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Evelyn Dunlap Foundation">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scholarship Application | Evelyn Dunlap Foundation">
+    <meta name="twitter:description" content="Apply for the Evelyn Dunlap Foundation Scholarship to support your higher education goals.">
+    <meta name="twitter:image" content="https://www.evelyndunlapfoundation.org/images/og-image.jpg">
     
     <title>Scholarship Application | Evelyn Dunlap Foundation</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/optimized/logo.webp" type="image/webp">
     
     <style>
         /* Additional styles for the scholarship page */
@@ -436,6 +443,14 @@
     </style>
 </head>
 <body class="banner-collapsed">
+    <!-- Page curtain (used by elevated-motion.js for page transitions) -->
+    <div class="page-curtain" aria-hidden="true">
+        <div class="page-curtain-mark">
+            <span class="page-curtain-mark-line">Evelyn Dunlap</span>
+            <span class="page-curtain-mark-line page-curtain-mark-line--italic">Foundation</span>
+        </div>
+    </div>
+
     <div class="scroll-progress" aria-hidden="true">
         <span class="scroll-progress-bar"></span>
     </div>
@@ -443,10 +458,10 @@
     <header id="header">
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="header-logo-img">
+                <img src="./images/optimized/logo.webp" alt="Evelyn Dunlap Foundation" class="header-logo-img" width="320" height="320" decoding="async">
             </a>
             
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-controls="mobileNav" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -469,18 +484,22 @@
                 </div>
             </nav>
             
-            <div class="mobile-nav" id="mobileNav" aria-labelledby="mobileToggle">
-                <ul class="mobile-nav-list">
-                    <li><a href="index.html#home" class="mobile-nav-link">Home</a></li>
-                    <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
-                    <li><a href="evelyn-bio.html" class="mobile-nav-link">Biography</a></li>
-                    <li><a href="index.html#scholarship" class="mobile-nav-link">Scholarship</a></li>
-                    <li><a href="index.html#donate" class="mobile-nav-link">Donate</a></li>
-                    <li><a href="index.html#events" class="mobile-nav-link">Events</a></li>
-                    <li><a href="index.html#partners" class="mobile-nav-link">Partners</a></li>
-                    <li><a href="index.html#team" class="mobile-nav-link">Team</a></li>
-                    <li><a href="index.html#donate" class="btn">Donate Now</a></li>
-                </ul>
+            <div class="mobile-nav" id="mobileNav" aria-labelledby="mobileToggle" aria-hidden="true">
+                <div class="mobile-nav-shell">
+                    <p class="mobile-nav-kicker">Evelyn Dunlap Foundation</p>
+                    <ul class="mobile-nav-list">
+                        <li><a href="index.html#home" class="mobile-nav-link">Home</a></li>
+                        <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                        <li><a href="evelyn-bio.html" class="mobile-nav-link">Biography</a></li>
+                        <li><a href="index.html#scholarship" class="mobile-nav-link">Scholarship</a></li>
+                        <li><a href="index.html#donate" class="mobile-nav-link">Donate</a></li>
+                        <li><a href="index.html#events" class="mobile-nav-link">Events</a></li>
+                        <li><a href="index.html#partners" class="mobile-nav-link">Partners</a></li>
+                        <li><a href="index.html#team" class="mobile-nav-link">Team</a></li>
+                    </ul>
+                    <a href="index.html#donate" class="mobile-nav-donate">Donate</a>
+                    <p class="mobile-nav-footnote">Nourishing lives · Empowering minds</p>
+                </div>
             </div>
         </div>
     </header>
@@ -553,7 +572,7 @@
                     </div>
                     
                     <div class="scholarship-image">
-                        <img src="./images/f.png" alt="Evelyn Dunlap Foundation Scholarship Recipients">
+                        <img src="./images/optimized/evelyn-portrait.webp" alt="Evelyn Dunlap Foundation Scholarship Recipients" width="1200" height="1368" loading="lazy" decoding="async">
                     </div>
                 </div>
                 
@@ -800,15 +819,9 @@
             <div class="footer-content">
                 <div class="footer-logo-container">
                     <a href="index.html" class="footer-logo">
-                        <img src="./images/logo.png" alt="Evelyn Dunlap Foundation" class="footer-logo-img">
+                        <img src="./images/optimized/logo.webp" alt="Evelyn Dunlap Foundation" class="footer-logo-img" width="320" height="320" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
-                    <div class="footer-social">
-                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
                 
                 <div class="footer-links-container">
@@ -826,15 +839,15 @@
                     <h4 class="footer-heading">Contact Us</h4>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <div class="footer-contact-text">San Francisco, CA</div>
+                        <div class="footer-contact-text">Stone Mountain, GA</div>
                     </div>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="fas fa-phone"></i></span>
-                        <div class="footer-contact-text">(310) 924-9557</div>
+                        <div class="footer-contact-text"><a href="tel:+13109249557">(310) 924-9557</a></div>
                     </div>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="fas fa-envelope"></i></span>
-                        <div class="footer-contact-text">info@evelyndunlapfoundation.org</div>
+                        <div class="footer-contact-text"><a href="mailto:info@evelyndunlapfoundation.org">info@evelyndunlapfoundation.org</a></div>
                     </div>
                 </div>
             </div>
@@ -843,11 +856,10 @@
             
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    © 2025 Evelyn Dunlap Foundation. All rights reserved.
+                    © 2026 Evelyn Dunlap Foundation. All rights reserved.
                 </div>
                 <div class="footer-bottom-links">
-                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
-                    <a href="#" class="footer-bottom-link">Terms of Service</a>
+                    <a href="./29847359.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">Incorporation Certificate</a>
                     <a href="./images/EVELYNDUNLAPFOUNDATIONLETTER947.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">IRS 501(c)(3) Letter</a>
                 </div>
             </div>
@@ -860,6 +872,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="gsap-animations.js"></script>
+    <script src="elevated-motion.js"></script>
     <script>
         window.addEventListener('load', function() {
             document.body.classList.add('is-loaded');
@@ -872,17 +885,28 @@
             const mobileToggle = document.getElementById('mobileToggle');
             if (mobileToggle) {
                 mobileToggle.addEventListener('click', function() {
-                    document.getElementById('mobileNav').classList.toggle('active');
-                    this.classList.toggle('active');
+                    const mobileNav = document.getElementById('mobileNav');
+                    const isOpen = mobileNav.classList.toggle('active');
+                    this.classList.toggle('active', isOpen);
+                    this.setAttribute('aria-expanded', String(isOpen));
+                    mobileNav.setAttribute('aria-hidden', String(!isOpen));
+                    document.documentElement.classList.toggle('drawer-open', isOpen);
+                    document.body.classList.toggle('drawer-open', isOpen);
                 });
             }
 
             // Mobile nav links
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-donate');
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    document.getElementById('mobileNav').classList.remove('active');
-                    document.getElementById('mobileToggle').classList.remove('active');
+                    const mobileNav = document.getElementById('mobileNav');
+                    const mobileToggle = document.getElementById('mobileToggle');
+                    mobileNav.classList.remove('active');
+                    mobileNav.setAttribute('aria-hidden', 'true');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.documentElement.classList.remove('drawer-open');
+                    document.body.classList.remove('drawer-open');
                 });
             });
 
@@ -949,9 +973,7 @@
                         }
                         return response.json();
                     })
-                    .then(data => {
-                        console.log('Success:', data);
-                        
+                    .then(() => {
                         // Hide the form
                         document.getElementById('applicationForm').style.display = 'none';
                         

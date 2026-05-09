@@ -10,21 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Helper Function for Simple Reveals ---
-    // Creates a fade-in + slide-up animation for given elements triggered by scroll
-    function revealElement(elements, triggerElement, start = "top 85%", stagger = 0.1, y = 30) {
+    // Creates an elegant blur-fade + slide-up animation for given elements triggered by scroll
+    function revealElement(elements, triggerElement, start = "top 88%", stagger = 0.12, y = 24) {
         if (!hasGsap || reduceMotion) return;
         gsap.from(elements, {
             opacity: 0,
             y: y,
-            duration: 0.8,
-            ease: "power3.out",
+            duration: 0.95,
+            ease: "expo.out",
             stagger: stagger,
             scrollTrigger: {
-                trigger: triggerElement || elements, // Use element itself or a parent
+                trigger: triggerElement || elements,
                 start: start,
-                end: "bottom top", // Animate fully in view
-                toggleActions: "play none none none", // Play once on enter
-                // markers: true // DEBUG
+                end: "bottom top",
+                toggleActions: "play none none none",
             }
         });
     }
@@ -132,11 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
 
-        gsap.set(".hero-subtitle", { opacity: 0, y: 28, filter: "blur(10px)" });
-        gsap.set(".hero-title", { opacity: 0, y: 34, scale: 0.97, filter: "blur(12px)", transformOrigin: "center center" });
-        gsap.set(".hero-description", { opacity: 0, y: 26, filter: "blur(8px)" });
-        gsap.set(".hero-buttons .btn", { opacity: 0, y: 22, scale: 0.97, filter: "blur(6px)" });
-        gsap.set(".hero-scroll", { opacity: 0, y: 12 });
+        gsap.set(".hero-subtitle", { opacity: 0, y: 18, filter: "blur(8px)" });
+        gsap.set(".hero-title", { opacity: 0, y: 28, scale: 0.985, filter: "blur(10px)", transformOrigin: "center center" });
+        gsap.set(".hero-description", { opacity: 0, y: 20, filter: "blur(6px)" });
+        gsap.set(".hero-buttons .btn", { opacity: 0, y: 18, scale: 0.985, filter: "blur(4px)" });
+        gsap.set(".hero-scroll", { opacity: 0, y: 10 });
 
         if (reduceMotion) {
             gsap.set(".hero-subtitle, .hero-title, .hero-description", { opacity: 1, y: 0, filter: "blur(0px)" });
@@ -145,16 +144,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Refined cinematic ease — sophisticated, gentle, intentional
+        const heroEase = "expo.out";
         const heroTl = gsap.timeline({
             paused: true,
-            defaults: { ease: "power3.out" }
+            defaults: { ease: heroEase }
         });
         heroTl
-            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.95 })
-            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.55 }, "-=0.5")
-            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.15 }, "-=0.75")
-            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.05, stagger: 0.12 }, "-=0.8")
-            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.85, ease: "power2.out" }, "-=0.45");
+            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1 })
+            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.7 }, "-=0.75")
+            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2 }, "-=1.0")
+            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.1, stagger: 0.14 }, "-=0.9")
+            .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.95, ease: "power2.out" }, "-=0.55");
 
         const startHero = () => heroTl.play(0);
         if (document.body.classList.contains('is-loaded')) {
@@ -163,74 +164,34 @@ document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('page:ready', startHero, { once: true });
         }
 
-        const shouldPinHero = hero.hasAttribute('data-hero-pin');
-
-        if (!isMobile && shouldPinHero) {
-            const heroScrollTl = gsap.timeline({
+        // Lightweight non-pinned hero parallax — replaces the previous
+        // pin+scrub timeline that animated 9 properties per scroll tick
+        // and forced layout/repaint on backdrop-filter layers (the chief
+        // cause of Safari scroll judder). Two transform-only tracks =
+        // the GPU happily composites them with zero layout cost.
+        if (!reduceMotion) {
+            gsap.to(".hero-video", {
+                yPercent: 12,
+                ease: "none",
                 scrollTrigger: {
                     trigger: hero,
                     start: "top top",
-                    end: "+=80%",
-                    scrub: true,
-                    pin: true,
-                    anticipatePin: 1
+                    end: "bottom top",
+                    scrub: 0.6,
+                    invalidateOnRefresh: true,
                 }
             });
 
-            heroScrollTl
-                .to(".hero-video", {
-                    scale: 1.08,
-                    filter: "brightness(0.35) saturate(0.9) contrast(1.1)",
-                    transformOrigin: "center center"
-                }, 0)
-                .to(".hero-overlay", { opacity: 0.98 }, 0)
-                .to(".hero-aurora", { yPercent: -8, scale: 1.06, opacity: 0.6 }, 0)
-                .to(".hero-mesh", { yPercent: -6, scale: 1.04, opacity: 0.45 }, 0)
-                .to(".hero-orbs", { yPercent: -5, scale: 1.03, opacity: 0.32 }, 0)
-                .to(".hero-tint", { yPercent: -4 }, 0)
-                .to(".hero-light-scatter", { yPercent: -6, scale: 1.05 }, 0)
-                .to(".hero-content", { yPercent: -10, opacity: 0.65 }, 0)
-                .to(".hero-decorative-element", { opacity: 0.2, scale: 1.08 }, 0)
-                .to(".hero-scroll", { opacity: 0 }, 0.1);
-        } else if (shouldPinHero) {
-            const mobileHeroTl = gsap.timeline({
+            gsap.to(".hero-content", {
+                yPercent: -8,
+                opacity: 0.55,
+                ease: "none",
                 scrollTrigger: {
                     trigger: hero,
                     start: "top top",
-                    end: "+=80%",
-                    scrub: true,
-                    pin: true,
-                    anticipatePin: 1
+                    end: "bottom top",
+                    scrub: 0.6,
                 }
-            });
-
-            mobileHeroTl
-                .to(".hero-video", { scale: 1.04, transformOrigin: "center center" }, 0)
-                .to(".hero-overlay", { opacity: 0.98 }, 0)
-                .to(".hero-aurora", { yPercent: -4, scale: 1.03, opacity: 0.55 }, 0)
-                .to(".hero-mesh", { yPercent: -3, scale: 1.02, opacity: 0.4 }, 0)
-                .to(".hero-orbs", { yPercent: -3, scale: 1.02, opacity: 0.28 }, 0)
-                .to(".hero-light-scatter", { yPercent: -4, scale: 1.03 }, 0)
-                .to(".hero-content", { y: -18, opacity: 0.85 }, 0)
-                .to(".hero-decorative-element", { opacity: 0.25, scale: 1.04 }, 0)
-                .to(".hero-scroll", { opacity: 0 }, 0.1);
-
-            gsap.to(".hero-decorative-element.blue-glow", {
-                y: -16,
-                x: 10,
-                duration: 10,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(".hero-decorative-element.pink-glow", {
-                y: 14,
-                x: -8,
-                duration: 12,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
             });
         }
     }
@@ -244,30 +205,42 @@ document.addEventListener('DOMContentLoaded', function() {
         const layers = Array.from(hero.querySelectorAll('[data-hero-depth]'));
         if (!layers.length) return;
 
-        const maxShift = 60;
+        const maxShift = 38;
         const movers = layers.map((layer) => {
             const depth = parseFloat(layer.getAttribute('data-hero-depth')) || 0.05;
             return {
                 depth,
-                setX: gsap.quickTo(layer, "x", { duration: 1.4, ease: "power3.out" }),
-                setY: gsap.quickTo(layer, "y", { duration: 1.4, ease: "power3.out" })
+                setX: gsap.quickTo(layer, "x", { duration: 1.8, ease: "power3.out" }),
+                setY: gsap.quickTo(layer, "y", { duration: 1.8, ease: "power3.out" })
             };
         });
 
         let rect = hero.getBoundingClientRect();
         const updateRect = () => { rect = hero.getBoundingClientRect(); };
 
-        const handleMove = (event) => {
-            if (!rect.width || !rect.height) return;
-            const relX = (event.clientX - rect.left) / rect.width - 0.5;
-            const relY = (event.clientY - rect.top) / rect.height - 0.5;
+        // rAF-throttled — fires at most once per frame (60fps cap)
+        let parallaxTicking = false;
+        let lastEvent = null;
+        const applyMove = () => {
+            parallaxTicking = false;
+            if (!lastEvent || !rect.width || !rect.height) return;
+            const relX = (lastEvent.clientX - rect.left) / rect.width - 0.5;
+            const relY = (lastEvent.clientY - rect.top) / rect.height - 0.5;
             movers.forEach(({ depth, setX, setY }) => {
                 setX(relX * maxShift * depth);
                 setY(relY * maxShift * depth);
             });
         };
 
+        const handleMove = (event) => {
+            lastEvent = event;
+            if (parallaxTicking) return;
+            parallaxTicking = true;
+            requestAnimationFrame(applyMove);
+        };
+
         const reset = () => {
+            lastEvent = null;
             movers.forEach(({ setX, setY }) => {
                 setX(0);
                 setY(0);
@@ -275,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         hero.addEventListener('mouseenter', updateRect);
-        hero.addEventListener('mousemove', handleMove);
+        hero.addEventListener('mousemove', handleMove, { passive: true });
         hero.addEventListener('mouseleave', reset);
         window.addEventListener('resize', updateRect);
     }
@@ -296,26 +269,24 @@ document.addEventListener('DOMContentLoaded', function() {
              const tl = gsap.timeline({
                  scrollTrigger: {
                      trigger: container,
-                     start: "top 85%",
+                     start: "top 88%",
                      end: "bottom top",
                      toggleActions: "play none none none",
-                     // markers: true // DEBUG
                  }
              });
 
-             // Initial hidden states handled implicitly by .from()
-             if (subtitle) tl.from(subtitle, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
+             if (subtitle) tl.from(subtitle, { opacity: 0, y: 14, duration: 0.7, ease: 'expo.out' });
              if (title && canClip) {
                  tl.fromTo(title,
-                     { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" },
-                     { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: 'power3.out' },
-                     "-=0.3"
+                     { opacity: 0, y: 16, clipPath: "inset(0 0 100% 0)" },
+                     { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1.05, ease: 'expo.out' },
+                     "-=0.45"
                  );
              } else if (title) {
-                 tl.from(title, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, "-=0.3");
+                 tl.from(title, { opacity: 0, y: 16, duration: 0.85, ease: 'expo.out' }, "-=0.45");
              }
-             if (decoration) tl.from(decoration, { scaleX: 0, duration: 0.7, ease: 'power3.out' }, "-=0.4");
-             if (description) tl.from(description, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, "-=0.5");
+             if (decoration) tl.from(decoration, { scaleX: 0, opacity: 0, duration: 0.9, ease: 'expo.out' }, "-=0.55");
+             if (description) tl.from(description, { opacity: 0, y: 14, duration: 0.85, ease: 'expo.out' }, "-=0.7");
          });
      }
 
@@ -445,24 +416,10 @@ document.addEventListener('DOMContentLoaded', function() {
          });
      }
 
-     // --- 7. Pointer Spotlight for Buttons ---
+     // --- 7. Pointer Spotlight for Buttons (rAF-throttled) ---
      function initButtonSpotlight() {
-         if (!canHover || reduceMotion) return;
-
-         document.querySelectorAll('.btn, .payment-button').forEach(el => {
-             el.addEventListener('mousemove', (e) => {
-                 const r = el.getBoundingClientRect();
-                 const x = ((e.clientX - r.left) / r.width) * 100;
-                 const y = ((e.clientY - r.top) / r.height) * 100;
-                 el.style.setProperty('--mx', `${x.toFixed(2)}%`);
-                 el.style.setProperty('--my', `${y.toFixed(2)}%`);
-             });
-
-             el.addEventListener('mouseleave', () => {
-                 el.style.setProperty('--mx', '50%');
-                 el.style.setProperty('--my', '50%');
-             });
-         });
+         // Intentionally disabled in the final editorial pass.
+         // Static, subtle hover states perform better and feel less templated.
      }
 
      // --- 8. Scroll Progress ---
@@ -495,6 +452,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
      // --- 9. Scroll Spy for Navigation ---
      function initScrollSpy() {
+         if (document.querySelector('[data-section-indicator]')) return;
+
          const sections = Array.from(document.querySelectorAll('section[id]'));
          if (!sections.length) return;
 
@@ -660,28 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 3D TILT + SPOTLIGHT EFFECT ---
-    if (canHover && !reduceMotion) {
-        document.querySelectorAll('.partner-card, .glass-card').forEach(card => {
-            card.classList.add('tilt-card');
-
-            card.addEventListener('mousemove', (e) => {
-                const r = card.getBoundingClientRect();
-                const px = (e.clientX - r.left) / r.width - 0.5;
-                const py = (e.clientY - r.top) / r.height - 0.5;
-
-                card.style.transform =
-                    `perspective(900px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-6px)`;
-
-                card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width * 100).toFixed(2)}%`);
-                card.style.setProperty('--my', `${((e.clientY - r.top) / r.height * 100).toFixed(2)}%`);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-    }
+    // Card tilt and pointer spotlight are intentionally disabled.
 
     // --- NAV INDICATOR (Gliding Underline) ---
     const nav = document.querySelector('.navbar');
@@ -740,20 +678,18 @@ document.addEventListener('DOMContentLoaded', function() {
             gsap.fromTo(card,
                 {
                     opacity: 0,
-                    y: 50,
-                    scale: 0.97,
-                    filter: "blur(12px) brightness(0.8)"
+                    y: 36,
+                    scale: 0.985
                 },
                 {
                     opacity: 1,
                     y: 0,
                     scale: 1,
-                    filter: "blur(0) brightness(1)",
-                    duration: 1.2,
-                    ease: "power3.out",
+                    duration: 1.05,
+                    ease: "expo.out",
                     scrollTrigger: {
                         trigger: card,
-                        start: "top 85%",
+                        start: "top 88%",
                         toggleActions: "play none none none"
                     }
                 }
