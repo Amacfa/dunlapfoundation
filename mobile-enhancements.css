@@ -1406,3 +1406,51 @@ html.drawer-open .mobile-nav-donate {
     transform: none !important;
   }
 }
+
+/* ============================================================
+   Launch polish: header logo presence
+   The logo mark has built-in visual padding, so the rendered box needs
+   to be larger than a typical wordmark to read clearly on mobile.
+   ============================================================ */
+.logo {
+  flex: 0 0 auto;
+}
+
+.header-logo-img {
+  height: 118px !important;
+  width: auto !important;
+}
+
+header.scrolled .header-logo-img {
+  height: 82px !important;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding-top: calc(0.78rem + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 0.78rem !important;
+  }
+
+  header.scrolled {
+    padding-top: calc(0.62rem + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 0.62rem !important;
+  }
+
+  .header-logo-img {
+    height: 98px !important;
+  }
+
+  header.scrolled .header-logo-img {
+    height: 78px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .header-logo-img {
+    height: 92px !important;
+  }
+
+  header.scrolled .header-logo-img {
+    height: 72px !important;
+  }
+}
