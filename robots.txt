@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.evelyndunlapfoundation.org/sitemap.xml
