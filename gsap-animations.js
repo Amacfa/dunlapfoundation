@@ -131,15 +131,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
 
-        gsap.set(".hero-subtitle", { opacity: 0, y: 18, filter: "blur(8px)" });
-        gsap.set(".hero-title", { opacity: 0, y: 28, scale: 0.985, filter: "blur(10px)", transformOrigin: "center center" });
-        gsap.set(".hero-description", { opacity: 0, y: 20, filter: "blur(6px)" });
-        gsap.set(".hero-buttons .btn", { opacity: 0, y: 18, scale: 0.985, filter: "blur(4px)" });
+        gsap.set(".hero-subtitle", { opacity: 0, y: 18 });
+        gsap.set(".hero-title", { opacity: 0, y: 28, scale: 0.985, transformOrigin: "center center" });
+        gsap.set(".hero-description", { opacity: 0, y: 20 });
+        gsap.set(".hero-buttons .btn", { opacity: 0, y: 18, scale: 0.985 });
         gsap.set(".hero-scroll", { opacity: 0, y: 10 });
 
         if (reduceMotion) {
-            gsap.set(".hero-subtitle, .hero-title, .hero-description", { opacity: 1, y: 0, filter: "blur(0px)" });
-            gsap.set(".hero-buttons .btn", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" });
+            gsap.set(".hero-subtitle, .hero-title, .hero-description", { opacity: 1, y: 0 });
+            gsap.set(".hero-buttons .btn", { opacity: 1, y: 0, scale: 1 });
             gsap.set(".hero-scroll", { opacity: 1, y: 0 });
             return;
         }
@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
             defaults: { ease: heroEase }
         });
         heroTl
-            .to(".hero-subtitle", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1 })
-            .to(".hero-title", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.7 }, "-=0.75")
-            .to(".hero-description", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2 }, "-=1.0")
-            .to(".hero-buttons .btn", { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.1, stagger: 0.14 }, "-=0.9")
+            .to(".hero-subtitle", { opacity: 1, y: 0, duration: 1.05 })
+            .to(".hero-title", { opacity: 1, y: 0, scale: 1, duration: 1.55 }, "-=0.72")
+            .to(".hero-description", { opacity: 1, y: 0, duration: 1.1 }, "-=0.92")
+            .to(".hero-buttons .btn", { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.12 }, "-=0.82")
             .to(".hero-scroll", { opacity: 1, y: 0, duration: 0.95, ease: "power2.out" }, "-=0.55");
 
         const startHero = () => heroTl.play(0);

@@ -6,6 +6,9 @@
     <meta name="description" content="Apply for the Evelyn Dunlap Foundation Scholarship to support your educational journey.">
     <meta name="keywords" content="Evelyn Dunlap Foundation, scholarships, education, application, financial aid">
     <meta name="author" content="Evelyn Dunlap Foundation">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0c15">
+    <meta name="color-scheme" content="dark light">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Scholarship Application | Evelyn Dunlap Foundation">
@@ -22,6 +25,7 @@
     <meta name="twitter:image" content="https://www.evelyndunlapfoundation.org/images/og-image.jpg">
     
     <title>Scholarship Application | Evelyn Dunlap Foundation</title>
+    <link rel="canonical" href="https://www.evelyndunlapfoundation.org/scholarship-application.html">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -443,6 +447,8 @@
     </style>
 </head>
 <body class="banner-collapsed">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page curtain (used by elevated-motion.js for page transitions) -->
     <div class="page-curtain" aria-hidden="true">
         <div class="page-curtain-mark">
@@ -505,6 +511,7 @@
     </header>
 
 
+    <main id="main-content">
     <!-- Scholarship Hero -->
     <section class="hero scholarship-hero" id="scholarship-hero">
         <div class="hero-fallback" aria-hidden="true" data-hero-depth="0.015"></div>
@@ -514,8 +521,8 @@
         <div class="hero-overlay" data-hero-depth="0.02"></div>
         <div class="hero-tint" aria-hidden="true" data-hero-depth="0.04"></div>
         <div class="hero-light-scatter" aria-hidden="true" data-hero-depth="0.09"></div>
-        <div class="hero-decorative-element blue-glow" style="top: 20%; right: 10%; opacity: 0.12;" data-hero-depth="0.12"></div>
-        <div class="hero-decorative-element pink-glow" style="bottom: 18%; left: 8%; opacity: 0.1;" data-hero-depth="0.12"></div>
+        <div class="hero-decorative-element blue-glow page-hero-glow page-hero-glow--blue" data-hero-depth="0.12"></div>
+        <div class="hero-decorative-element pink-glow page-hero-glow page-hero-glow--pink" data-hero-depth="0.12"></div>
 
         <div class="container">
             <div class="hero-content">
@@ -539,8 +546,8 @@
 
     <!-- Main Scholarship Section -->
     <section class="section scholarship-page-section" id="scholarship-details">
-        <div class="decorative-element blue-glow" style="top: 20%; right: -100px;"></div>
-        <div class="decorative-element pink-glow" style="bottom: 30%; left: -150px;"></div>
+        <div class="decorative-element blue-glow page-section-glow page-section-glow--blue"></div>
+        <div class="decorative-element pink-glow page-section-glow page-section-glow--pink"></div>
         
         <div class="container">
             <div class="section-title-container">
@@ -553,7 +560,7 @@
             <div class="scholarship-details-container" id="scholarshipDetails">
                 <div class="scholarship-columns">
                     <div class="scholarship-content">
-                        <h3 style="color: var(--royal-blue-light); margin-bottom: 1.5rem;">Scholarship Overview</h3>
+                        <h3 class="page-content-heading page-content-heading--blue">Scholarship Overview</h3>
                         <p>The Evelyn Dunlap Foundation Scholarship supports students who demonstrate academic excellence, leadership potential, and community engagement. Our selection process identifies candidates poised to create meaningful impact while pursuing their education.</p>
                         
                         <h4 class="guidelines-subtitle">Key Requirements</h4>
@@ -576,7 +583,7 @@
                     </div>
                 </div>
                 
-                <h3 style="color: var(--soft-pink); margin: 3rem 0 1.5rem;">Selection & Timeline</h3>
+                <h3 class="page-content-heading page-content-heading--pink">Selection &amp; Timeline</h3>
                 
                 <div class="key-dates-container">
                     <div class="key-dates-grid">
@@ -599,7 +606,7 @@
                     </div>
                 </div>
                 
-                <h3 style="color: var(--gold); margin: 3rem 0 1.5rem;">Application Process</h3>
+                <h3 class="page-content-heading page-content-heading--gold">Application Process</h3>
                 
                 <div class="timeline-vertical">
                     <div class="timeline-step">
@@ -627,7 +634,7 @@
                     </div>
                 </div>
                 
-                <h3 style="color: var(--royal-blue-light); margin: 3rem 0 1.5rem;">Award Details</h3>
+                <h3 class="page-content-heading page-content-heading--blue">Award Details</h3>
                 
                 <div class="award-highlights">
                     <div class="highlight-item">
@@ -646,13 +653,13 @@
                     <p>Recipients must attend the award ceremony on January 3, 2026. The foundation may request documentation verifying educational use of funds.</p>
                 </div>
                 
-                <div class="elegance-quote" style="margin: 3rem auto;">
+                <div class="elegance-quote application-quote">
                     "Education is the most powerful weapon which you can use to change the world. The Evelyn Dunlap Foundation is committed to empowering students to create that change."
                 </div>
             </div>
             
             <!-- Application Form Section -->
-            <div class="form-container" id="applicationForm" style="max-width: 800px; margin: 4rem auto;">
+            <div class="form-container application-form-container" id="applicationForm">
                 <h3 class="form-title">Scholarship Application</h3>
                 <p class="form-description">Take the first step toward furthering your education with the support of the Evelyn Dunlap Foundation.</p>
                 
@@ -737,7 +744,7 @@
                             <div class="form-help">Describe your educational journey, professional aspirations, and how you embody Evelyn Dunlap's values.</div>
                         </div>
                         <div class="form-group">
-                            <label for="activities" class="form-label">Activities & Leadership (300 words max)</label>
+                            <label for="activities" class="form-label">Activities &amp; Leadership (300 words max)</label>
                             <textarea id="activities" name="activities" class="form-control" rows="4" required></textarea>
                             <div class="form-help">Describe your extracurricular activities, leadership roles, and community service experience.</div>
                         </div>
@@ -810,62 +817,79 @@
         </div>
     </section>
 
-    <!-- Footer (Low-profile) -->
-    <footer>
-        <div class="decorative-element blue-glow footer-blue-glow"></div>
-        <div class="decorative-element pink-glow footer-pink-glow"></div>
-        
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo-container">
-                    <a href="index.html" class="footer-logo">
-                        <img src="./images/optimized/logo.webp" alt="Evelyn Dunlap Foundation" class="footer-logo-img" width="320" height="320" loading="lazy" decoding="async">
-                    </a>
-                    <p class="footer-description">The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through our scholarship programs, charitable events, and community partnerships.</p>
-                </div>
-                
-                <div class="footer-links-container">
-                    <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-mark">
+                <a href="index.html#home" class="footer-wordmark">
+                    <span class="footer-wordmark-line">Evelyn Dunlap</span>
+                    <span class="footer-wordmark-line footer-wordmark-line--italic">Foundation</span>
+                </a>
+                <p class="footer-tagline">Nourishing lives, empowering minds — in honor of a life lived in faith and service.</p>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-heading">Explore</h4>
                     <ul class="footer-links">
-                        <li class="footer-link-item"><a href="index.html#home" class="footer-link">Home</a></li>
-                        <li class="footer-link-item"><a href="index.html#about" class="footer-link">About Us</a></li>
-                        <li class="footer-link-item"><a href="index.html#scholarship" class="footer-link">Scholarships</a></li>
-                        <li class="footer-link-item"><a href="index.html#donate" class="footer-link">Donate</a></li>
-                        <li class="footer-link-item"><a href="index.html#events" class="footer-link">Events</a></li>
+                        <li><a href="index.html#about" class="footer-link">About</a></li>
+                        <li><a href="evelyn-bio.html" class="footer-link">Biography</a></li>
+                        <li><a href="index.html#scholarship" class="footer-link">Scholarship</a></li>
+                        <li><a href="index.html#events" class="footer-link">Events</a></li>
+                        <li><a href="index.html#partners" class="footer-link">Partners</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-contact">
-                    <h4 class="footer-heading">Contact Us</h4>
-                    <div class="footer-contact-item">
-                        <span class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <div class="footer-contact-text">Stone Mountain, GA</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <span class="footer-contact-icon"><i class="fas fa-phone"></i></span>
-                        <div class="footer-contact-text"><a href="tel:+13109249557">(310) 924-9557</a></div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <span class="footer-contact-icon"><i class="fas fa-envelope"></i></span>
-                        <div class="footer-contact-text"><a href="mailto:info@evelyndunlapfoundation.org">info@evelyndunlapfoundation.org</a></div>
-                    </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#donate" class="footer-link">Donate</a></li>
+                        <li><a href="index.html#donate" class="footer-link">DAF Grant</a></li>
+                        <li><a href="index.html#donate" class="footer-link">Mail a Check</a></li>
+                        <li><a href="./images/EVELYNDUNLAPFOUNDATIONLETTER947.pdf" target="_blank" rel="noopener noreferrer" class="footer-link">501(c)(3) Letter</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-col--contact">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <span class="footer-contact-label">Mail</span>
+                            <span class="footer-contact-value">7315 Meadow Point Drive<br>Stone Mountain, GA 30087</span>
+                        </li>
+                        <li>
+                            <span class="footer-contact-label">Phone</span>
+                            <a class="footer-contact-value footer-contact-link" href="tel:+13109249557">(310) 924-9557</a>
+                        </li>
+                        <li>
+                            <span class="footer-contact-label">Email</span>
+                            <a class="footer-contact-value footer-contact-link" href="mailto:info@evelyndunlapfoundation.org">info@evelyndunlapfoundation.org</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
+
             <div class="footer-divider"></div>
-            
+
             <div class="footer-bottom">
-                <div class="footer-copyright">
-                    © 2026 Evelyn Dunlap Foundation. All rights reserved.
+                <div class="footer-meta">
+                    <span>© 2026 Evelyn Dunlap Foundation</span>
+                    <span class="footer-meta-divider" aria-hidden="true"></span>
+                    <span>EIN <strong>39-4239693</strong></span>
+                    <span class="footer-meta-divider" aria-hidden="true"></span>
+                    <span>501(c)(3) Nonprofit</span>
                 </div>
+
                 <div class="footer-bottom-links">
+                    <a href="./images/EVELYNDUNLAPFOUNDATIONLETTER947.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">501(c)(3) Letter</a>
                     <a href="./29847359.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">Incorporation Certificate</a>
-                    <a href="./images/EVELYNDUNLAPFOUNDATIONLETTER947.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">IRS 501(c)(3) Letter</a>
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
     
@@ -881,35 +905,6 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileToggle = document.getElementById('mobileToggle');
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function() {
-                    const mobileNav = document.getElementById('mobileNav');
-                    const isOpen = mobileNav.classList.toggle('active');
-                    this.classList.toggle('active', isOpen);
-                    this.setAttribute('aria-expanded', String(isOpen));
-                    mobileNav.setAttribute('aria-hidden', String(!isOpen));
-                    document.documentElement.classList.toggle('drawer-open', isOpen);
-                    document.body.classList.toggle('drawer-open', isOpen);
-                });
-            }
-
-            // Mobile nav links
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-donate');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const mobileNav = document.getElementById('mobileNav');
-                    const mobileToggle = document.getElementById('mobileToggle');
-                    mobileNav.classList.remove('active');
-                    mobileNav.setAttribute('aria-hidden', 'true');
-                    mobileToggle.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    document.documentElement.classList.remove('drawer-open');
-                    document.body.classList.remove('drawer-open');
-                });
-            });
-
             // Scroll-driven UI updates (throttled for smoothness on mobile)
             const header = document.getElementById('header');
             const backToTop = document.getElementById('backToTop');

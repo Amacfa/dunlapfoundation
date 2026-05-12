@@ -166,51 +166,7 @@ body {
   }
 }
 
-/* ---------- 12. Premium Touch Feedback ---------- */
-/* Touch-optimized haptic-style feedback */
-@media (hover: none) and (pointer: coarse) {
-  .btn:active,
-  .payment-button:active {
-    transform: scale(0.96) translateY(-2px);
-    filter: brightness(1.15);
-    box-shadow:
-      0 8px 35px rgba(52, 84, 209, 0.4),
-      inset 0 2px 10px rgba(255, 255, 255, 0.2);
-    transition: all 0.15s ease-out;
-  }
-
-  .glass-card:active,
-  .scholarship-card:active {
-    transform: scale(0.98);
-    filter: brightness(1.1);
-    box-shadow:
-      0 12px 45px rgba(52, 84, 209, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
-
-  /* Elegant ripple effect on tap */
-  .btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.35),
-      transparent 70%
-    );
-    opacity: 0;
-    transform: scale(0);
-    border-radius: inherit;
-    transition: opacity 0.4s, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .btn:active::after {
-    opacity: 1;
-    transform: scale(2);
-  }
-}
-
-/* ---------- 13. iOS safe-area adjustments ---------- */
+/* ---------- 12. iOS safe-area adjustments ---------- */
 @supports (-webkit-touch-callout: none) {
   html {
     -webkit-text-size-adjust: 100%;
@@ -220,10 +176,6 @@ body {
     -webkit-font-smoothing: antialiased;
   }
 
-  .mobile-nav {
-    -webkit-overflow-scrolling: touch;
-  }
-
   .hero-scroll {
     bottom: calc(2rem + env(safe-area-inset-bottom));
   }
@@ -231,13 +183,6 @@ body {
   .back-to-top {
     bottom: calc(1.5rem + env(safe-area-inset-bottom));
     right: calc(1.2rem + env(safe-area-inset-right));
-  }
-
-  .mobile-nav {
-    height: 100dvh;
-    min-height: 100svh;
-    padding-top: calc(6rem + env(safe-area-inset-top));
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
   }
 
   .hero-video {
@@ -250,9 +195,9 @@ body {
 
   .soiree-media,
   .soiree-video {
-    filter: brightness(0.34) saturate(0.85) contrast(1.12);
-    transform: translate3d(-50%, -50%, 0);
-    -webkit-transform: translate3d(-50%, -50%, 0);
+    filter: saturate(0.96) contrast(1.02) brightness(0.9);
+    transform: none;
+    -webkit-transform: none;
     backface-visibility: hidden;
     width: 100%;
     height: 100%;
@@ -555,22 +500,6 @@ body {
    Keep this file aligned with the final editorial pass in styles.css.
    ============================================================ */
 
-.mobile-nav {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(-10px) !important;
-  right: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-}
-
-.mobile-nav.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  right: 0 !important;
-}
-
 section header,
 .section header,
 .scholarship-headline,
@@ -620,7 +549,7 @@ section header,
     -webkit-transform: none !important;
     object-fit: cover;
     object-position: center center;
-    filter: brightness(0.72) saturate(0.92) contrast(1.04) !important;
+    filter: saturate(0.96) contrast(1.02) brightness(0.9) !important;
     opacity: 1;
   }
 
@@ -740,7 +669,11 @@ section header,
   }
 }
 
-/* ---------- 17. Stable drawer overlay fallback ---------- */
+/* ============================================================
+   Final mobile drawer + logo system
+   Single source of truth for the launch drawer interaction.
+   Opaque first, blur as a progressive enhancement, transform-only motion.
+   ============================================================ */
 html.drawer-open,
 body.drawer-open {
   overflow: hidden !important;
@@ -748,208 +681,42 @@ body.drawer-open {
   touch-action: none;
 }
 
-.mobile-nav {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  max-width: none !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  right: auto !important;
-  left: 0 !important;
-  z-index: var(--z-mobile-nav) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 2rem calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
-  background:
-    radial-gradient(80% 55% at 50% 0%, rgba(78, 107, 230, 0.14), transparent 70%),
-    radial-gradient(70% 50% at 50% 100%, rgba(229, 169, 188, 0.12), transparent 72%),
-    rgba(6, 8, 16, 0.985) !important;
-  backdrop-filter: blur(16px) saturate(1.1) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(1.1) !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: none !important;
-  transition: opacity 220ms ease, visibility 220ms ease !important;
-  box-shadow: none !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch;
-  isolation: isolate;
-}
-
-.mobile-nav::before,
-.mobile-nav::after {
+.mobile-toggle {
   display: none !important;
 }
 
-.mobile-nav.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: none !important;
+.mobile-nav {
+  display: none !important;
 }
 
-.mobile-nav-list {
-  position: relative;
-  z-index: 1;
-  display: grid !important;
-  gap: clamp(0.55rem, 2.2vh, 1rem) !important;
-  width: min(100%, 340px) !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  text-align: center !important;
-}
+@media (max-width: 992px) {
+  .navbar {
+    display: none !important;
+  }
 
-.mobile-nav-list li {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
+  .mobile-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
 
-.mobile-nav-link {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 44px !important;
-  padding: 0.22rem 0 !important;
-  font-family: 'Cormorant Garamond', serif !important;
-  font-size: clamp(1.65rem, 7vw, 2.25rem) !important;
-  font-weight: 500 !important;
-  line-height: 1.02 !important;
-  letter-spacing: -0.015em !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  text-shadow: none !important;
+  .mobile-nav {
+    display: grid !important;
+  }
 }
 
 .mobile-toggle {
-  z-index: var(--z-mobile-toggle) !important;
-}
-
-.mobile-toggle span {
-  left: 50% !important;
-  width: 24px !important;
-  height: 2px !important;
-  transform-origin: center center !important;
-}
-
-.mobile-toggle span:nth-child(1) {
-  top: 15px !important;
-  transform: translateX(-50%) !important;
-}
-
-.mobile-toggle span:nth-child(2) {
-  top: 22px !important;
-  transform: translateX(-50%) !important;
-}
-
-.mobile-toggle span:nth-child(3) {
-  top: 29px !important;
-  width: 18px !important;
-  transform: translateX(-50%) !important;
-}
-
-.mobile-toggle.active span:nth-child(1) {
-  top: 22px !important;
-  transform: translateX(-50%) rotate(45deg) !important;
-}
-
-.mobile-toggle.active span:nth-child(2) {
-  opacity: 0 !important;
-}
-
-.mobile-toggle.active span:nth-child(3) {
-  top: 22px !important;
-  width: 24px !important;
-  transform: translateX(-50%) rotate(-45deg) !important;
-}
-
-/* ---------- 18. Drawer state hardening ----------
-   The drawer can be opened from multiple pages/scripts. Tie the visual
-   state to the body/html lock and ARIA state as well as the active class
-   so a transient class mismatch cannot leave site text visible behind it.
-*/
-body.drawer-open .mobile-nav,
-html.drawer-open .mobile-nav,
-.mobile-nav[aria-hidden="false"],
-.mobile-nav.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: none !important;
-  background-color: rgba(6, 8, 16, 0.985) !important;
-}
-
-body.drawer-open .mobile-nav::before,
-html.drawer-open .mobile-nav::before,
-.mobile-nav[aria-hidden="false"]::before,
-.mobile-nav.active::before {
-  content: '' !important;
-  display: block !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-  background:
-    radial-gradient(80% 55% at 50% 0%, rgba(78, 107, 230, 0.14), transparent 70%),
-    radial-gradient(70% 50% at 50% 100%, rgba(229, 169, 188, 0.12), transparent 72%),
-    rgba(6, 8, 16, 0.985) !important;
-  backdrop-filter: blur(16px) saturate(1.1) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(1.1) !important;
-}
-
-body.drawer-open .mobile-nav-list,
-html.drawer-open .mobile-nav-list,
-.mobile-nav[aria-hidden="false"] .mobile-nav-list {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-body.drawer-open .mobile-toggle span:nth-child(1),
-html.drawer-open .mobile-toggle span:nth-child(1),
-.mobile-toggle[aria-expanded="true"] span:nth-child(1),
-.mobile-toggle.active span:nth-child(1) {
-  top: 22px !important;
-  width: 24px !important;
-  opacity: 1 !important;
-  transform: translateX(-50%) rotate(45deg) !important;
-}
-
-body.drawer-open .mobile-toggle span:nth-child(2),
-html.drawer-open .mobile-toggle span:nth-child(2),
-.mobile-toggle[aria-expanded="true"] span:nth-child(2),
-.mobile-toggle.active span:nth-child(2) {
-  opacity: 0 !important;
-  transform: translateX(-50%) scaleX(0) !important;
-}
-
-body.drawer-open .mobile-toggle span:nth-child(3),
-html.drawer-open .mobile-toggle span:nth-child(3),
-.mobile-toggle[aria-expanded="true"] span:nth-child(3),
-.mobile-toggle.active span:nth-child(3) {
-  top: 22px !important;
-  width: 24px !important;
-  opacity: 1 !important;
-  transform: translateX(-50%) rotate(-45deg) !important;
-}
-
-/* ============================================================
-   19. Editorial Drawer Experience
-   Calm, distinctive, and transform-only for smooth mobile motion.
-   ============================================================ */
-
-.mobile-toggle {
-  width: 46px !important;
-  height: 46px !important;
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 999px !important;
-  border: 1px solid rgba(255, 255, 255, 0.13) !important;
-  background: rgba(8, 11, 22, 0.34) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(8, 11, 22, 0.58) !important;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 12px 28px rgba(0, 0, 0, 0.18) !important;
-  backdrop-filter: blur(8px) saturate(1.08) !important;
-  -webkit-backdrop-filter: blur(8px) saturate(1.08) !important;
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 14px 30px rgba(0, 0, 0, 0.22) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(1.05) !important;
+  backdrop-filter: blur(8px) saturate(1.05) !important;
+  z-index: 2201 !important;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -957,12 +724,14 @@ html.drawer-open .mobile-toggle span:nth-child(3),
 }
 
 .mobile-toggle span {
-  display: block !important;
+  position: absolute !important;
   left: 50% !important;
-  width: 20px !important;
+  display: block !important;
+  width: 21px !important;
   height: 1.5px !important;
   border-radius: 999px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  transform: translateX(-50%) !important;
   transform-origin: center center !important;
   transition:
     top 240ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -971,41 +740,35 @@ html.drawer-open .mobile-toggle span:nth-child(3),
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-.mobile-toggle span:nth-child(1) {
-  top: 16px !important;
-  transform: translateX(-50%) !important;
-}
-
+.mobile-toggle span:nth-child(1) { top: 19px !important; }
 .mobile-toggle span:nth-child(2) {
-  top: 22px !important;
-  transform: translateX(-50%) !important;
+  top: 23px !important;
+  opacity: 0 !important;
+  transform: translateX(-50%) scaleX(0) !important;
 }
-
 .mobile-toggle span:nth-child(3) {
   top: 28px !important;
-  width: 14px !important;
-  transform: translateX(calc(-50% + 3px)) !important;
+  width: 21px !important;
+  transform: translateX(-50%) !important;
 }
 
 body.drawer-open .mobile-toggle,
 html.drawer-open .mobile-toggle,
 .mobile-toggle[aria-expanded="true"],
 .mobile-toggle.active {
-  z-index: 2201 !important;
-  border-color: rgba(229, 169, 188, 0.28) !important;
-  background: rgba(17, 16, 27, 0.68) !important;
+  border-color: rgba(229, 169, 188, 0.3) !important;
+  background: rgba(17, 16, 27, 0.78) !important;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.12) inset,
-    0 0 0 1px rgba(229, 169, 188, 0.07),
-    0 18px 40px rgba(0, 0, 0, 0.28) !important;
+    0 18px 40px rgba(0, 0, 0, 0.32) !important;
 }
 
 body.drawer-open .mobile-toggle span:nth-child(1),
 html.drawer-open .mobile-toggle span:nth-child(1),
 .mobile-toggle[aria-expanded="true"] span:nth-child(1),
 .mobile-toggle.active span:nth-child(1) {
-  top: 22px !important;
-  width: 20px !important;
+  top: 23px !important;
+  width: 21px !important;
   transform: translateX(-50%) rotate(45deg) !important;
 }
 
@@ -1021,8 +784,8 @@ body.drawer-open .mobile-toggle span:nth-child(3),
 html.drawer-open .mobile-toggle span:nth-child(3),
 .mobile-toggle[aria-expanded="true"] span:nth-child(3),
 .mobile-toggle.active span:nth-child(3) {
-  top: 22px !important;
-  width: 20px !important;
+  top: 23px !important;
+  width: 21px !important;
   transform: translateX(-50%) rotate(-45deg) !important;
 }
 
@@ -1032,12 +795,13 @@ html.drawer-open .mobile-toggle span:nth-child(3),
   inset: 0 !important;
   z-index: 2200 !important;
   width: 100vw !important;
+  max-width: none !important;
   height: 100vh !important;
   height: 100dvh !important;
   display: grid !important;
   place-items: center !important;
   padding:
-    calc(5.8rem + env(safe-area-inset-top, 0px))
+    calc(5.9rem + env(safe-area-inset-top, 0px))
     clamp(1.35rem, 6vw, 2.4rem)
     calc(1.65rem + env(safe-area-inset-bottom, 0px)) !important;
   background: var(--drawer-ink) !important;
@@ -1048,63 +812,47 @@ html.drawer-open .mobile-toggle span:nth-child(3),
   overflow: hidden !important;
   transform: none !important;
   contain: layout paint style;
-  transition:
-    opacity 240ms ease,
-    visibility 240ms ease !important;
-}
-
-body.drawer-open .logo,
-html.drawer-open .logo,
-header:has(.mobile-nav.active) .logo,
-header:has(.mobile-nav[aria-hidden="false"]) .logo,
-body.drawer-open .scroll-progress,
-html.drawer-open .scroll-progress {
-  opacity: 0 !important;
-  pointer-events: none !important;
+  isolation: isolate;
+  transition: opacity 230ms ease !important;
 }
 
 .mobile-nav::before {
   content: '' !important;
-  display: block !important;
   position: absolute !important;
   inset: 0 !important;
   z-index: 0 !important;
   pointer-events: none !important;
   background:
-    radial-gradient(95% 58% at 52% -10%, rgba(78, 107, 230, 0.18), transparent 68%),
-    radial-gradient(70% 50% at 50% 110%, rgba(229, 169, 188, 0.14), transparent 74%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 30%),
+    radial-gradient(86% 54% at 52% -8%, rgba(78, 107, 230, 0.16), transparent 68%),
+    radial-gradient(68% 48% at 50% 112%, rgba(229, 169, 188, 0.13), transparent 74%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 34%),
     var(--drawer-ink) !important;
   opacity: 0 !important;
-  transform: scale(1.035) !important;
-  transition:
-    opacity 360ms ease,
-    transform 620ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: scale(1.025) !important;
+  transition: opacity 340ms ease, transform 580ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mobile-nav::before {
+    -webkit-backdrop-filter: blur(12px) saturate(1.08) !important;
+    backdrop-filter: blur(12px) saturate(1.08) !important;
+  }
 }
 
 .mobile-nav::after {
   content: '' !important;
-  display: block !important;
   position: absolute !important;
-  top: calc(6rem + env(safe-area-inset-top, 0px)) !important;
+  top: calc(6.2rem + env(safe-area-inset-top, 0px)) !important;
   bottom: calc(2rem + env(safe-area-inset-bottom, 0px)) !important;
   left: clamp(1.35rem, 6vw, 2.4rem) !important;
   width: 1px !important;
   z-index: 1 !important;
   pointer-events: none !important;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(229, 169, 188, 0.35) 18%,
-    rgba(255, 255, 255, 0.08) 52%,
-    transparent
-  ) !important;
+  background: linear-gradient(to bottom, transparent, rgba(229, 169, 188, 0.34) 18%, rgba(255, 255, 255, 0.08) 54%, transparent) !important;
   opacity: 0 !important;
   transform: scaleY(0.72) !important;
   transform-origin: top center !important;
-  transition:
-    opacity 420ms ease,
-    transform 640ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: opacity 400ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 body.drawer-open .mobile-nav,
@@ -1119,24 +867,20 @@ html.drawer-open .mobile-nav,
 body.drawer-open .mobile-nav::before,
 html.drawer-open .mobile-nav::before,
 .mobile-nav[aria-hidden="false"]::before,
-.mobile-nav.active::before {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
+.mobile-nav.active::before,
 body.drawer-open .mobile-nav::after,
 html.drawer-open .mobile-nav::after,
 .mobile-nav[aria-hidden="false"]::after,
 .mobile-nav.active::after {
   opacity: 1 !important;
-  transform: scaleY(1) !important;
+  transform: scale(1) !important;
 }
 
 .mobile-nav-shell {
   position: relative;
   z-index: 2;
   width: min(100%, 365px);
-  max-height: calc(100dvh - 8.4rem);
+  max-height: calc(100dvh - 8.6rem);
   display: grid;
   gap: clamp(0.8rem, 2vh, 1.15rem);
   margin: 0 auto;
@@ -1147,9 +891,7 @@ html.drawer-open .mobile-nav::after,
   -webkit-overflow-scrolling: touch;
   opacity: 0;
   transform: translate3d(0, 12px, 0);
-  transition:
-    opacity 260ms ease,
-    transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 260ms ease, transform 430ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mobile-nav-shell::-webkit-scrollbar {
@@ -1178,24 +920,11 @@ html.drawer-open .mobile-nav-shell,
   color: rgba(229, 169, 188, 0.72);
 }
 
-.mobile-nav-kicker {
-  padding-bottom: 0.55rem;
-}
-
+.mobile-nav-kicker { padding-bottom: 0.55rem; }
 .mobile-nav-footnote {
   color: rgba(255, 255, 255, 0.36);
   letter-spacing: 0.16em;
   padding-top: 0.35rem;
-  background: none !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
-}
-
-.mobile-nav-footnote::before,
-.mobile-nav-footnote::after {
-  content: none !important;
-  display: none !important;
 }
 
 .mobile-nav-list {
@@ -1213,9 +942,7 @@ html.drawer-open .mobile-nav-shell,
   counter-increment: drawer-item;
   opacity: 0 !important;
   transform: translate3d(0, 12px, 0) !important;
-  transition:
-    opacity 300ms ease,
-    transform 480ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: opacity 300ms ease, transform 460ms cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .mobile-nav.active .mobile-nav-list li,
@@ -1226,83 +953,60 @@ html.drawer-open .mobile-nav-list li {
   transform: translate3d(0, 0, 0) !important;
 }
 
-.mobile-nav.active .mobile-nav-list li:nth-child(1),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(1) { transition-delay: 70ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(2),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(2) { transition-delay: 105ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(3),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(3) { transition-delay: 140ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(4),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(4) { transition-delay: 175ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(5),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(5) { transition-delay: 210ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(6),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(6) { transition-delay: 245ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(7),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(7) { transition-delay: 280ms !important; }
-.mobile-nav.active .mobile-nav-list li:nth-child(8),
-.mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(8) { transition-delay: 315ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(1), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(1) { transition-delay: 60ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(2), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(2) { transition-delay: 92ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(3), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(3) { transition-delay: 124ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(4), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(4) { transition-delay: 156ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(5), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(5) { transition-delay: 188ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(6), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(6) { transition-delay: 220ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(7), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(7) { transition-delay: 252ms !important; }
+.mobile-nav.active .mobile-nav-list li:nth-child(8), .mobile-nav[aria-hidden="false"] .mobile-nav-list li:nth-child(8) { transition-delay: 284ms !important; }
 
 .mobile-nav-link {
   position: relative !important;
   display: grid !important;
-  grid-template-columns: 2.2rem minmax(0, 1fr) 2rem !important;
+  grid-template-columns: 2.15rem minmax(0, 1fr) 1.8rem !important;
   align-items: center !important;
   width: 100% !important;
   min-height: clamp(2.35rem, 6.2vh, 3.25rem) !important;
   padding: 0 !important;
   color: rgba(246, 241, 244, 0.9) !important;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: clamp(1.8rem, 7.8vw, 2.45rem) !important;
+  font-size: clamp(1.78rem, 7.6vw, 2.38rem) !important;
   font-weight: 500 !important;
   line-height: 0.98 !important;
   letter-spacing: -0.026em !important;
   text-decoration: none !important;
   text-align: left !important;
   text-shadow: none !important;
-  transition:
-    color 180ms ease,
-    transform 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: color 180ms ease !important;
 }
 
 .mobile-nav-link::before {
   content: counter(drawer-item, decimal-leading-zero) !important;
-  display: inline-block !important;
-  width: auto !important;
-  height: auto !important;
-  position: static !important;
-  opacity: 1 !important;
-  background: none !important;
   color: rgba(229, 169, 188, 0.46) !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 0.54rem !important;
   font-weight: 500 !important;
-  line-height: 1 !important;
   letter-spacing: 0.14em !important;
-  transform: none !important;
 }
 
 .mobile-nav-link::after {
   content: '' !important;
-  display: block !important;
-  position: static !important;
-  width: 1.35rem !important;
+  width: 1.25rem !important;
   height: 1px !important;
   margin-left: auto !important;
-  background: linear-gradient(90deg, rgba(229, 169, 188, 0.8), transparent) !important;
+  background: linear-gradient(90deg, rgba(229, 169, 188, 0.78), transparent) !important;
   opacity: 0 !important;
   transform: scaleX(0.45) !important;
   transform-origin: left center !important;
-  transition:
-    opacity 180ms ease,
-    transform 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: opacity 180ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link:focus-visible,
 .mobile-nav-link.active {
   color: #fff !important;
-  transform: none !important;
   outline: none !important;
 }
 
@@ -1335,8 +1039,8 @@ html.drawer-open .mobile-nav-list li {
   opacity: 0;
   transform: translate3d(0, 10px, 0);
   transition:
-    opacity 280ms ease 340ms,
-    transform 460ms cubic-bezier(0.22, 1, 0.36, 1) 340ms,
+    opacity 260ms ease 300ms,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 300ms,
     border-color 180ms ease,
     background-color 180ms ease;
 }
@@ -1363,6 +1067,14 @@ html.drawer-open .mobile-nav-donate {
   outline: none;
 }
 
+body.drawer-open .logo,
+html.drawer-open .logo,
+body.drawer-open .scroll-progress,
+html.drawer-open .scroll-progress {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 @media (max-height: 720px) {
   .mobile-nav {
     padding-top: calc(4.9rem + env(safe-area-inset-top, 0px)) !important;
@@ -1380,9 +1092,7 @@ html.drawer-open .mobile-nav-donate {
   }
 
   .mobile-nav-kicker,
-  .mobile-nav-footnote {
-    font-size: 0.55rem;
-  }
+  .mobile-nav-footnote { font-size: 0.55rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1412,18 +1122,14 @@ html.drawer-open .mobile-nav-donate {
    The logo mark has built-in visual padding, so the rendered box needs
    to be larger than a typical wordmark to read clearly on mobile.
    ============================================================ */
-.logo {
-  flex: 0 0 auto;
-}
+.logo { flex: 0 0 auto; }
 
 .header-logo-img {
   height: 118px !important;
   width: auto !important;
 }
 
-header.scrolled .header-logo-img {
-  height: 82px !important;
-}
+header.scrolled .header-logo-img { height: 82px !important; }
 
 @media (max-width: 768px) {
   header {
@@ -1436,21 +1142,91 @@ header.scrolled .header-logo-img {
     padding-bottom: 0.62rem !important;
   }
 
-  .header-logo-img {
-    height: 98px !important;
-  }
-
-  header.scrolled .header-logo-img {
-    height: 78px !important;
-  }
+  .header-logo-img { height: 98px !important; }
+  header.scrolled .header-logo-img { height: 78px !important; }
 }
 
 @media (max-width: 390px) {
-  .header-logo-img {
-    height: 92px !important;
+  .header-logo-img { height: 92px !important; }
+  header.scrolled .header-logo-img { height: 72px !important; }
+}
+
+/* ============================================================
+   Launch fix: hero centering
+   Keep the hero text/CTA stack centered at every breakpoint. The
+   original flex layout let the hero container shrink toward the right;
+   grid makes the content box independent from that flex sizing quirk.
+   ============================================================ */
+.hero {
+  display: grid !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+.hero .container.hero-container {
+  grid-area: 1 / 1 !important;
+  justify-self: center !important;
+  margin-inline: auto !important;
+}
+
+.hero .hero-content {
+  margin-inline: auto !important;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    display: grid !important;
+    align-items: center !important;
+    justify-items: stretch !important;
   }
 
-  header.scrolled .header-logo-img {
-    height: 72px !important;
+  .hero .container.hero-container {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: none !important;
+    grid-area: 1 / 1 !important;
+    justify-self: stretch !important;
+    margin-inline: 0 !important;
+    padding-inline: clamp(1.25rem, 5vw, 2rem) !important;
+  }
+
+  .hero .hero-content {
+    width: 100% !important;
+    max-width: 24rem !important;
+    margin-inline: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+
+  .hero .hero-subtitle,
+  .hero .hero-title,
+  .hero .hero-description,
+  .hero .hero-buttons {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero .hero-subtitle {
+    display: inline-flex !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: min(100%, 22rem) !important;
+  }
+
+  .hero .hero-title {
+    display: inline-block !important;
+    max-width: min(100%, 16ch) !important;
+  }
+
+  .hero .hero-description {
+    max-width: min(100%, 22rem) !important;
+  }
+
+  .hero .hero-buttons {
+    width: 100% !important;
+    max-width: min(100%, 22rem) !important;
+    justify-content: center !important;
   }
 }

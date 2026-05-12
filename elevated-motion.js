@@ -390,8 +390,101 @@
     targets.forEach((el) => observer.observe(el));
   }
 
+  // ---------- 7. Shared mobile drawer controller ----------
+  function initDrawer() {
+    const toggle = document.getElementById('mobileToggle');
+    const nav = document.getElementById('mobileNav');
+    if (!toggle || !nav) return;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    let lastFocus = null;
+
+    const setInert = (isInert) => {
+      if ('inert' in nav) nav.inert = isInert;
+    };
+
+    const getFocusable = () => Array.from(nav.querySelectorAll(focusableSelector))
+      .filter((el) => el.offsetParent !== null || el === document.activeElement);
+
+    const setDrawerOpen = (open, options = {}) => {
+      nav.classList.toggle('active', open);
+      toggle.classList.toggle('active', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.setAttribute('aria-hidden', String(!open));
+      document.documentElement.classList.toggle('drawer-open', open);
+      document.body.classList.toggle('drawer-open', open);
+      setInert(!open);
+
+      if (open) {
+        lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : toggle;
+        window.setTimeout(() => {
+          const first = getFocusable()[0];
+          if (first) first.focus({ preventScroll: true });
+        }, reduceMotion ? 0 : 180);
+        return;
+      }
+
+      if (!options.suppressFocus) {
+        const target = lastFocus && document.contains(lastFocus) ? lastFocus : toggle;
+        target.focus({ preventScroll: true });
+      }
+    };
+
+    setInert(true);
+    window.edfSetDrawerOpen = setDrawerOpen;
+
+    toggle.addEventListener('click', () => {
+      setDrawerOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    nav.addEventListener('click', (event) => {
+      const link = event.target.closest('.mobile-nav-link, .mobile-nav-donate');
+      if (link) setDrawerOpen(false, { suppressFocus: true });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setDrawerOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus({ preventScroll: true });
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus({ preventScroll: true });
+      }
+    });
+
+    window.addEventListener('pageshow', () => {
+      setDrawerOpen(false, { suppressFocus: true });
+    });
+  }
+
   // ---------- Init sequence ----------
   function init() {
+    initDrawer();
     initHeroTitleReveal();
     initMaskReveals();
     initEyebrowReveals();

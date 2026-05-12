@@ -6,6 +6,9 @@
     <meta name="description" content="The Evelyn Dunlap Foundation is dedicated to supporting higher education and fighting hunger through scholarship programs, charitable events, and community partnerships.">
     <meta name="keywords" content="Evelyn Dunlap Foundation, scholarships, education, philanthropy, community service, charity">
     <meta name="author" content="Evelyn Dunlap Foundation">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0c15">
+    <meta name="color-scheme" content="dark light">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Evelyn Dunlap Foundation | Nourishing Lives, Empowering Minds">
@@ -22,6 +25,7 @@
     <meta name="twitter:image" content="https://www.evelyndunlapfoundation.org/images/og-image.jpg">
     
     <title>Evelyn Dunlap Foundation | Nourishing Lives, Empowering Minds</title>
+    <link rel="canonical" href="https://www.evelyndunlapfoundation.org/">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -135,6 +139,8 @@
     </style>
 </head>
 <body class="banner-collapsed">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Inline SVG filters for editorial photo treatment -->
     <svg class="svg-filters" width="0" height="0" aria-hidden="true" focusable="false">
         <filter id="editorial-portrait" color-interpolation-filters="sRGB">
@@ -234,6 +240,7 @@
     </header>
 
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="hero" id="home" data-section-num="01" data-section-name="Home">
         <!-- Hero Background Video or Image -->
@@ -627,7 +634,7 @@
                 <div class="soiree-event">
                     <div class="soiree-date">January 3, 2026 - COMPLETED</div>
                     <div class="soiree-img soiree-img--feature">
-                        <img src="./images/optimized/night.webp" alt="Scholarship Award Ceremony banquet dinner at Limani in Charlotte, NC" class="soiree-media" width="900" height="900" loading="lazy" decoding="async">
+                        <img src="./images/optimized/night.webp" alt="Scholarship Award Ceremony banquet dinner at Limani in Charlotte, NC" class="soiree-media" width="900" height="900" loading="eager" fetchpriority="high" decoding="async">
                         <h1>Scholarship Award Ceremony Banquet Dinner</h1>
                         <p>Live performances by Journey vocalists, dinner service, and scholarship presentations at Limani in Charlotte, NC</p>
                     </div>
@@ -880,6 +887,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
@@ -948,8 +957,9 @@
                     <a href="./29847359.pdf" target="_blank" rel="noopener noreferrer" class="footer-bottom-link">Incorporation Certificate</a>
                 </div>
             </div>
+        </div>
+    </footer>
 
-    
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
@@ -958,7 +968,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Scholarship Application</h3>
-                <button class="modal-close" id="closeModalBtn">&times;</button>
+                <button class="modal-close" id="closeModalBtn" aria-label="Close scholarship application">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="scholarshipForm">
@@ -1099,36 +1109,6 @@
         });
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileToggle = document.getElementById('mobileToggle');
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function() {
-                    const mobileNav = document.getElementById('mobileNav');
-                    const isOpen = mobileNav.classList.toggle('active');
-                    this.classList.toggle('active', isOpen);
-                    this.setAttribute('aria-expanded', String(isOpen));
-                    mobileNav.setAttribute('aria-hidden', String(!isOpen));
-                    document.documentElement.classList.toggle('drawer-open', isOpen);
-                    document.body.classList.toggle('drawer-open', isOpen);
-                });
-            }
-
-
-            // Mobile nav links
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-donate');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const mobileNav = document.getElementById('mobileNav');
-                    const mobileToggle = document.getElementById('mobileToggle');
-                    mobileNav.classList.remove('active');
-                    mobileNav.setAttribute('aria-hidden', 'true');
-                    mobileToggle.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    document.documentElement.classList.remove('drawer-open');
-                    document.body.classList.remove('drawer-open');
-                });
-            });
-
             // Scroll-driven UI updates (throttled for smoothness on mobile)
             const header = document.getElementById('header');
             const backToTop = document.getElementById('backToTop');
@@ -1182,17 +1162,9 @@
                     e.preventDefault();
                     scrollToHash(href, 'smooth');
                     history.pushState(null, '', href);
-                    const mobileNav = document.getElementById('mobileNav');
-                    if (mobileNav) {
-                        mobileNav.classList.remove('active');
-                        mobileNav.setAttribute('aria-hidden', 'true');
+                    if (window.edfSetDrawerOpen) {
+                        window.edfSetDrawerOpen(false, { suppressFocus: true });
                     }
-                    if (mobileToggle) {
-                        mobileToggle.classList.remove('active');
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                    }
-                    document.documentElement.classList.remove('drawer-open');
-                    document.body.classList.remove('drawer-open');
                 });
             });
 
