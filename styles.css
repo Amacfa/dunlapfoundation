@@ -8670,6 +8670,7 @@ footer {
   gap: 0.65rem;
   min-width: 0;
   text-align: center;
+  overflow: visible;
 }
 
 .impact-monument-num {
@@ -8678,8 +8679,11 @@ footer {
   font-size: clamp(4rem, 9vw, 8.5rem);
   font-style: italic;
   font-weight: 500;
-  line-height: 0.82;
-  letter-spacing: -0.065em;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  padding-inline: 0.1em 0.16em;
+  margin-inline: -0.08em -0.14em;
+  overflow: visible;
   background: linear-gradient(120deg, #eadfe4 0%, #d3a0b3 58%, #8794c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
